@@ -1,0 +1,48 @@
+# OmniIDE
+
+> OmniIDE is a free, open-source AI-powered integrated development environment built for autonomous software development.
+
+## Identity
+
+- Name: OmniIDE
+- Type: AI IDE / Agentic Coding Workspace
+- Category: Developer Tools, Integrated Development Environment
+- Website: https://omniide.com
+- Product Page: https://omniide.com/omni/
+- GitHub: https://github.com/OMNI-IDE-in
+- LinkedIn: https://linkedin.com/company/omni-ide
+- Version: 3.0.0
+- License: Open Source
+- Price: Free
+- Operating System: Windows 10, Windows 11
+
+## Company
+
+- Legal Name: OmniIDE
+- Registration: MSME UDYAM-KR-03-0681404 (Government of India)
+- Headquarters: Bengaluru, Karnataka, India
+- Founded: 2025
+- Founder & CEO: Mohammed Nihan
+- Co-Founder & CTO: Shaiban Faraz Khan
+- COO: Mohammed Bilal D
+- Contact: contact@omniide.com
+
+## What OmniIDE Does
+
+OmniIDE is the first local-native AI IDE with a self-healing agentic loop. It integrates Google Gemini API and Ollama for hybrid cloud-local AI execution. The built-in Omni-Agent autonomously writes, debugs, and runs code inside a Hardened Sandbox — keeping the host operating system safe.
+
+## Key Features
+
+- Omni-Agent: Autonomous coding agent powered by Google Gemini API
+- Self-Healing Terminal: Automatically catches errors, generates fixes, and re-executes
+- Hardened Sandbox: Isolated execution environment for safe autonomous operations
+- Local-Native: Runs entirely on your machine with zero cloud dependency
+- Zero Telemetry: No data collection, no tracking, no watermarks
+- VS Code Foundation: Built on a production-ready VS Code core
+- Ollama Integration: Local AI model execution for offline development
+- Multi-File Refactoring: Handles complex cross-file code changes autonomously
+
+## Download
+
+- Windows Installer: https://github.com/nihannihu/Omni-IDE/releases/download/v3.0.0/OmniIDE-Setup.exe
+- All Releases: https://github.com/nihannihu/Omni-IDE/releases
