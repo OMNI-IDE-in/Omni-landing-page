@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Omni IDE — AI-Powered Code Editor | Free for Windows</title>
+<meta name="description" content="Omni IDE v3.0.0 — the first local-native AI IDE with a self-healing agentic loop. Free, open-source, zero telemetry, built for autonomous software development.">
+<meta name="keywords" content="AI IDE, Omni IDE, Autonomous Software, Bengaluru Tech, MSME, Code Editor, AI Agent, Open Source">
+<meta name="author" content="Omni IDE Team">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nihu.in/">
+<meta property="og:title" content="Omni IDE — Engineering the Future of Autonomous Software">
+<meta property="og:description" content="Build the future with the first local-native AI IDE. Zero telemetry, zero cloud lock-in, privacy-first autonomous coding.">
+<meta property="og:image" content="omni_ide_og_image_1778610337461.png">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://nihu.in/">
+<meta property="twitter:title" content="Omni IDE — AI-Powered Code Editor">
+<meta property="twitter:description" content="Engineering the Future of Autonomous Software Development. Local, private, and free AI infrastructure.">
+<meta property="twitter:image" content="omni_ide_og_image_1778610337461.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAC8klEQVRYR8VXTWjUQBBe9r9JdrO76W6S7mZ3u9ldYre7u0m6m93tZne7m93dbne72d1uYnd3u9vd7mZ3u5vdf9/MvPlmPkh2s6v94IFhpvPmzczXzLz5pGia5vG0SNH0M0XTP+XvS6AonmZpLALXInAtAtcicC0C1yJwLQIrAnC5Uf4YAV8m7XU+T9rjA8Z+57OkPR8wZpY/O76Xz3XyDAnYAn7mZ6uAifD9GfAnAtYjYI4fAs9p7i6C566X876XfD9E/9kI3D9K+NfL+H0W70fg5wDizvAn9/r7/vshf77f3/f97wF6t4V9W79f428Aeeu9v3NnU6A3e+vP3A74Nf3u094T+vE7f08AeeL9nvAn97q996vCvhNf93vAnvU7t972I0Df0e9E8CPX7+90fO976H2/Fp8V9I5v7v2FvgPo2XyU8VvCv6u/88t779P4Vf9O9Uu/B9Cv7vczfP39K8Cv9e9Un+m9T+NXI+jVfvfOn03v/U7Y99738f6u7+V9H/K9/u97/r/I972/uO97+T6N3418T+OnhH/P99736P0Fve8UfXrvfTr/W77f6N/7P/9f5PvO30T/+f8iX+f7YF/3e6L/K/fOpgFmF6BvA8xu6MfmHqBvA8z20I8O7p0P0LcBZnvon9mY/gXo2wCzPbRv6Z/ZnP4F6NsAsz30e+qH6V+Avg0w20M/Rz9LP0w/BvRtgNke+hX6Zfph9H0H9N7X79X43fXvVP/E9z6Nnzrve/RtgNke+m76Xvpe9A7PZ/8v9G2A2R76Yfps+myA/m0AmX+mNf8M/Z6mNf9G07D/+mGzI6197X3Y/EhrX3sfNj/S2tfef9T8SGv/L+O/+mGzh82PtPa192HzI6197X3Y/EhrX3sfNj/S2tfef9T8SGv/L+O/+mGzh82PtPa192HzI6197X3Y/EhrX3sfNj/S2tfef9T8SGv/L+O/+mGzh82PtPa192HzI6197X3Y/EhrX3sfNj/S2tfef9T8SGv/L+O/+mGzh82PtPa192HzI6197X3Y/EhrX3sfNj/S2tfef9T8SGv/L+O/9/0L7OqH97z/AfgH6t60Z/8HAAAAAElFTkSuQmCC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<style>
+:root{--p:#1A56DB;--s:#3B82F6;--a:#06B6D4;--n:#0F172A;--g:#6B7280;--w:#FFFFFF}
+*{margin:0;padding:0;box-sizing:border-box}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:#f1f1f1}
+::-webkit-scrollbar-thumb{background:var(--p);border-radius:10px}
+html,body{overflow-x:hidden; width:100%; position:relative; max-width:100vw; touch-action: pan-y; -webkit-overflow-scrolling: touch}
+body{font-family:'Inter',sans-serif;color:var(--n);background:#fff;cursor:none;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Syne',sans-serif;color:var(--n); overflow-wrap: break-word; word-wrap: break-word}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:0 auto;width:100%;padding:0 24px; box-sizing: border-box}
+#scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--s),var(--a));z-index:2000}
+#cursor,#cursor-ring{position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference}
+#cursor{width:6px;height:6px;background:var(--s);border-radius:50%;transition:transform 0.1s ease,width 0.3s,height 0.3s}
+#cursor-ring{width:40px;height:40px;border:1px solid rgba(59,130,246,0.5);border-radius:50%;transition:all 0.4s cubic-bezier(0.23,1,0.32,1)}
+#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.15}
+.label{font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:var(--s);font-weight:700;margin-bottom:16px;display:block}
+.section-title{font-size:48px;font-weight:800;margin-bottom:20px;letter-spacing:-0.02em;background:linear-gradient(135deg,var(--p),var(--a));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-sub{font-size:18px;color:#64748B;line-height:1.6;max-width:650px;margin-bottom:56px}
+.nav{position:fixed;top:0;left:0;width:100%;height:64px;background:rgba(255,255,255,0.8);backdrop-filter:blur(20px);z-index:1000;border-bottom:1px solid rgba(0,0,0,0.03);display:flex;align-items:center;padding:0 24px;transition:all 0.4s ease}
+.nav.scrolled{height:56px;background:rgba(255,255,255,0.9);box-shadow:0 10px 30px rgba(0,0,0,0.03)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
+.logo{display:flex;align-items:center;gap:12px;font-size:22px;font-weight:800;letter-spacing:-0.03em}
+.logo img{height:34px;width:34px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+.logo span{color:var(--p)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;z-index:1100;cursor:pointer}
+.hamburger span{width:22px;height:2px;background:var(--n);transition:all .3s;border-radius:2px}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;background:rgba(255,255,255,0.9);backdrop-filter:blur(30px);z-index:1050;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;clip-path:circle(0% at 100% 0%);transition:clip-path 0.6s cubic-bezier(0.77,0,0.175,1)}
+.mobile-menu.active{clip-path:circle(150% at 100% 0%)}
+.mobile-menu a{font-family:'Syne',sans-serif;font-size:32px;font-weight:700;color:var(--n);transition:color .3s}
+.mobile-menu a:hover{color:var(--s)}
+.nav-links{display:flex;gap:40px;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-links a{color:#64748B;font-size:14px;font-weight:600;transition:.3s}
+.nav-links a:hover{color:var(--s)}
+.nav-cta{background:linear-gradient(135deg, var(--p), var(--s));color:#fff;padding:10px 24px;border-radius:12px;font-size:14px;font-weight:700;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);box-shadow:0 10px 25px rgba(26,86,219,0.25);position:relative;overflow:hidden;border:none}
+.nav-cta::before{content:'';position:absolute;top:-50%;left:-100%;width:50%;height:200%;background:rgba(255,255,255,0.2);transform:rotate(30deg);transition:0.6s}
+.nav-cta:hover::before{left:150%}
+.nav-cta:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 15px 35px rgba(26,86,219,0.4)}
+.hero{padding:140px 80px 80px;position:relative;z-index:2;overflow:hidden}
+.hero-inner{display:flex;align-items:center;justify-content:space-between;max-width:1440px;margin:0 auto}
+.hero-content{flex:0 0 52%}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #E5E7EB;border-radius:40px;padding:8px 18px;font-size:13px;color:var(--p);font-weight:500;margin-bottom:28px}
+.hero h1{font-size:72px;line-height:1.05;font-weight:900;letter-spacing:-0.04em;margin-bottom:24px}
+.hero h1 .g{background:linear-gradient(135deg,var(--s),var(--a));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:17px;color:var(--g);line-height:1.7;margin-bottom:32px;max-width:520px}
+.hero-ctas{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:28px}
+.btn-primary{background:linear-gradient(135deg, var(--p), var(--s));color:#fff;padding:14px 32px;border-radius:12px;font-size:15px;font-weight:700;display:inline-flex;align-items:center;gap:10px;border:none;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);box-shadow:0 12px 30px rgba(26,86,219,0.25);position:relative;overflow:hidden}
+.btn-primary::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:0.6s}
+.btn-primary:hover::after{left:100%}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(26,86,219,0.4)}
+.btn-ghost{border:1.5px solid #E5E7EB;color:var(--n);padding:12px 24px;border-radius:10px;font-size:14px;font-weight:600;transition:all .25s}
+.btn-ghost:hover{border-color:var(--p);color:var(--p);transform:translateY(-2px)}
+.hero-visual{flex:0 0 44%;display:flex;flex-direction:column;align-items:flex-end;position:relative;min-height:550px}
+.hero-editor{position:relative;width:100%;max-width:340px;height:520px;background:#0D0D0D;border-radius:18px;padding:32px 24px;box-shadow:0 30px 60px rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.05);border-left:2px solid rgba(59,130,246,0.3);animation:efloat 5s ease-in-out infinite}
+@keyframes efloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+.hero-editor code{font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.7;color:#fff;display:block;white-space:pre-wrap}
+.hero-editor .kw{color:var(--s);font-weight:600}
+.hero-editor .str{color:#22C55E}
+.hero-editor .cm{color:var(--g);font-style:italic}
+.version-badge{background:#0D0D0D;border:1px solid rgba(34,197,94,.3);color:#fff;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px;margin-bottom:12px;box-shadow:0 10px 20px rgba(0,0,0,0.3)}
+.version-badge .g{width:6px;height:6px;background:#22C55E;border-radius:50%}
+
+/* MISSION */
+/* MANIFESTO REDESIGN */
+.mission{background:linear-gradient(135deg,#060D1A 0%,#0B1628 50%,#060D1A 100%);padding:100px 80px;position:relative;z-index:2;color:#fff;overflow:hidden}
+.mission::before{content:"";position:absolute;inset:0;background-image:url('data:image/svg+xml,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>');opacity:0.03;pointer-events:none}
+.mission-separator{position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,#3B82F6,transparent)}
+.mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1300px;margin:0 auto;position:relative;z-index:3}
+.mission-glow{position:absolute;width:400px;height:400px;background:radial-gradient(circle,#1d4ed8 0%,transparent 70%);opacity:0.08;top:50%;left:-100px;transform:translateY(-50%);filter:blur(60px);pointer-events:none}
+
+.mission-left{position:relative}
+.mission-quote-mark{position:absolute;top:-40px;left:-20px;font-size:180px;color:#1d4ed8;opacity:0.15;font-family:serif;pointer-events:none;z-index:1}
+.mission-left h2{font-size:2.4rem;font-weight:800;line-height:1.3;color:#fff;position:relative;z-index:2;margin:0}
+.mission-divider{width:60px;height:3px;background:#3B82F6;margin-top:24px;border-radius:2px}
+.mission-author{font-size:14px;color:#94A3B8;font-style:italic;margin-top:12px;display:block}
+
+.mission-right{display:flex;flex-direction:column;gap:20px}
+.mission-right p{font-size:16px;color:#FFFFFF;line-height:1.8;opacity:0;transform:translateY(20px);transition:all 0.6s cubic-bezier(0.22, 1, 0.36, 1)}
+.mission-right p.reveal{opacity:1;transform:translateY(0)}
+.mission-right p:last-child{color:#fff;font-weight:700;font-size:1.1rem;opacity:1}
+.mission-dot{display:inline-block;width:8px;height:8px;background:#3B82F6;border-radius:50%;margin-right:12px;box-shadow:0 0 10px rgba(59,130,246,0.8);position:relative;top:-1px}
+
+@media(max-width:768px){
+    .mission-quote-mark{font-size:100px; top:-20px; left:0}
+    .mission-left h2{font-size:1.8rem; text-align:left}
+    .mission-grid{gap:40px}
+}
+
+.mission-deco-hex{position:absolute;top:-50px;right:-50px;width:300px;height:300px;opacity:0.06;color:#3B82F6;pointer-events:none}
+.mission-deco-dots{position:absolute;bottom:40px;left:40px;width:120px;height:120px;background-image:radial-gradient(circle,rgba(255,255,255,0.1) 1px,transparent 1px);background-size:16px 16px;opacity:0.2;pointer-events:none}
+@media(max-width:768px){
+    .mission-deco-hex{right:-100px; width:200px; height:200px}
+    .mission-glow{display:none}
+}
+
+.ecosystem{background:#fff;padding:140px 0;position:relative;z-index:2}
+.eco-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.eco-card{background:#fff;border:1px solid #F1F5F9;border-radius:24px;padding:40px;transition:all .5s cubic-bezier(0.23, 1, 0.32, 1);transform-style:preserve-3d;box-shadow:0 4px 20px rgba(0,0,0,0.02);position:relative;overflow:hidden}
+.eco-card:hover{transform:translateY(-12px);box-shadow:0 30px 70px rgba(15,23,42,0.08);border-color:#E2E8F0}
+.eco-card::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--x) var(--y), rgba(59,130,246,0.06) 0%, transparent 70%);opacity:0;transition:opacity 0.3s ease;pointer-events:none}
+.eco-card:hover::after{opacity:1}
+.eco-icon{width:56px;height:56px;background:rgba(59,130,246,0.05);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;transition:all 0.3s ease;position:relative;z-index:2}
+.eco-card:hover .eco-icon{background:rgba(59,130,246,0.1);transform:scale(1.1)}
+.eco-icon svg{width:28px;height:28px;stroke:#3B82F6;fill:none;stroke-width:1.5}
+.eco-status{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:12px}
+.eco-status.live{background:rgba(34,197,94,.1);color:#16A34A}
+.eco-status.dev{background:rgba(245,158,11,.1);color:#D97706}
+.eco-card h3{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;margin-bottom:4px}
+.eco-card .tagline{font-size:13px;font-weight:600;color:#1A56DB;margin-bottom:10px}
+.eco-card p{font-size:14px;color:#6B7280;line-height:1.7}
+
+/* STATS REDESIGN */
+.stats{background:#0B1628;padding:80px 0;position:relative;overflow:hidden;color:#fff;z-index:2}
+.stats-container{max-width:1300px;margin:0 auto;padding:0 40px;display:flex;flex-direction:column;gap:32px;width:100%}
+.stats-row-1{display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:24px}
+.stat-card{background:#0D1F35;border-radius:16px;padding:28px;border:1px solid rgba(255,255,255,0.08);transition:transform 0.3s ease;min-height:180px;display:flex;flex-direction:column;justify-content:flex-start;position:relative}
+.stat-card:hover{transform:translateY(-5px)}
+.stat-card h4{font-size:32px;font-weight:800;margin-bottom:4px;letter-spacing:-0.02em;position:relative;z-index:2;color:#fff}
+.stat-card p{font-size:13px;color:#CBD5E1;line-height:1.4;margin-bottom:12px;position:relative;z-index:2}
+.stat-svg-box{margin-top:auto;height:40px;width:100%;display:flex;align-items:flex-end}
+.progress-bg{width:100%;height:8px;background:rgba(255,255,255,0.05);border-radius:10px;margin-top:auto;overflow:hidden}
+.progress-fill{height:100%;background:#3B82F6;border-radius:10px;box-shadow:0 0 10px rgba(59,130,246,0.5)}
+.verified-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(34,197,94,0.1);color:#22C55E;padding:4px 10px;border-radius:100px;font-size:11px;font-weight:700;margin-top:auto;width:fit-content}
+
+.stats-row-2{display:grid;grid-template-columns:1.6fr 1fr;gap:24px}
+.panel{background:#0D1F35;border-radius:16px;padding:28px;border:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column}
+.panel-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px}
+.panel-title{font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:#94A3B8;font-weight:700}
+.chart-container{flex-grow:1;position:relative;min-height:200px;width:100%;overflow:hidden}
+.chart-container svg{display:block;max-width:100%;height:auto}
+.activity-line{fill:none;stroke:#3B82F6;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 8px rgba(59,130,246,0.4))}
+.activity-area{fill:url(#chart-gradient);opacity:0.3}
+.chart-axis{stroke:rgba(255,255,255,0.1);stroke-width:1}
+.axis-label{fill:#94A3B8;font-size:10px;font-family:sans-serif}
+
+.heatmap-wrapper{width:100%;overflow-x:auto;padding-bottom:10px;scrollbar-width:none;-ms-overflow-style:none}
+.heatmap-wrapper::-webkit-scrollbar{display:none}
+.heatmap-grid{display:grid;grid-template-rows:repeat(7,1fr);grid-auto-flow:column;gap:4px;margin-top:10px;width:max-content}
+.heat-cell{width:10px;height:10px;border-radius:2px;background:#1a2a3a;opacity:0;animation:fadeIn 0.5s forwards}
+@keyframes fadeIn{to{opacity:1}}
+.heat-low{background:#1d4ed8}.heat-med{background:#3b82f6}.heat-high{background:#60a5fa}.heat-max{background:#93c5fd}
+.heat-footer{margin-top:20px;font-size:12px;color:#94A3B8}
+
+/* TEAM */
+.team{background:#fff;padding:120px 0;position:relative;z-index:2}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.team-card{background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:32px;text-align:center;transition:all .35s}
+.team-card:hover{transform:translateY(-8px);box-shadow:0 24px 64px rgba(26,86,219,.1);border-color:rgba(26,86,219,.2)}
+.team-card.open{border-style:dashed;background:#F9FAFB}
+.team-avatar{width:120px;height:120px;border-radius:50%;background:#F3F4F6;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;border:3px solid #fff;box-shadow:0 12px 32px rgba(26,86,219,.12);transition:all .3s;overflow:hidden;object-fit:cover}
+.avatar-nihan{object-position:center 10%; transform: scale(1.1);} 
+.avatar-bilal{object-position:center 20%; transform: scale(1.1);}
+.team-card:hover .team-avatar{transform:scale(1.05);box-shadow:0 16px 40px rgba(26,86,219,.2)}
+.team-avatar.dashed{border:2px dashed rgba(26,86,219,.3);background:transparent;font-size:32px;font-weight:300}
+.team-card h3{font-size:18px;font-weight:700;margin-bottom:4px}
+.team-card .title{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:#1A56DB;font-weight:600;margin-bottom:14px}
+.team-card .bio{font-size:14px;color:#6B7280;line-height:1.7;margin-bottom:16px}
+.team-card .social{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#1A56DB;font-weight:500}
+
+/* TRUST */
+.trust{background:#F9FAFB;padding:100px 0;position:relative;z-index:2}
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.trust-row{display:flex;padding:14px 0;border-bottom:1px solid #E5E7EB;gap:16px;flex-wrap:wrap}
+.trust-row .tl{font-size:12px;text-transform:uppercase;color:#6B7280;letter-spacing:.06em;min-width:140px;font-weight:500}
+.trust-row .tv{font-size:14px;color:#111827;font-weight:500}
+.trust-row .tv a{color:#1A56DB}
+.msme-badge{background:#fff;border:1px solid #E5E7EB;border-radius:20px;padding:32px;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,.04)}
+.msme-badge img{width:160px;height:160px;border:3px solid rgba(26,86,219,.2);border-radius:12px;object-fit:cover;margin-bottom:16px;background:#F9FAFB}
+.msme-badge h4{font-size:15px;margin-bottom:6px}
+.msme-badge .code{font-family:'JetBrains Mono',monospace;font-size:12px;color:#6B7280;margin-bottom:12px}
+.verified-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(34,197,94,.08);color:#16A34A;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.verified-pill .dot{width:6px;height:6px;background:#22C55E;border-radius:50%}
+.msme-badge .hint{font-size:12px;color:#6B7280;margin-top:8px}
+
+/* CAREERS */
+.careers{background:#fff;padding:120px 0;position:relative;z-index:2}
+.careers-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.careers-copy{font-size:16px;color:#6B7280;line-height:1.8}
+.role-card{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;transition:all .2s}
+.role-card:hover{border-color:rgba(26,86,219,.2);box-shadow:0 4px 16px rgba(0,0,0,.04)}
+.role-title{font-size:15px;font-weight:600;color:#111827;margin-bottom:8px}
+.role-tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase}
+.tag-open{background:rgba(34,197,94,.1);color:#16A34A}
+.tag-upcoming{background:rgba(107,114,128,.1);color:#6B7280}
+.tag-type{background:rgba(26,86,219,.08);color:#1A56DB}
+.tag-loc{background:#F3F4F6;color:#6B7280}
+.btn-apply{background:#1A56DB;color:#fff;padding:8px 18px;border-radius:8px;font-size:13px;font-weight:600;border:none;transition:all .2s;white-space:nowrap}
+.btn-apply:hover{background:#1544b5}
+.btn-apply.disabled{background:#E5E7EB;color:#9CA3AF;pointer-events:none}
+
+/* CONTACT */
+.contact{background:#F9FAFB;padding:120px 0;position:relative;z-index:2}
+.contact-title{font-family:'Syne',sans-serif;font-size:54px;font-weight:800;letter-spacing:-.03em;margin-bottom:48px;text-align:center}
+.contact-title .blue{color:#1A56DB}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.contact-link{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;display:flex;align-items:center;gap:14px;margin-bottom:12px;transition:all .25s}
+.contact-link:hover{border-color:rgba(26,86,219,.2);box-shadow:0 4px 16px rgba(0,0,0,.04)}
+.contact-link .ci{width:40px;height:40px;background:rgba(26,86,219,.06);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.contact-link .ci svg{width:18px;height:18px;stroke:#1A56DB;fill:none;stroke-width:1.5}
+.contact-link .cl{font-size:12px;color:#6B7280;margin-bottom:2px}
+.contact-link .cv{font-size:14px;font-weight:500;color:#111827}
+.contact-form{background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:36px;position:relative}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-group{margin-bottom:14px}
+.form-group label{font-size:12px;font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;display:block}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1px solid #E5E7EB;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;transition:border-color .2s;outline:none;background:#fff}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:#1A56DB}
+.form-group textarea{height:100px;resize:vertical}
+.btn-submit{width:100%;background:#1A56DB;color:#fff;padding:14px;border:none;border-radius:10px;font-size:15px;font-weight:600;font-family:'DM Sans',sans-serif;transition:all .2s}
+.btn-submit:hover{background:#1544b5}
+.form-success{display:none;position:absolute;inset:0;background:#fff;border-radius:16px;flex-direction:column;align-items:center;justify-content:center;gap:12px;animation:fadeIn .4s}
+.form-success.show{display:flex}
+.form-success .check{width:56px;height:56px;background:rgba(34,197,94,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* FOOTER */
+.footer{background:#111827;padding:80px 0 40px;position:relative;z-index:2}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer-brand .f-logo{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.footer-brand .f-logo img{height:30px;width:30px;object-fit:contain;border-radius:4px}
+.footer-brand .f-logo span{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:#fff}
+.footer-brand p{font-size:14px;color:rgba(255,255,255,.45);line-height:1.6;margin-bottom:10px}
+.footer-brand .reg{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.25)}
+.footer-col h5{font-size:13px;font-weight:700;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px}
+.footer-col a{display:block;font-size:14px;color:rgba(255,255,255,.45);margin-bottom:10px;transition:color .2s}
+.footer-col a:hover{color:rgba(255,255,255,.9)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;flex-wrap:wrap;gap:12px}
+.footer-bottom span{font-size:13px;color:rgba(255,255,255,.3)}
+.footer-bottom a{font-size:13px;color:rgba(255,255,255,.35);margin-left:16px;transition:color .2s}
+.footer-bottom a:hover{color:rgba(255,255,255,.8)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+    .container{padding:0 24px}
+    .hero{padding:120px 40px 60px}
+    .hero h1{font-size:56px}
+}
+
+@media(max-width:768px){
+    .nav{padding:0 20px}
+    .nav-links,.nav-cta{display:none}
+    .hamburger{display:flex}
+    .hero{padding:100px 20px 60px; text-align:center}
+    .hero-inner{flex-direction:column}
+    .hero-content{flex:0 0 100%}
+    .hero h1{font-size:42px; line-height:1.1}
+    .hero-sub{margin:0 auto 32px; font-size:16px}
+    .hero-ctas{justify-content:center; flex-direction:column; gap:12px}
+    .hero-ctas a{width:100%; justify-content:center}
+    .hero-visual{flex:0 0 auto;width:100%;min-height:auto;margin-top:40px;align-items:center}
+    .hero-editor{height:380px; max-width:300px}
+    .panel{padding:16px; width:100%; box-sizing:border-box; overflow:hidden}
+    .chart-container svg{width:100%; height:auto; display:block}
+    .stats-container{padding:0 15px; width:100%; max-width:100vw; box-sizing:border-box; overflow:hidden}
+    
+    .mission-grid,.stats-row-1,.stats-row-2,.eco-grid,.team-grid,.trust-grid,.careers-grid,.contact-grid{grid-template-columns:1fr;gap:24px; width:100%; box-sizing:border-box}
+    .mission,.ecosystem,.stats,.team,.trust,.careers,.contact{padding:40px 15px; width:100%; box-sizing:border-box; position:relative; overflow:hidden}
+    .section-title,.mission-left h2{font-size:26px; text-align:center; line-height:1.2; word-break: normal; hyphens: none}
+    .trust-row{flex-direction:column; gap:6px; padding:16px 0}
+    .trust-row .tl{min-width:auto; font-size:11px}
+    .trust-row .tv{font-size:14px; line-height:1.5}
+    .section-sub{text-align:center; margin:0 auto 32px; max-width:100%}
+    .footer-grid{grid-template-columns:1fr; text-align:center; gap:40px}
+    .footer-brand .f-logo{justify-content:center}
+    .footer-bottom{flex-direction:column; text-align:center; gap:16px}
+    .trust-strip{justify-content:center; text-align:center}
+    .msme-badge{padding:24px 16px}
+    .msme-badge img{width:120px; height:120px}
+    .msme-badge h4{font-size:14px}
+}
+
+@media(max-width:480px){
+    .hero h1{font-size:32px; letter-spacing:-0.03em}
+    .hero-eyebrow{font-size:11px; padding:6px 14px}
+    .trust-strip{font-size:12px; line-height:1.5}
+    .section-title{font-size:28px}
+    .stat-card{min-height:auto; padding:20px}
+    .trust-strip{font-size:12px; color:var(--g); margin-top:24px; opacity:0.8; letter-spacing:0.02em}
+    .trust-strip span{color:var(--s); font-weight:700}
+    .hero h1{line-height:1.2}
+    .stat-card h4{font-size:28px}
+    body{cursor:auto}
+    #cursor,#cursor-ring{display:none}
+}
+.trust-strip{font-size:13px; color:var(--g); margin-top:32px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; opacity:0.7}
+.pulse{width:6px; height:6px; background:var(--p); border-radius:50%; display:inline-block; margin-right:8px; box-shadow:0 0 10px var(--p); animation: pulse-anim 2s infinite}
+@keyframes pulse-anim{ 0%{transform:scale(1); opacity:1} 50%{transform:scale(1.5); opacity:0.5} 100%{transform:scale(1); opacity:1} }
+#preloader{position:fixed;inset:0;background:#fff;z-index:10000;display:flex;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s}
+#preloader.fade-out{opacity:0;visibility:hidden}
+.loader-logo{display:flex;flex-direction:column;align-items:center;gap:20px}
+.loader-logo img{width:90px;height:90px;position:relative;z-index:2;animation:spin-pulse 0.8s ease-in-out infinite;mix-blend-mode:multiply}
+@keyframes spin-pulse{0%{transform:rotate(0) scale(1)}50%{transform:rotate(180deg) scale(1.1)}100%{transform:rotate(360deg) scale(1)}}
+#back-to-top{position:fixed;bottom:30px;right:30px;width:44px;height:44px;background:var(--p);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:90;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s;box-shadow:0 8px 24px rgba(26,86,219,.3)}
+#back-to-top.show{opacity:1;visibility:visible}
+#back-to-top:hover{transform:translateY(-5px);background:#1544b5}
+.hero h1,.section-title{color:var(--n)}
+.stat-card h4{color:#fff!important}
+</style>
+</head>
+<body>
+<div id="preloader"><div class="loader-logo"><img src="logo.jpg" alt="Omni IDE"></div></div>
+<div id="back-to-top" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg></div>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<canvas id="bg-canvas"></canvas>
+
+<nav class="nav" id="navbar">
+<div class="nav-inner">
+<a href="javascript:void(0)" class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="cursor: pointer;">
+<img src="logo.jpg" alt="Omni IDE">
+<div class="logo-text">Omni <span>IDE</span></div>
+</a>
+<div class="nav-links">
+<a href="#mission">About</a><a href="#ecosystem">Ecosystem</a><a href="#team">Team</a><a href="#careers">Careers</a>
+</div>
+<a href="https://nihu.in/omni/" class="nav-cta" target="_blank" rel="noopener noreferrer">Try Omni IDE</a>
+<button class="hamburger" id="hamburger" aria-label="Toggle navigation menu"><span></span><span></span><span></span></button>
+</div>
+<div class="mobile-menu">
+<a href="#mission">About</a><a href="#ecosystem">Ecosystem</a><a href="#team">Team</a><a href="#careers">Careers</a>
+<a href="https://nihu.in/omni/" class="btn-primary" target="_blank" rel="noopener noreferrer">Try Omni IDE</a>
+</div>
+</nav>
+
+<section class="hero" id="hero">
+<div class="hero-inner">
+<div class="hero-content">
+<div class="hero-eyebrow"><span class="pulse"></span>AI Research &amp; Engineering Lab · Bengaluru, India</div>
+<h1>Engineering the Future of <span class="g">Autonomous Software</span> Development.</h1>
+<p class="hero-sub">We build open-source AI infrastructure that gives every developer an autonomous coding agent — local, private, and free.</p>
+<div class="hero-ctas">
+<a href="https://nihu.in/omni/" class="btn-primary" target="_blank" rel="noopener noreferrer">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+Download for Windows
+</a>
+<a href="#mission" class="btn-ghost">Read Our Manifesto</a>
+<a href="#careers" class="btn-text">View Open Roles →</a>
+</div>
+<div class="trust-strip">✦ 15,795+ Developer Workflows · Open Source · MSME Registered · Zero Telemetry · Privacy First</div>
+</div>
+<div class="hero-visual">
+<div class="hero-ring hero-ring-1"></div>
+<div class="hero-ring hero-ring-2"></div>
+<div class="hero-ring hero-ring-3"></div>
+<div class="version-badge"><span class="g"></span>v3.0.0 LIVE</div>
+<div class="hero-editor">
+<code id="terminal-code"></code>
+</div>
+</div>
+</div>
+</section>
+
+<section class="mission" id="mission">
+<div class="mission-separator"></div>
+<div class="mission-glow"></div>
+<div class="mission-deco-dots"></div>
+<svg class="mission-deco-hex" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.5">
+    <path d="M50 5 L90 25 L90 75 L50 95 L10 75 L10 25 Z" />
+    <path d="M50 15 L82 31 L82 69 L50 85 L18 69 L18 31 Z" />
+</svg>
+<div class="mission-grid">
+    <div class="mission-left">
+        <span class="mission-quote-mark">&ldquo;</span>
+        <h2>We don't build tools. We build the infrastructure that makes tools obsolete.</h2>
+        <div class="mission-divider"></div>
+        <span class="mission-author">&mdash; Omni IDE Founding Team</span>
+    </div>
+    <div class="mission-right">
+        <p><span class="mission-dot"></span>Omni IDE was born from a simple frustration: autonomous AI capabilities exist, but they remain locked behind paywalls, cloud dependencies, and corporate APIs. We set out to change that.</p>
+        <p>We are an AI research and engineering company based in Bengaluru — the Silicon Valley of India. Our mission is to build the open infrastructure layer for autonomous software development: tools that write, test, debug, and heal their own code without requiring human supervision.</p>
+        <p>Our flagship product, Omni IDE v3.0.0, is the first local-native AI IDE with a self-healing agentic loop. It runs entirely on-device, with zero telemetry, zero watermarks, and zero cloud lock-in. Every line of code stays on your machine.</p>
+        <p>We are only getting started.</p>
+    </div>
+</div>
+</section>
+
+<section class="ecosystem" id="ecosystem">
+<div class="container">
+<div class="label">THE OMNI PRODUCT ECOSYSTEM</div>
+<h2 class="section-title">One Core. Infinite Possibilities.</h2>
+<p class="section-sub">From our flagship autonomous workspace to specialized SaaS tiers, Omni powers the next generation of intelligent software systems.</p>
+<div class="eco-grid">
+<div class="eco-card">
+<div class="eco-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+<div class="eco-status live">● FLAGSHIP PRODUCT</div>
+<h3>Omni IDE</h3>
+<div class="tagline">The World’s First Autonomous AI Workspace</div>
+<p>Omni IDE handles complex, multi-file refactoring and feature implementation. Built-in self-healing manages environments and dependencies so you can focus purely on architecture.</p>
+</div>
+<div class="eco-card">
+<div class="eco-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+<div class="eco-status live">● B2D — SyncGraph</div>
+<h3>SyncGraph</h3>
+<div class="tagline">The Elite Tool for Modern Developers</div>
+<p>Automates contribution graphs and learning logs to maintain a professional GitHub presence with zero manual effort.</p>
+</div>
+<div class="eco-card">
+<div class="eco-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+<div class="eco-status dev">● B2B — Enterprise</div>
+<h3>Enterprise Resilience</h3>
+<div class="tagline">Self-Healing Corporate Protocols</div>
+<p>Autonomous incident response and automated compliance monitoring for cloud-scale businesses and infrastructure.</p>
+</div>
+<div class="eco-card">
+<div class="eco-icon"><svg viewBox="0 0 24 24"><path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z"/><path d="M12 6v6l4 2"/></svg></div>
+<div class="eco-status upcoming">● B2C — Intelligent Apps</div>
+<h3>Everyday Apps</h3>
+<div class="tagline">Consumer-Facing Agentic AI</div>
+<p>AI applications that utilize Omni’s agentic core to handle complex user tasks with zero manual input.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="stats" id="stats">
+<div class="stats-container">
+    <!-- ROW 1 -->
+    <div class="stats-row-1">
+        <div class="stat-card">
+            <h4>15,795+</h4>
+            <p>Developer Workflows & Clones</p>
+            <div class="stat-svg-box">
+                <svg width="100%" height="40" viewBox="0 0 100 40">
+                    <polyline points="0,35 15,30 30,32 45,20 60,25 75,10 90,15 100,5" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+        <div class="stat-card">
+            <h4>V3.0.0</h4>
+            <p>Stable Release · Windows Native</p>
+            <div class="progress-bg">
+                <div class="progress-fill" style="width:94%"></div>
+            </div>
+            <p style="margin-top:8px; font-size:11px; color:#64748B">Release Progress 94%</p>
+        </div>
+        <div class="stat-card">
+            <h4>100%</h4>
+            <p>Open Source · Zero Telemetry</p>
+            <div class="stat-svg-box" style="justify-content:center; align-items:center; height:60px; margin-top:auto">
+                <svg width="50" height="50" viewBox="0 0 50 50">
+                    <circle cx="25" cy="25" r="20" fill="rgba(59,130,246,0.1)" stroke="rgba(59,130,246,0.2)" stroke-width="2"/>
+                    <circle cx="25" cy="25" r="12" fill="#3B82F6" style="filter:drop-shadow(0 0 8px #3B82F6)"/>
+                </svg>
+            </div>
+        </div>
+        <div class="stat-card">
+            <h4>MSME</h4>
+            <p>Govt. of India Registered</p>
+            <div class="verified-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                Certified
+            </div>
+        </div>
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="stats-row-2">
+        <!-- AGENT ACTIVITY -->
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">Agent Activity</div>
+            </div>
+            <div class="chart-container">
+                <svg width="100%" height="200" viewBox="0 0 400 200" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="chart-gradient" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#3B82F6"/>
+                            <stop offset="100%" stop-color="transparent"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Grid Lines -->
+                    <line x1="40" y1="20" x2="400" y2="20" class="chart-axis"/>
+                    <line x1="40" y1="65" x2="400" y2="65" class="chart-axis"/>
+                    <line x1="40" y1="110" x2="400" y2="110" class="chart-axis"/>
+                    <line x1="40" y1="155" x2="400" y2="155" class="chart-axis"/>
+                    
+                    <!-- Labels -->
+                    <text x="0" y="25" class="axis-label">3K</text>
+                    <text x="0" y="70" class="axis-label">2K</text>
+                    <text x="0" y="115" class="axis-label">1K</text>
+                    <text x="0" y="160" class="axis-label">0</text>
+                    
+                    <text x="40" y="185" class="axis-label">Dec</text>
+                    <text x="110" y="185" class="axis-label">Jan</text>
+                    <text x="180" y="185" class="axis-label">Feb</text>
+                    <text x="250" y="185" class="axis-label">Mar</text>
+                    <text x="320" y="185" class="axis-label">Apr</text>
+                    <text x="390" y="185" class="axis-label">May</text>
+
+                    <!-- Path -->
+                    <path d="M40,155 L80,140 L120,150 L160,110 L200,120 L240,80 L280,90 L320,50 L360,60 L400,20 V155 H40 Z" class="activity-area"/>
+                    <path d="M40,155 L80,140 L120,150 L160,110 L200,120 L240,80 L280,90 L320,50 L360,60 L400,20" class="activity-line" id="activity-path"/>
+                    <circle cx="400" cy="20" r="4" fill="#3B82F6">
+                        <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite" />
+                    </circle>
+                </svg>
+            </div>
+        </div>
+
+        <!-- CONTRIBUTION HEATMAP -->
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">Commits This Year</div>
+            </div>
+            <div class="heatmap-wrapper">
+                <div class="heatmap-grid" id="heatmap"></div>
+            </div>
+            <div class="heat-footer">1,240 contributions in the last year</div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section class="team" id="team">
+<div class="container">
+<div class="label">THE PEOPLE</div>
+<h2 class="section-title">Building the Future</h2>
+<p class="section-sub">A small, focused team of engineers obsessed with autonomous AI, local inference, and developer-first tools.</p>
+<div class="team-grid">
+<div class="team-card">
+<img src="nihan.jpeg" alt="Nihan" class="team-avatar avatar-nihan">
+<h3>Nihan</h3>
+<div class="title">Founder &amp; CEO</div>
+<p class="bio">Nihan is the visionary architect behind Omni IDE, dedicated to bridging the gap between human intent and autonomous execution. With a background in deterministic AI and edge inference, he leads the development of our self-healing agentic core.</p>
+<a href="https://www.linkedin.com/in/nihan-nihu/" target="_blank" class="social"><svg width="16" height="16" viewBox="0 0 24 24" fill="#1A56DB" stroke="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg> LinkedIn Profile</a>
+</div>
+<div class="team-card">
+<img src="shaiban_faraz.jpg" alt="Faraz" class="team-avatar">
+<h3>Faraz</h3>
+<div class="title">Co-Founder &amp; CTO</div>
+<p class="bio">Faraz leads the technical evolution of the Omni ecosystem, focusing on low-latency orchestration and secure sandboxing. An expert in distributed systems, he ensures our autonomous agents operate with industrial-grade reliability and performance.</p>
+<a href="https://www.linkedin.com/in/shaiban-faraz-khan/" target="_blank" class="social"><svg width="16" height="16" viewBox="0 0 24 24" fill="#1A56DB" stroke="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg> LinkedIn Profile</a>
+</div>
+<div class="team-card">
+<img src="mohammed_bilal.jpg" alt="Mohammed Bilal D" class="team-avatar avatar-bilal">
+<h3>Mohammed Bilal D</h3>
+<div class="title">COO &amp; Founding Operations Lead</div>
+<p class="bio">Mohammed Bilal D serves as the COO and Founding Operations Lead, architecting the operational systems that power Omni IDE's autonomous engine. He specializes in scaling high-performance teams and building the strategic partnerships necessary to deliver agentic AI solutions at a global scale, ensuring the company’s mission remains agile and impactful.</p>
+<a href="https://www.linkedin.com/in/mohammed-bilal-d/" target="_blank" class="social"><svg width="16" height="16" viewBox="0 0 24 24" fill="#1A56DB" stroke="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg> LinkedIn Profile</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="trust" id="trust">
+<div class="container">
+<div class="label">LEGITIMACY &amp; TRUST</div>
+<h2 class="section-title">Registered. Open. Accountable.</h2>
+<div class="trust-grid" style="margin-top:40px">
+<div>
+<div class="trust-row"><span class="tl">Registered As</span><span class="tv">MSME — UDYAM-KR-03-0681404</span></div>
+<div class="trust-row"><span class="tl">Headquarters</span><span class="tv">B-Block, Devgere, Kumbalagodu, Kengeri, Bengaluru 560060, Karnataka</span></div>
+<div class="trust-row"><span class="tl">Open Source</span><span class="tv">All core tooling on GitHub under open-source licenses</span></div>
+<div class="trust-row"><span class="tl">Privacy Policy</span><span class="tv">Zero telemetry · Zero data collection · BYOK model</span></div>
+<div class="trust-row"><span class="tl">Partnerships</span><span class="tv">VTU &amp; AICTE internship networks (active)</span></div>
+<div class="trust-row"><span class="tl">Corporate Email</span><span class="tv">contact@nihu.in</span></div>
+<div class="trust-row"><span class="tl">GitHub Org</span><span class="tv"><a href="https://github.com/OMNI-IDE-in" target="_blank">github.com/OMNI-IDE-in</a></span></div>
+<div class="trust-row"><span class="tl">LinkedIn</span><span class="tv"><a href="https://linkedin.com/company/omni-ide" target="_blank">linkedin.com/company/omni-ide</a></span></div>
+</div>
+<div class="msme-badge">
+<img id="msme-qr" src="" alt="MSME QR Code">
+<h4>MSME Verified</h4>
+<div class="code">UDYAM-KR-03-0681404</div>
+<div class="verified-pill"><span class="dot"></span>GOVT. OF INDIA VERIFIED</div>
+<p class="hint">Scan QR code to verify company status on the Udyam portal</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="careers" id="careers">
+<div class="container">
+<div class="label">JOIN US</div>
+<h2 class="section-title">Build the Future of AI With Us</h2>
+<div class="careers-grid" style="margin-top:40px">
+<div class="careers-copy">We are a lean, aggressive engineering team. We move fast, ship real things, and care deeply about open-source. If you obsess over LLM orchestration, Docker sandboxing, and edge AI inference — there is a seat at this table. We work with students from VTU, AICTE, and top engineering colleges across Karnataka.</div>
+<div>
+<div class="role-card"><div><div class="role-title">AI Engineering Intern</div><div class="role-tags"><span class="tag tag-open">OPEN</span><span class="tag tag-type">Internship</span><span class="tag tag-loc">Remote/Bengaluru</span></div></div><a href="mailto:hr@nihu.in?subject=Application: AI Engineering Intern" class="btn-apply">Apply Now</a></div>
+<div class="role-card"><div><div class="role-title">Full-Stack Engineering Intern</div><div class="role-tags"><span class="tag tag-open">OPEN</span><span class="tag tag-type">Internship</span><span class="tag tag-loc">Remote</span></div></div><a href="mailto:hr@nihu.in?subject=Application: Full-Stack Engineering Intern" class="btn-apply">Apply Now</a></div>
+<div class="role-card"><div><div class="role-title">Systems / DevOps Intern</div><div class="role-tags"><span class="tag tag-open">OPEN</span><span class="tag tag-type">Internship</span><span class="tag tag-loc">Bengaluru</span></div></div><a href="mailto:hr@nihu.in?subject=Application: Systems / DevOps Intern" class="btn-apply">Apply Now</a></div>
+<div class="role-card"><div><div class="role-title">Head of AI Infrastructure</div><div class="role-tags"><span class="tag tag-upcoming">UPCOMING</span><span class="tag tag-type">Full-Time</span><span class="tag tag-loc">Bengaluru</span></div></div><button class="btn-apply disabled">Upcoming</button></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="contact" id="contact">
+<div class="container">
+<h2 class="contact-title">Let's Build<span class="blue"> Together.</span></h2>
+<div class="contact-grid">
+<div>
+<a href="mailto:contact@nihu.in" class="contact-link"><div class="ci"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg></div><div><div class="cl">Email Us</div><div class="cv">contact@nihu.in</div></div></a>
+<a href="https://github.com/OMNI-IDE-in" target="_blank" class="contact-link"><div class="ci"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div><div><div class="cl">GitHub Org</div><div class="cv">github.com/OMNI-IDE-in</div></div></a>
+<a href="https://linkedin.com/company/omni-ide" target="_blank" class="contact-link"><div class="ci"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div><div class="cl">LinkedIn</div><div class="cv">linkedin.com/company/omni-ide</div></div></a>
+<div class="contact-link"><div class="ci"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="cl">Headquarters</div><div class="cv">B-Block, Devgere, Kumbalagodu, Kengeri, Bengaluru 560060, Karnataka</div></div></div>
+</div>
+<div class="contact-form" id="contact-form">
+<form id="cform">
+<div class="form-row"><div class="form-group"><label>Name</label><input type="text" placeholder="Your name" required></div><div class="form-group"><label>Email</label><input type="email" placeholder="you@company.com" required></div></div>
+<div class="form-group"><label>Subject</label><select required><option value="">Select a topic</option><option>Press Inquiry</option><option>Partnership</option><option>Investor Inquiry</option><option>Careers</option><option>Other</option></select></div>
+<div class="form-group"><label>Message</label><textarea placeholder="Tell us about your inquiry..." required></textarea></div>
+<button type="submit" class="btn-submit">Send Message →</button>
+</form>
+<div class="form-success" id="form-success"><div class="check">✓</div><p style="font-weight:600;font-size:17px">Message sent!</p><p style="color:#6B7280;font-size:14px">We'll be in touch shortly.</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<div class="f-logo logo">
+<img src="logo.jpg" alt="Omni IDE">
+<span>Omni IDE</span>
+</div>
+<p>Building the open infrastructure layer for autonomous software development.</p>
+<div class="reg">UDYAM-KR-03-0681404</div>
+</div>
+<div class="footer-col"><h5>Company</h5><a href="#mission">About</a><a href="#mission">Mission</a><a href="#team">Team</a><a href="#">Blog</a><a href="#">Press Kit</a></div>
+<div class="footer-col"><h5>Products</h5><a href="#ecosystem">Omni IDE</a><a href="#ecosystem">Omni-Guard</a><a href="#">Roadmap</a><a href="https://github.com/nihannihu/Omni-IDE/releases/tag/v2.0.0" target="_blank">GitHub Releases</a></div>
+<div class="footer-col"><h5>Connect</h5><a href="https://github.com/OMNI-IDE-in" target="_blank">GitHub</a><a href="https://linkedin.com/company/omni-ide" target="_blank">LinkedIn</a><a href="mailto:contact@nihu.in">Email</a><a href="#">Twitter/X</a></div>
+</div>
+<div class="footer-bottom">
+<span>© 2026 Omni IDE. UDYAM-KR-03-0681404. All rights reserved.</span>
+<div><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Made with ❤️ in Bengaluru 🇮🇳</a></div>
+</div>
+</div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const nav = document.getElementById('navbar');
+const btt = document.getElementById('back-to-top');
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursor-ring');
+const progress = document.getElementById("scroll-progress");
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+window.addEventListener('load', () => {
+    // 1. Preloader Fade
+    const preloader = document.getElementById('preloader');
+    setTimeout(() => {
+        preloader.classList.add('fade-out');
+        initAnimations();
+        runTerminal();
+        initStats();
+        initManifesto();
+        initLightSweep();
+    }, 400);
+
+    // 2. Three.js Background
+    let isBoosting = false;
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    
+    // Particles
+    const pGeo = new THREE.BufferGeometry();
+    const count = 1200;
+    const pPos = new Float32Array(count * 3);
+    for(let i=0; i<count*3; i++) pPos[i] = (Math.random()-0.5)*400;
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    const pMesh = new THREE.Points(pGeo, new THREE.PointsMaterial({ size: 1.2, color: 0x3B82F6, opacity: 0.2, transparent: true }));
+    scene.add(pMesh);
+
+    // Wireframes
+    const wireMat = new THREE.MeshBasicMaterial({ color: 0x1A56DB, wireframe: true, opacity: 0.08, transparent: true });
+    const ico = new THREE.Mesh(new THREE.IcosahedronGeometry(12, 0), wireMat);
+    const torus = new THREE.Mesh(new THREE.TorusGeometry(18, 5, 16, 100), wireMat);
+    const dodeca = new THREE.Mesh(new THREE.DodecahedronGeometry(10, 0), wireMat);
+    
+    ico.position.set(-40, 20, -50);
+    torus.position.set(40, -10, -80);
+    dodeca.position.set(-10, -30, -40);
+    
+    scene.add(ico, torus, dodeca);
+    camera.position.z = 80;
+
+    function anim() {
+        requestAnimationFrame(anim);
+        const speedMult = isBoosting ? 15 : 1;
+        pMesh.rotation.y += 0.0003 * speedMult;
+        pMesh.position.z += isBoosting ? 2 : 0;
+        if (pMesh.position.z > 100) pMesh.position.z = 0;
+        
+        ico.rotation.x += 0.004 * speedMult;
+        ico.scale.setScalar(isBoosting ? 1.5 : 1);
+        torus.rotation.y += 0.002 * speedMult;
+        dodeca.rotation.x += 0.003 * speedMult;
+        
+        renderer.render(scene, camera);
+    }
+    anim();
+
+    window.boost = () => {
+        isBoosting = true;
+        setTimeout(() => isBoosting = false, 400);
+    };
+
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // 3. Global Scroll Handler
+    window.addEventListener('scroll', () => {
+        const s = window.scrollY;
+        nav.classList.toggle('scrolled', s > 50);
+        btt.classList.toggle('show', s > 600);
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        if(progress) progress.style.width = (s / h * 100) + "%";
+    });
+});
+
+// 4. Cursor & Interactions
+if (window.innerWidth > 480) {
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX; mouseY = e.clientY;
+        cursor.style.left = mouseX + 'px'; cursor.style.top = mouseY + 'px';
+        document.querySelectorAll('.eco-card').forEach(c => {
+            const r = c.getBoundingClientRect();
+            c.style.setProperty('--x', (e.clientX - r.left) + 'px');
+            c.style.setProperty('--y', (e.clientY - r.top) + 'px');
+        });
+    });
+    function loop() {
+        ringX += (mouseX - ringX) * 0.15; ringY += (mouseY - ringY) * 0.15;
+        cursorRing.style.left = ringX + 'px'; cursorRing.style.top = ringY + 'px';
+        requestAnimationFrame(loop);
+    }
+    loop();
+}
+
+document.querySelectorAll('a, button, .eco-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+        cursorRing.style.width = '60px'; cursorRing.style.height = '60px';
+    });
+    el.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+        cursorRing.style.width = '40px'; cursorRing.style.height = '40px';
+    });
+});
+
+// 5. Functions (Term, Stats, Reveal)
+const codeLines = [
+    { text: '// omni-agent.ts', type: 'cm' },
+    { text: '\nimport { Agent } from "@omni/core";', type: 'kw' },
+    { text: '\nconst agent = new Agent({', type: '' },
+    { text: '\n  model: "gemini-pro",', type: 'str' },
+    { text: '\n  sandbox: true', type: 'kw' },
+    { text: '\n});', type: '' },
+    { text: '\nawait agent.heal();', type: 'kw' }
+];
+
+function runTerminal() {
+    const el = document.getElementById('terminal-code'); if (!el) return;
+    el.innerHTML = ""; let lIdx = 0, cIdx = 0;
+    function t() {
+        if (lIdx < codeLines.length) {
+            const ck = codeLines[lIdx];
+            if (cIdx < ck.text.length) {
+                const s = document.createElement('span'); if (ck.type) s.className = ck.type;
+                s.textContent = ck.text[cIdx++]; el.appendChild(s);
+                const cur = el.querySelector('.cursor') || document.createElement('span');
+                cur.className = 'cursor'; cur.textContent = '▌'; el.appendChild(cur);
+                setTimeout(t, 40);
+            } else { lIdx++; cIdx = 0; setTimeout(t, 100); }
+        } else setTimeout(runTerminal, 3000);
+    }
+    t();
+}
+
+function initStats() {
+    const hm = document.getElementById('heatmap'); if (!hm) return;
+    for (let i = 0; i < 182; i++) {
+        const c = document.createElement('div'); c.className = 'heat-cell';
+        const r = Math.random();
+        if (r > 0.9) c.classList.add('heat-max'); else if (r > 0.7) c.classList.add('heat-high');
+        else if (r > 0.4) c.classList.add('heat-med'); else if (r > 0.2) c.classList.add('heat-low');
+        c.style.animationDelay = (i * 4) + 'ms'; hm.appendChild(c);
+    }
+    const path = document.getElementById('activity-path'); if (path) {
+        const len = path.getTotalLength(); path.style.strokeDasharray = len; path.style.strokeDashoffset = len;
+        new IntersectionObserver(en => { if (en[0].isIntersecting) { path.style.transition = 'stroke-dashoffset 2s ease'; path.style.strokeDashoffset = '0'; } }).observe(document.getElementById('stats'));
+    }
+}
+
+function initAnimations() {
+    gsap.from(".hero-content > *", { y: 40, opacity: 0, stagger: 0.1, duration: 0.8 });
+    gsap.utils.toArray('section:not(#hero)').forEach(s => {
+        gsap.from(s, { opacity: 0, y: 30, duration: 1, scrollTrigger: { trigger: s, start: "top 85%" } });
+    });
+}
+
+function initManifesto() {
+    const ps = document.querySelectorAll('.mission-right p');
+    const obs = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('reveal'); obs.unobserve(e.target); } }); }, { threshold: 0.1 });
+    ps.forEach(p => obs.observe(p));
+}
+
+function initLightSweep() {
+    const sw = document.createElement('div'); sw.style.cssText = "position:fixed;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(59,130,246,0.02),transparent);transform:skewX(-20deg);pointer-events:none;z-index:1;";
+    document.body.appendChild(sw); gsap.to(sw, { left: '200%', duration: 12, repeat: -1, ease: "none" });
+}
+
+const ham = document.getElementById('hamburger');
+const mob = document.querySelector('.mobile-menu');
+
+ham.addEventListener('click', () => {
+    ham.classList.toggle('active');
+    mob.classList.toggle('active');
+});
+
+document.querySelectorAll('.mobile-menu a').forEach(l => {
+    l.addEventListener('click', () => {
+        ham.classList.remove('active');
+        mob.classList.remove('active');
+    });
+});
+
+document.getElementById('cform').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const b = e.target.querySelector('button');
+    b.disabled = true;
+    b.textContent = "Sending...";
+    setTimeout(() => {
+        e.target.style.display = 'none';
+        document.getElementById('form-success').classList.add('show');
+    }, 1200);
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+        e.preventDefault();
+        const t = document.querySelector(this.getAttribute('href'));
+        if(t) {
+            window.scrollTo({ top: t.offsetTop - 70, behavior: 'smooth' });
+        }
+    });
+});
+
+if(btt) btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+document.getElementById('msme-qr').src = "https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://udyamregistration.gov.in";
+
+// Blast Effect
+function createBlast(x, y) {
+    if(window.boost) window.boost();
+    for (let i = 0; i < 8; i++) {
+        const b = document.createElement('div');
+        b.className = 'blast-particle';
+        b.style.cssText = `position:fixed;left:${x}px;top:${y}px;width:4px;height:4px;background:var(--s);border-radius:50%;z-index:99999;pointer-events:none;`;
+        document.body.appendChild(b);
+        const a = Math.random() * Math.PI * 2;
+        const d = 40 + Math.random() * 60;
+        gsap.to(b, {
+            x: Math.cos(a) * d,
+            y: Math.sin(a) * d,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            onComplete: () => b.remove()
+        });
+    }
+}
+window.addEventListener('mousedown', (e) => createBlast(e.clientX, e.clientY));
+window.addEventListener('touchstart', (e) => {
+    if (e.touches.length > 0) createBlast(e.touches[0].clientX, e.touches[0].clientY);
+});
+</script>
+</body>
+</html>

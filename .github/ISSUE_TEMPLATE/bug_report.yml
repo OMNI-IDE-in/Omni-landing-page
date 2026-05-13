@@ -1,0 +1,37 @@
+name: Bug report
+description: Create a report to help us improve Omni IDE
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Tell us what you see!
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: How can we reproduce it?
+      description: Please provide a list of steps to reproduce the bug.
+      placeholder: |
+        1. Open Omni IDE
+        2. Click on '...'
+        3. See error
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - Windows
+        - macOS (Coming Soon)
+        - Linux (Coming Soon)
+    validations:
+      required: true
