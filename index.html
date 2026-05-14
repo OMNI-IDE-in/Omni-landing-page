@@ -2085,6 +2085,19 @@
             .msme-badge h4 {
                 font-size: 14px
             }
+
+            .btn-apply, .btn-ghost, .btn-primary {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                box-sizing: border-box;
+            }
+
+            .footer-col a, .mobile-menu a {
+                padding: 12px 0;
+                display: block;
+            }
         }
 
         @media(max-width:480px) {
@@ -2198,11 +2211,17 @@
             visibility: hidden
         }
 
+        #preloader.fade-out .loader-logo {
+            transform: scale(60);
+            opacity: 0;
+        }
+
         .loader-logo {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px
+            gap: 20px;
+            transition: transform 0.8s cubic-bezier(0.7, 0, 0.2, 1), opacity 0.4s ease 0.3s;
         }
 
         .loader-logo img {
@@ -2592,7 +2611,7 @@
                         execution. With deep expertise in deterministic AI and edge inference, Nihan is on a mission to
                         democratize agentic software, ensuring every developer has access to private, local-native
                         autonomous intelligence.</p>
-                    <a href="https://www.linkedin.com/in/nihan-nihu/" target="_blank" class="social"><svg width="16"
+                    <a href="https://www.linkedin.com/in/nihan-nihu/" target="_blank" rel="noopener noreferrer" class="social"><svg width="16"
                             height="16" viewBox="0 0 24 24" fill="#1A56DB" stroke="none">
                             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
                             <rect x="2" y="9" width="4" height="12" />
@@ -2608,7 +2627,7 @@
                         layers that empower autonomous agents to scale across industrial environments. Faraz focuses on
                         building resilient, distributed infrastructure that guarantees reliability, performance, and
                         complete data sovereignty for modern developers.</p>
-                    <a href="https://www.linkedin.com/in/shaiban-faraz-khan/" target="_blank" class="social"><svg
+                    <a href="https://www.linkedin.com/in/shaiban-faraz-khan/" target="_blank" rel="noopener noreferrer" class="social"><svg
                             width="16" height="16" viewBox="0 0 24 24" fill="#1A56DB" stroke="none">
                             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
                             <rect x="2" y="9" width="4" height="12" />
@@ -2623,7 +2642,7 @@
                         systems that power Omni IDE's autonomous engine. He specializes in scaling high-performance
                         teams and building the strategic partnerships necessary to deliver agentic AI solutions at a
                         global scale, ensuring the company’s mission remains agile and impactful.</p>
-                    <a href="https://www.linkedin.com/in/mohammed-bilal-d/" target="_blank" class="social"><svg
+                    <a href="https://www.linkedin.com/in/mohammed-bilal-d/" target="_blank" rel="noopener noreferrer" class="social"><svg
                             width="16" height="16" viewBox="0 0 24 24" fill="#1A56DB" stroke="none">
                             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
                             <rect x="2" y="9" width="4" height="12" />
@@ -2649,8 +2668,8 @@
                     <div class="trust-row"><span class="tl">Privacy Policy</span><span class="tv">Zero telemetry · Zero data collection · BYOK model</span></div>
                     <div class="trust-row"><span class="tl">Partnerships</span><span class="tv">VTU &amp; AICTE internship networks (active)</span></div>
                     <div class="trust-row"><span class="tl">Corporate Email</span><span class="tv">contact@omniide.com</span></div>
-                    <div class="trust-row"><span class="tl">GitHub Org</span><span class="tv"><a href="https://github.com/OMNI-IDE-in" target="_blank">github.com/OMNI-IDE-in</a></span></div>
-                    <div class="trust-row"><span class="tl">LinkedIn</span><span class="tv"><a href="https://linkedin.com/company/omni-ide" target="_blank">linkedin.com/company/omni-ide</a></span></div>
+                    <div class="trust-row"><span class="tl">GitHub Org</span><span class="tv"><a href="https://github.com/OMNI-IDE-in" target="_blank" rel="noopener noreferrer">github.com/OMNI-IDE-in</a></span></div>
+                    <div class="trust-row"><span class="tl">LinkedIn</span><span class="tv"><a href="https://linkedin.com/company/omni-ide" target="_blank" rel="noopener noreferrer">linkedin.com/company/omni-ide</a></span></div>
                 </div>
                 <div class="msme-badge">
                     <img id="msme-qr" src="" alt="OmniIDE MSME Verification QR Code — UDYAM-KR-03-0681404" loading="lazy" decoding="async">
@@ -2759,7 +2778,7 @@
                             <div class="cv">contact@omniide.com</div>
                         </div>
                     </a>
-                    <a href="https://github.com/OMNI-IDE-in" target="_blank" class="contact-link">
+                    <a href="https://github.com/OMNI-IDE-in" target="_blank" rel="noopener noreferrer" class="contact-link">
                         <div class="ci"><svg viewBox="0 0 24 24">
                                 <path
                                     d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
@@ -2769,7 +2788,7 @@
                             <div class="cv">github.com/OMNI-IDE-in</div>
                         </div>
                     </a>
-                    <a href="https://linkedin.com/company/omni-ide" target="_blank" class="contact-link">
+                    <a href="https://linkedin.com/company/omni-ide" target="_blank" rel="noopener noreferrer" class="contact-link">
                         <div class="ci"><svg viewBox="0 0 24 24">
                                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
                                 <rect x="2" y="9" width="4" height="12" />
@@ -2900,24 +2919,34 @@
 
             // Particles
             const pGeo = new THREE.BufferGeometry();
-            const count = 1200;
+            const count = 2500;
             const pPos = new Float32Array(count * 3);
             for (let i = 0; i < count * 3; i++) pPos[i] = (Math.random() - 0.5) * 400;
             pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
-            const pMesh = new THREE.Points(pGeo, new THREE.PointsMaterial({ size: 1.2, color: 0x3B82F6, opacity: 0.2, transparent: true }));
+            const pMesh = new THREE.Points(pGeo, new THREE.PointsMaterial({ size: 1.5, color: 0x0F172A, opacity: 0.25, transparent: true }));
             scene.add(pMesh);
 
-            // Wireframes
-            const wireMat = new THREE.MeshBasicMaterial({ color: 0x1A56DB, wireframe: true, opacity: 0.08, transparent: true });
-            const ico = new THREE.Mesh(new THREE.IcosahedronGeometry(12, 0), wireMat);
-            const torus = new THREE.Mesh(new THREE.TorusGeometry(18, 5, 16, 100), wireMat);
-            const dodeca = new THREE.Mesh(new THREE.DodecahedronGeometry(10, 0), wireMat);
+            // Wireframes - understandable objects (Databases, Servers, Digital Grid)
+            const wireMat = new THREE.MeshBasicMaterial({ color: 0x0F172A, wireframe: true, opacity: 0.15, transparent: true });
+            
+            const db = new THREE.Mesh(new THREE.CylinderGeometry(14, 14, 24, 16), wireMat);
+            const serverBlock1 = new THREE.Mesh(new THREE.BoxGeometry(18, 18, 18), wireMat);
+            const serverBlock2 = new THREE.Mesh(new THREE.BoxGeometry(12, 12, 12), wireMat);
+            const serverBlock3 = new THREE.Mesh(new THREE.BoxGeometry(16, 16, 16), wireMat);
+            const globe = new THREE.Mesh(new THREE.SphereGeometry(22, 16, 16), wireMat);
+            
+            const grid = new THREE.GridHelper(400, 40, 0x0F172A, 0x0F172A);
+            grid.material.opacity = 0.1;
+            grid.material.transparent = true;
 
-            ico.position.set(-40, 20, -50);
-            torus.position.set(40, -10, -80);
-            dodeca.position.set(-10, -30, -40);
+            db.position.set(-40, 15, -50);
+            serverBlock1.position.set(40, -5, -80);
+            serverBlock2.position.set(-20, -25, -40);
+            serverBlock3.position.set(50, 45, -70);
+            globe.position.set(20, 50, -90);
+            grid.position.set(0, -40, 0);
 
-            scene.add(ico, torus, dodeca);
+            scene.add(db, serverBlock1, serverBlock2, serverBlock3, globe, grid);
             camera.position.z = 80;
 
             function anim() {
@@ -2927,10 +2956,21 @@
                 pMesh.position.z += isBoosting ? 2 : 0;
                 if (pMesh.position.z > 100) pMesh.position.z = 0;
 
-                ico.rotation.x += 0.004 * speedMult;
-                ico.scale.setScalar(isBoosting ? 1.5 : 1);
-                torus.rotation.y += 0.002 * speedMult;
-                dodeca.rotation.x += 0.003 * speedMult;
+                db.rotation.y += 0.003 * speedMult;
+                db.scale.setScalar(isBoosting ? 1.5 : 1);
+                
+                serverBlock1.rotation.x += 0.002 * speedMult;
+                serverBlock1.rotation.y += 0.002 * speedMult;
+                
+                serverBlock2.rotation.y -= 0.003 * speedMult;
+                serverBlock2.rotation.z += 0.003 * speedMult;
+                
+                serverBlock3.rotation.z -= 0.002 * speedMult;
+                serverBlock3.rotation.x += 0.002 * speedMult;
+                
+                globe.rotation.y += 0.002 * speedMult;
+                
+                grid.position.z = (grid.position.z + 0.2 * speedMult) % 10;
 
                 renderer.render(scene, camera);
             }
@@ -2945,6 +2985,7 @@
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             });
 
             // 3. Global Scroll Handler
@@ -3091,17 +3132,15 @@
                         form.style.display = 'none';
                         successMessage.classList.add('show');
                     } else {
-                        console.log(response);
-                        alert(json.message);
                         btn.disabled = false;
-                        btn.textContent = "Send Message →";
+                        btn.textContent = "Error: " + (json.message || "Failed");
+                        setTimeout(() => btn.textContent = "Send Message →", 3000);
                     }
                 })
                 .catch(error => {
-                    console.log(error);
-                    alert("Something went wrong!");
                     btn.disabled = false;
-                    btn.textContent = "Send Message →";
+                    btn.textContent = "Network Error";
+                    setTimeout(() => btn.textContent = "Send Message →", 3000);
                 });
         });
 
