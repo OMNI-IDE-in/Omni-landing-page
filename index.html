@@ -1467,6 +1467,55 @@
             margin-top: 8px
         }
 
+        .govt-badges {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 40px
+        }
+
+        .govt-badge {
+            background: #fff;
+            border: 1px solid #E5E7EB;
+            border-radius: 20px;
+            padding: 28px 24px;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, .04);
+            transition: transform .3s, box-shadow .3s
+        }
+
+        .govt-badge:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, .08)
+        }
+
+        .govt-badge img {
+            max-width: 140px;
+            max-height: 80px;
+            object-fit: contain;
+            margin-bottom: 14px
+        }
+
+        .govt-badge h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 4px
+        }
+
+        .govt-badge .badge-id {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #6B7280;
+            margin-bottom: 10px
+        }
+
+        .govt-badge .badge-desc {
+            font-size: 12px;
+            color: #9CA3AF;
+            line-height: 1.5
+        }
+
         /* CAREERS */
         .careers {
             background: #fff;
@@ -2319,7 +2368,7 @@
                     <a href="#mission" class="btn-ghost">Read Our Manifesto</a>
                     <a href="#careers" class="btn-text">View Open Roles →</a>
                 </div>
-                <div class="trust-strip">✦ 15,795+ Developer Workflows · Open Source · MSME Registered · Zero Telemetry
+                <div class="trust-strip">✦ 15,795+ Developer Workflows · Open Source · MSME Registered · DPIIT Startup India · Zero Telemetry
                     · Privacy First</div>
             </div>
             <div class="hero-visual">
@@ -2591,24 +2640,17 @@
             <h2 class="section-title">Registered. Open. Accountable.</h2>
             <div class="trust-grid" style="margin-top:40px">
                 <div>
-                    <div class="trust-row"><span class="tl">Registered As</span><span class="tv">MSME —
-                            UDYAM-KR-03-0681404</span></div>
-                    <div class="trust-row"><span class="tl">Headquarters</span><span class="tv">B-Block, Devgere,
-                            Kumbalagodu, Kengeri, Bengaluru 560060, Karnataka</span></div>
-                    <div class="trust-row"><span class="tl">Open Source</span><span class="tv">All core tooling on
-                            GitHub under open-source licenses</span></div>
-                    <div class="trust-row"><span class="tl">Privacy Policy</span><span class="tv">Zero telemetry · Zero
-                            data collection · BYOK model</span></div>
-                    <div class="trust-row"><span class="tl">Partnerships</span><span class="tv">VTU &amp; AICTE
-                            internship networks (active)</span></div>
-                    <div class="trust-row"><span class="tl">Corporate Email</span><span
-                            class="tv">contact@omniide.com</span></div>
-                    <div class="trust-row"><span class="tl">GitHub Org</span><span class="tv"><a
-                                href="https://github.com/OMNI-IDE-in" target="_blank">github.com/OMNI-IDE-in</a></span>
-                    </div>
-                    <div class="trust-row"><span class="tl">LinkedIn</span><span class="tv"><a
-                                href="https://linkedin.com/company/omni-ide"
-                                target="_blank">linkedin.com/company/omni-ide</a></span></div>
+                    <div class="trust-row"><span class="tl">MSME Registration</span><span class="tv">UDYAM-KR-03-0681404</span></div>
+                    <div class="trust-row"><span class="tl">DPIIT Startup India</span><span class="tv">Recognized Startup — Dept. of Industrial Policy & Promotion</span></div>
+                    <div class="trust-row"><span class="tl">Bhaskar ID</span><span class="tv">IN-0526-9460PZ — Bharat Startup Knowledge Access Registry</span></div>
+                    <div class="trust-row"><span class="tl">NSWS</span><span class="tv">Registered on National Single Window System</span></div>
+                    <div class="trust-row"><span class="tl">Headquarters</span><span class="tv">B-Block, Devgere, Kumbalagodu, Kengeri, Bengaluru 560060, Karnataka</span></div>
+                    <div class="trust-row"><span class="tl">Open Source</span><span class="tv">All core tooling on GitHub under open-source licenses</span></div>
+                    <div class="trust-row"><span class="tl">Privacy Policy</span><span class="tv">Zero telemetry · Zero data collection · BYOK model</span></div>
+                    <div class="trust-row"><span class="tl">Partnerships</span><span class="tv">VTU &amp; AICTE internship networks (active)</span></div>
+                    <div class="trust-row"><span class="tl">Corporate Email</span><span class="tv">contact@omniide.com</span></div>
+                    <div class="trust-row"><span class="tl">GitHub Org</span><span class="tv"><a href="https://github.com/OMNI-IDE-in" target="_blank">github.com/OMNI-IDE-in</a></span></div>
+                    <div class="trust-row"><span class="tl">LinkedIn</span><span class="tv"><a href="https://linkedin.com/company/omni-ide" target="_blank">linkedin.com/company/omni-ide</a></span></div>
                 </div>
                 <div class="msme-badge">
                     <img id="msme-qr" src="" alt="OmniIDE MSME Verification QR Code — UDYAM-KR-03-0681404" loading="lazy" decoding="async">
@@ -2616,6 +2658,38 @@
                     <div class="code">UDYAM-KR-03-0681404</div>
                     <div class="verified-pill"><span class="dot"></span>GOVT. OF INDIA VERIFIED</div>
                     <p class="hint">Scan QR code to verify company status on the Udyam portal</p>
+                </div>
+            </div>
+
+            <!-- Government Registration Badges -->
+            <div class="govt-badges">
+                <div class="govt-badge">
+                    <img src="assets/images/msme-logo.png" alt="MSME — Ministry of Micro, Small and Medium Enterprises" loading="lazy" decoding="async">
+                    <h4>MSME Registered</h4>
+                    <div class="badge-id">UDYAM-KR-03-0681404</div>
+                    <div class="verified-pill"><span class="dot"></span>VERIFIED</div>
+                    <p class="badge-desc">Ministry of MSME, Govt. of India</p>
+                </div>
+                <div class="govt-badge">
+                    <img src="assets/images/dpiit-startup-india.png" alt="DPIIT Startup India — Department for Promotion of Industry and Internal Trade" loading="lazy" decoding="async">
+                    <h4>DPIIT Startup India</h4>
+                    <div class="badge-id">Recognized Startup</div>
+                    <div class="verified-pill"><span class="dot"></span>RECOGNIZED</div>
+                    <p class="badge-desc">Dept. of Industrial Policy & Promotion, Govt. of India</p>
+                </div>
+                <div class="govt-badge">
+                    <img src="assets/images/bhaskar.png" alt="Bhaskar — Bharat Startup Knowledge Access Registry" loading="lazy" decoding="async">
+                    <h4>Bhaskar Registry</h4>
+                    <div class="badge-id">IN-0526-9460PZ</div>
+                    <div class="verified-pill"><span class="dot"></span>REGISTERED</div>
+                    <p class="badge-desc">Bharat Startup Knowledge Access Registry — A Startup India Initiative</p>
+                </div>
+                <div class="govt-badge">
+                    <img src="assets/images/nsws-logo.svg" alt="NSWS — National Single Window System" loading="lazy" decoding="async" style="background:#1a237e;padding:10px;border-radius:8px">
+                    <h4>NSWS Registered</h4>
+                    <div class="badge-id">National Single Window System</div>
+                    <div class="verified-pill"><span class="dot"></span>REGISTERED</div>
+                    <p class="badge-desc">Govt. of India — Single window clearance for startups</p>
                 </div>
             </div>
         </div>
@@ -2757,7 +2831,7 @@
             <h2>About OmniIDE</h2>
             <p>OmniIDE is a free, open-source AI-powered integrated development environment built for autonomous software development. It is the first local-native AI IDE with a self-healing agentic loop — designed to write, debug, and run code autonomously on your machine with zero telemetry and zero cloud dependency.</p>
             <p>Key capabilities include the Omni-Agent (an autonomous coding agent powered by Google Gemini API), Ollama integration for local AI model execution, a Hardened Sandbox for safe autonomous operations, a self-healing terminal that catches errors and generates fixes, and multi-file refactoring for complex cross-file code changes.</p>
-            <p>OmniIDE is built on a production-ready VS Code core and is available as a free download for Windows 10 and Windows 11. Founded in 2025 and headquartered in Bengaluru, India, OmniIDE is MSME registered with the Government of India (UDYAM-KR-03-0681404). Contact: <a href="mailto:contact@omniide.com">contact@omniide.com</a>.</p>
+            <p>OmniIDE is built on a production-ready VS Code core and is available as a free download for Windows 10 and Windows 11. Founded in 2025 and headquartered in Bengaluru, India, OmniIDE is MSME registered (UDYAM-KR-03-0681404), DPIIT Startup India recognized, and listed on the Bhaskar Registry (IN-0526-9460PZ) and NSWS. Contact: <a href="mailto:contact@omniide.com">contact@omniide.com</a>.</p>
         </div>
     </article>
     </main>
