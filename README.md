@@ -11,7 +11,6 @@ Built for maximum performance and visual impact, this single-file landing page i
 - **Agentic Ecosystem**: Cards for Omni-Guard, Omni-Agent, and Self-Healing Terminal.
 - **MSME Verified**: Registered under UDYAM-KR-03-0681404.
 - **Privacy First**: Zero telemetry, zero cloud lock-in.
-- **Custom Cursor**: Smoothly interpolated dual-element cursor system.
 - **SEO Optimized**: Open Graph, Twitter Cards, and JSON-LD structured data.
 
 ## 🛠️ Tech Stack

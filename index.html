@@ -296,7 +296,6 @@
             font-family: 'Inter', sans-serif;
             color: var(--n);
             background: #fff;
-            cursor: none;
             -webkit-font-smoothing: antialiased
         }
 
@@ -331,31 +330,6 @@
             width: 0;
             background: linear-gradient(90deg, var(--s), var(--a));
             z-index: 2000
-        }
-
-        #cursor,
-        #cursor-ring {
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            mix-blend-mode: difference
-        }
-
-        #cursor {
-            width: 6px;
-            height: 6px;
-            background: var(--s);
-            border-radius: 50%;
-            transition: transform 0.1s ease, width 0.3s, height 0.3s
-        }
-
-        #cursor-ring {
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(59, 130, 246, 0.5);
-            border-radius: 50%;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1)
         }
 
         #bg-canvas {
@@ -2167,15 +2141,6 @@
             .stat-card h4 {
                 font-size: 28px
             }
-
-            body {
-                cursor: auto
-            }
-
-            #cursor,
-            #cursor-ring {
-                display: none
-            }
         }
 
         .trust-strip {
@@ -2358,9 +2323,8 @@
             stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M18 15l-6-6-6 6" />
         </svg></div>
-    <div id="cursor" aria-hidden="true"></div>
-    <div id="cursor-ring" aria-hidden="true"></div>
     <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
 
     <header role="banner">
     <nav class="nav" id="navbar" role="navigation" aria-label="Main navigation">
@@ -2915,10 +2879,7 @@
         gsap.registerPlugin(ScrollTrigger);
         const nav = document.getElementById('navbar');
         const btt = document.getElementById('back-to-top');
-        const cursor = document.getElementById('cursor');
-        const cursorRing = document.getElementById('cursor-ring');
         const progress = document.getElementById("scroll-progress");
-        let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
 
         window.addEventListener('load', () => {
             // 1. Preloader Fade
@@ -3020,35 +2981,16 @@
             });
         });
 
-        // 4. Cursor & Interactions
+        // 4. Interactions
         if (window.innerWidth > 480) {
             window.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX; mouseY = e.clientY;
-                cursor.style.left = mouseX + 'px'; cursor.style.top = mouseY + 'px';
                 document.querySelectorAll('.eco-card').forEach(c => {
                     const r = c.getBoundingClientRect();
                     c.style.setProperty('--x', (e.clientX - r.left) + 'px');
                     c.style.setProperty('--y', (e.clientY - r.top) + 'px');
                 });
             });
-            function loop() {
-                ringX += (mouseX - ringX) * 0.15; ringY += (mouseY - ringY) * 0.15;
-                cursorRing.style.left = ringX + 'px'; cursorRing.style.top = ringY + 'px';
-                requestAnimationFrame(loop);
-            }
-            loop();
         }
-
-        document.querySelectorAll('a, button, .eco-card').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                cursorRing.style.width = '60px'; cursorRing.style.height = '60px';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-                cursorRing.style.width = '40px'; cursorRing.style.height = '40px';
-            });
-        });
 
         // 5. Functions (Term, Stats, Reveal)
         const codeLines = [
