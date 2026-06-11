@@ -9,6 +9,8 @@
 - Category: Developer Tools, Integrated Development Environment
 - Website: https://omniide.com
 - Product Page: https://omniide.com/omni/
+- Documentation: https://omniide.com/docs/
+- Blog: https://omniide.com/blog/
 - GitHub: https://github.com/OMNI-IDE-in
 - LinkedIn: https://linkedin.com/company/omni-ide
 - Version: 3.0.0
@@ -20,6 +22,8 @@
 
 - Legal Name: OmniIDE
 - Registration: MSME UDYAM-KR-03-0681404 (Government of India)
+- DPIIT Startup India: Recognized
+- Bhaskar Registry: IN-0526-9460PZ
 - Headquarters: Bengaluru, Karnataka, India
 - Founded: 2025
 - Founder & CEO: Mohammed Nihan
@@ -41,8 +45,42 @@ OmniIDE is the first local-native AI IDE with a self-healing agentic loop. It in
 - VS Code Foundation: Built on a production-ready VS Code core
 - Ollama Integration: Local AI model execution for offline development
 - Multi-File Refactoring: Handles complex cross-file code changes autonomously
+- Agentic Loop: Understand → Plan → Execute → Verify → Heal cycle
+- Trajectory System: Full action logging for debugging and auditing
+- Memory Architecture: Context-aware workspace understanding
+- Verification Engine: Automatic error detection and validation
+- Recovery System: Autonomous fix generation and re-execution
+
+## Architecture
+
+- Core: TypeScript, Node.js, Electron
+- Editor: VS Code core (forked and customized)
+- Build System: Gulp
+- AI Cloud: Google Gemini API
+- AI Local: Ollama
+- Security: Hardened Sandbox with process isolation
+- Protocols: MCP (Model Context Protocol), ACP (Agent Communication Protocol)
+
+## Comparison
+
+OmniIDE is compared to: Cursor, GitHub Copilot, Windsurf, Claude Code, OpenAI Codex, Devin, Replit, Bolt.new, Lovable, Cline, Roo Code.
+
+Key differentiators: Fully autonomous (not just assisted), free (no subscription), open source, zero telemetry, self-healing, hardened sandbox, Made in India.
 
 ## Download
 
 - Windows Installer: https://github.com/nihannihu/Omni-IDE/releases/download/v3.0.0/OmniIDE-Setup.exe
 - All Releases: https://github.com/nihannihu/Omni-IDE/releases
+
+## Pages
+
+- Home: https://omniide.com/
+- Product: https://omniide.com/omni/
+- Documentation: https://omniide.com/docs/
+- Blog: https://omniide.com/blog/
+- Getting Started: https://omniide.com/docs/getting-started/
+- AI Coding IDE: https://omniide.com/ai-coding-ide/
+- Cursor Alternative: https://omniide.com/cursor-alternative/
+- Copilot Alternative: https://omniide.com/copilot-alternative/
+- Indian AI IDE: https://omniide.com/indian-ai-ide/
+- Open Source AI IDE: https://omniide.com/open-source-ai-ide/

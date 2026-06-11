@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OmniIDE Blog</title>
+    <link>https://omniide.com/blog/</link>
+    <description>AI engineering, autonomous coding, and developer productivity from the OmniIDE team.</description>
+    <language>en</language>
+    <lastBuildDate>2026-06-12</lastBuildDate>
+    <atom:link href="https://omniide.com/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>What Is Agentic Coding? The Future of Software Development</title>
+    <link>https://omniide.com/blog/what-is-agentic-coding/</link>
+    <description>Agentic coding represents a paradigm shift where AI agents don't just suggest code — they autonomously write, execute, debug, and fix it. Learn how OmniIDE implements the agentic loop and why it matte</description>
+    <category>AI Engineering</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/what-is-agentic-coding/</guid>
+  </item>
+  <item>
+    <title>Self-Healing Code: How OmniIDE's Terminal Fixes Its Own Errors</title>
+    <link>https://omniide.com/blog/self-healing-code-explained/</link>
+    <description>Deep dive into OmniIDE's self-healing terminal — how it detects runtime errors, analyzes root causes using Gemini, generates fixes, and re-executes automatically.</description>
+    <category>AI Engineering</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/self-healing-code-explained/</guid>
+  </item>
+  <item>
+    <title>LLM-Powered Development: Beyond Autocomplete</title>
+    <link>https://omniide.com/blog/llm-powered-development/</link>
+    <description>Traditional AI coding tools stop at autocomplete. OmniIDE uses LLMs for full-cycle development — from planning to execution to error recovery.</description>
+    <category>AI Engineering</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/llm-powered-development/</guid>
+  </item>
+  <item>
+    <title>Using Google Gemini API for Autonomous Coding</title>
+    <link>https://omniide.com/blog/gemini-api-for-coding/</link>
+    <description>How OmniIDE integrates Google Gemini API for state-of-the-art code generation, error analysis, and autonomous development workflows.</description>
+    <category>AI Engineering</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/gemini-api-for-coding/</guid>
+  </item>
+  <item>
+    <title>Local AI with Ollama: Private Coding Without the Cloud</title>
+    <link>https://omniide.com/blog/local-ai-ollama-coding/</link>
+    <description>Run AI models on your own hardware with zero cloud dependency. Guide to using Ollama with OmniIDE for fully private development.</description>
+    <category>AI Engineering</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/local-ai-ollama-coding/</guid>
+  </item>
+  <item>
+    <title>The State of AI Code Generation in 2026</title>
+    <link>https://omniide.com/blog/ai-code-generation-2026/</link>
+    <description>A comprehensive overview of AI code generation technologies in 2026 — from autocomplete to autonomous agents.</description>
+    <category>AI Engineering</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/ai-code-generation-2026/</guid>
+  </item>
+  <item>
+    <title>Building an AI-Powered IDE: Lessons from OmniIDE</title>
+    <link>https://omniide.com/blog/building-ai-powered-ide/</link>
+    <description>Technical lessons learned building OmniIDE from scratch — architecture decisions, AI integration challenges, and VS Code core customization.</description>
+    <category>AI Engineering</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/building-ai-powered-ide/</guid>
+  </item>
+  <item>
+    <title>Prompt Engineering for Code Generation: Best Practices</title>
+    <link>https://omniide.com/blog/prompt-engineering-for-code/</link>
+    <description>Effective prompt patterns for getting better code from AI agents. Practical tips from building the Omni-Agent.</description>
+    <category>AI Engineering</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/prompt-engineering-for-code/</guid>
+  </item>
+  <item>
+    <title>Anatomy of an AI Coding Agent</title>
+    <link>https://omniide.com/blog/anatomy-of-ai-agent/</link>
+    <description>Inside the Omni-Agent: how an AI coding agent plans, executes, verifies, and recovers. Technical architecture breakdown.</description>
+    <category>Agent Systems</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/anatomy-of-ai-agent/</guid>
+  </item>
+  <item>
+    <title>Agentic Loop Design Patterns for Software Development</title>
+    <link>https://omniide.com/blog/agentic-loop-design-patterns/</link>
+    <description>Common design patterns for building autonomous software development agents — planning, execution, verification, and recovery strategies.</description>
+    <category>Agent Systems</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/agentic-loop-design-patterns/</guid>
+  </item>
+  <item>
+    <title>How AI Agents Verify Their Own Code</title>
+    <link>https://omniide.com/blog/agent-verification-strategies/</link>
+    <description>Exploring verification strategies used by AI coding agents — exit code analysis, pattern matching, output assertion, and test execution.</description>
+    <category>Agent Systems</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/agent-verification-strategies/</guid>
+  </item>
+  <item>
+    <title>Error Recovery in AI Agents: Self-Healing Architectures</title>
+    <link>https://omniide.com/blog/agent-recovery-mechanisms/</link>
+    <description>When AI agents make mistakes, how do they recover? Deep dive into recovery pipelines, retry strategies, and convergence patterns.</description>
+    <category>Agent Systems</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/agent-recovery-mechanisms/</guid>
+  </item>
+  <item>
+    <title>Multi-File Editing with AI Agents: Challenges and Solutions</title>
+    <link>https://omniide.com/blog/multi-file-agent-editing/</link>
+    <description>How AI agents handle cross-file refactoring — dependency tracking, import management, and coordinated edits.</description>
+    <category>Agent Systems</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/multi-file-agent-editing/</guid>
+  </item>
+  <item>
+    <title>Designing a Sandbox for Autonomous Code Execution</title>
+    <link>https://omniide.com/blog/agent-sandbox-design/</link>
+    <description>Security considerations when AI agents execute code autonomously. How OmniIDE's Hardened Sandbox works.</description>
+    <category>Agent Systems</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/agent-sandbox-design/</guid>
+  </item>
+  <item>
+    <title>Trajectory Logging: Debugging AI Agent Behavior</title>
+    <link>https://omniide.com/blog/trajectory-logging-agents/</link>
+    <description>How to record, review, and debug AI agent actions using trajectory logging systems.</description>
+    <category>Agent Systems</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/trajectory-logging-agents/</guid>
+  </item>
+  <item>
+    <title>Memory Systems for AI Coding Agents</title>
+    <link>https://omniide.com/blog/agent-memory-systems/</link>
+    <description>How AI agents maintain context across sessions — workspace memory, session memory, and pattern learning.</description>
+    <category>Agent Systems</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/agent-memory-systems/</guid>
+  </item>
+  <item>
+    <title>Zero Telemetry: Why Your IDE Should Not Track You</title>
+    <link>https://omniide.com/blog/zero-telemetry-why-it-matters/</link>
+    <description>Privacy-first development tooling. Why OmniIDE collects zero data and why you should care about telemetry in your IDE.</description>
+    <category>Developer Productivity</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/zero-telemetry-why-it-matters/</guid>
+  </item>
+  <item>
+    <title>Autonomous vs Assisted Coding: Which Is Better?</title>
+    <link>https://omniide.com/blog/autonomous-vs-assisted-coding/</link>
+    <description>Comparing autonomous AI coding (OmniIDE) with assisted coding (Copilot, Cursor). When to use each approach.</description>
+    <category>Developer Productivity</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/autonomous-vs-assisted-coding/</guid>
+  </item>
+  <item>
+    <title>Automating Developer Workflows with AI Agents</title>
+    <link>https://omniide.com/blog/developer-workflow-automation/</link>
+    <description>From project scaffolding to deployment — how AI agents automate repetitive development tasks.</description>
+    <category>Developer Productivity</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/developer-workflow-automation/</guid>
+  </item>
+  <item>
+    <title>How AI Agents Reduce Context Switching for Developers</title>
+    <link>https://omniide.com/blog/reducing-context-switching/</link>
+    <description>Context switching costs developers hours each day. How AI agents help by handling routine tasks autonomously.</description>
+    <category>Developer Productivity</category>
+    <pubDate>2026-06-12</pubDate>
+    <guid>https://omniide.com/blog/reducing-context-switching/</guid>
+  </item>
+  </channel>
+</rss>

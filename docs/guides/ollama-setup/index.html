@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Ollama Local Setup — OmniIDE Docs</title>
+    <meta name="description" content="Set up Ollama for fully offline AI coding in OmniIDE — install models and configure local inference.">
+    <meta name="author" content="OmniIDE">
+    <link rel="canonical" href="https://omniide.com/docs/guides/ollama-setup/">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#0F172A">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://omniide.com/docs/guides/ollama-setup/">
+    <meta property="og:title" content="Ollama Local Setup — OmniIDE Docs">
+    <meta property="og:description" content="Set up Ollama for fully offline AI coding in OmniIDE — install models and configure local inference.">
+    <meta property="og:image" content="https://omniide.com/assets/images/og-image.png">
+    <meta property="og:site_name" content="OmniIDE">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ollama Local Setup — OmniIDE Docs">
+    <meta name="twitter:description" content="Set up Ollama for fully offline AI coding in OmniIDE — install models and configure local inference.">
+    <meta name="twitter:image" content="https://omniide.com/assets/images/og-image.png">
+    <link rel="icon" type="image/jpeg" href="/assets/images/logo.jpg">
+    <link rel="apple-touch-icon" href="/assets/images/logo.jpg">
+    <link rel="stylesheet" href="/assets/css/shared.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://omniide.com/#organization",
+                "name": "OmniIDE",
+                "url": "https://omniide.com",
+                "logo": { "@type": "ImageObject", "url": "https://omniide.com/assets/images/logo.jpg" },
+                "sameAs": ["https://github.com/OMNI-IDE-in", "https://linkedin.com/company/omni-ide"]
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://omniide.com/docs/guides/ollama-setup/#breadcrumb",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://omniide.com/" }
+                ]
+            },
+            {
+                "@type": "WebPage",
+                "url": "https://omniide.com/docs/guides/ollama-setup/",
+                "name": "Ollama Local Setup — OmniIDE Docs",
+                "description": "Set up Ollama for fully offline AI coding in OmniIDE — install models and configure local inference.",
+                "isPartOf": { "@id": "https://omniide.com/#website" },
+                "publisher": { "@id": "https://omniide.com/#organization" },
+                "datePublished": "2026-02-21",
+                "dateModified": "2026-06-12"
+            },
+            {
+                "@type": "TechArticle",
+                "headline": "Ollama Local Setup",
+                "description": "Set up Ollama for fully offline AI coding in OmniIDE — install models and configure local inference.",
+                "url": "https://omniide.com/docs/guides/ollama-setup/",
+                "author": { "@id": "https://omniide.com/#organization" },
+                "publisher": { "@id": "https://omniide.com/#organization" },
+                "datePublished": "2026-02-21",
+                "dateModified": "2026-06-12"
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+<nav class="site-nav" id="site-nav">
+    <div class="nav-container">
+        <a href="/" class="nav-logo">
+            <img src="/assets/images/logo.jpg" alt="OmniIDE Logo" width="34" height="34">
+            <span>OmniIDE</span>
+        </a>
+        <div class="nav-links">
+            <a href="/" >Home</a>
+            <a href="/docs/" class=active>Docs</a>
+            <a href="/blog/" >Blog</a>
+            <a href="/omni/" >Product</a>
+            <a href="/#contact" >Contact</a>
+        </div>
+        <a href="https://github.com/nihannihu/Omni-IDE/releases/download/v3.0.0/OmniIDE-Setup.exe" class="nav-cta">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+        </a>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+<div class="mobile-nav">
+    <a href="/">Home</a>
+    <a href="/docs/">Docs</a>
+    <a href="/blog/">Blog</a>
+    <a href="/omni/">Product</a>
+    <a href="/#contact">Contact</a>
+</div>
+<div class="page-wrapper">
+    <div class="container">
+        <div class="content-layout">
+            <aside class="sidebar">
+    <div class="sidebar-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="sidebar-search" placeholder="Search docs..." aria-label="Search documentation">
+    </div>
+    <div class="sidebar-section">
+        <div class="sidebar-section-title">Getting Started</div>
+        <a href="/docs/getting-started/" class="sidebar-link">Introduction</a>
+        <a href="/docs/getting-started/installation/" class="sidebar-link">Installation</a>
+        <a href="/docs/getting-started/quick-start/" class="sidebar-link">Quick Start Guide</a>
+        <a href="/docs/getting-started/first-project/" class="sidebar-link">Your First Project</a>
+        <a href="/docs/getting-started/configuration/" class="sidebar-link">Configuration</a>
+    </div>
+    <div class="sidebar-section">
+        <div class="sidebar-section-title">Core Concepts</div>
+        <a href="/docs/core-concepts/omni-agent/" class="sidebar-link">Omni-Agent</a>
+        <a href="/docs/core-concepts/agentic-loop/" class="sidebar-link">Agentic Loop</a>
+        <a href="/docs/core-concepts/self-healing/" class="sidebar-link">Self-Healing Terminal</a>
+        <a href="/docs/core-concepts/hardened-sandbox/" class="sidebar-link">Hardened Sandbox</a>
+        <a href="/docs/core-concepts/execution-kernel/" class="sidebar-link">Execution Kernel</a>
+        <a href="/docs/core-concepts/trajectory/" class="sidebar-link">Trajectory System</a>
+        <a href="/docs/core-concepts/memory/" class="sidebar-link">Memory Architecture</a>
+        <a href="/docs/core-concepts/verification/" class="sidebar-link">Verification Engine</a>
+        <a href="/docs/core-concepts/recovery/" class="sidebar-link">Recovery System</a>
+    </div>
+    <div class="sidebar-section">
+        <div class="sidebar-section-title">Features</div>
+        <a href="/docs/features/ai-coding/" class="sidebar-link">AI-Powered Coding</a>
+        <a href="/docs/features/multi-file-refactoring/" class="sidebar-link">Multi-File Refactoring</a>
+        <a href="/docs/features/terminal/" class="sidebar-link">Integrated Terminal</a>
+        <a href="/docs/features/zero-telemetry/" class="sidebar-link">Zero Telemetry</a>
+        <a href="/docs/features/offline-mode/" class="sidebar-link">Offline Mode</a>
+        <a href="/docs/features/extensions/" class="sidebar-link">Extensions Support</a>
+        <a href="/docs/features/theming/" class="sidebar-link">Theming & Customization</a>
+        <a href="/docs/features/git-integration/" class="sidebar-link">Git Integration</a>
+        <a href="/docs/features/debugging/" class="sidebar-link">Debugging</a>
+        <a href="/docs/features/snippets/" class="sidebar-link">Code Snippets</a>
+    </div>
+    <div class="sidebar-section">
+        <div class="sidebar-section-title">Integrations</div>
+        <a href="/docs/integrations/gemini/" class="sidebar-link">Google Gemini</a>
+        <a href="/docs/integrations/ollama/" class="sidebar-link">Ollama</a>
+        <a href="/docs/integrations/openrouter/" class="sidebar-link">OpenRouter</a>
+        <a href="/docs/integrations/mcp/" class="sidebar-link">Model Context Protocol</a>
+        <a href="/docs/integrations/acp/" class="sidebar-link">Agent Communication Protocol</a>
+    </div>
+    <div class="sidebar-section">
+        <div class="sidebar-section-title">Architecture</div>
+        <a href="/docs/architecture/overview/" class="sidebar-link">Architecture Overview</a>
+        <a href="/docs/architecture/vscode-core/" class="sidebar-link">VS Code Core</a>
+        <a href="/docs/architecture/security/" class="sidebar-link">Security Model</a>
+        <a href="/docs/architecture/build-system/" class="sidebar-link">Build System</a>
+    </div>
+    <div class="sidebar-section">
+        <div class="sidebar-section-title">Guides</div>
+        <a href="/docs/guides/api-key-setup/" class="sidebar-link">API Key Setup</a>
+        <a href="/docs/guides/ollama-setup/" class="sidebar-link">Ollama Local Setup</a>
+        <a href="/docs/guides/workspace-config/" class="sidebar-link">Workspace Configuration</a>
+        <a href="/docs/guides/keyboard-shortcuts/" class="sidebar-link">Keyboard Shortcuts</a>
+        <a href="/docs/guides/autonomous-workflows/" class="sidebar-link">Autonomous Workflows</a>
+        <a href="/docs/guides/agent-commands/" class="sidebar-link">Agent Commands</a>
+        <a href="/docs/guides/sandbox-config/" class="sidebar-link">Sandbox Configuration</a>
+    </div>
+    <div class="sidebar-section">
+        <div class="sidebar-section-title">Reference</div>
+        <a href="/docs/reference/cli/" class="sidebar-link">CLI Reference</a>
+        <a href="/docs/reference/settings/" class="sidebar-link">Settings Reference</a>
+        <a href="/docs/reference/keybindings/" class="sidebar-link">Keybindings</a>
+        <a href="/docs/reference/changelog/" class="sidebar-link">Changelog</a>
+        <a href="/docs/reference/api/" class="sidebar-link">API Reference</a>
+    </div>
+    <div class="sidebar-section">
+        <div class="sidebar-section-title">Troubleshooting</div>
+        <a href="/docs/troubleshooting/common-issues/" class="sidebar-link">Common Issues</a>
+        <a href="/docs/troubleshooting/agent-errors/" class="sidebar-link">Agent Errors</a>
+        <a href="/docs/troubleshooting/performance/" class="sidebar-link">Performance</a>
+        <a href="/docs/troubleshooting/faq/" class="sidebar-link">FAQ</a>
+    </div>
+</aside>
+            <main class="content-main">
+                <div class="breadcrumbs"><a href="/">Home</a><span class="sep">›</span><a href="/docs/">Docs</a><span class="sep">›</span><a href="/docs/guides/">Guides</a><span class="sep">›</span><span class="current">Ollama Local Setup</span></div>
+                <div class="content">
+                    <h1>Ollama Local Setup</h1>
+    <p>Ollama lets you run AI models locally on your machine. This guide covers installation, model selection, and OmniIDE configuration.</p>
+    
+    <h2>Install Ollama</h2>
+    <ol>
+        <li>Download from <a href="https://ollama.ai" target="_blank" rel="noopener">ollama.ai</a></li>
+        <li>Run the installer</li>
+        <li>Verify installation: <code>ollama --version</code></li>
+    </ol>
+    
+    <h2>Pull a Model</h2>
+    <pre><code># Recommended for coding
+ollama pull codellama:13b
+
+# Lighter alternative
+ollama pull codellama:7b
+
+# Start the server
+ollama serve</code></pre>
+    
+    <h2>Configure OmniIDE</h2>
+    <pre><code>{
+  "omni.ollama.enabled": true,
+  "omni.ollama.endpoint": "http://localhost:11434",
+  "omni.ollama.model": "codellama:13b"
+}</code></pre>
+    
+    <h2>Related</h2>
+    <ul>
+        <li><a href="/docs/integrations/ollama/">Ollama Integration</a></li>
+        <li><a href="/docs/features/offline-mode/">Offline Mode</a></li>
+    </ul>
+                </div>
+                
+                
+            </main>
+        </div>
+    </div>
+</div>
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="color:#fff">
+                    <img src="/assets/images/logo.jpg" alt="OmniIDE" width="34" height="34">
+                    <span>OmniIDE</span>
+                </a>
+                <p>Building the open infrastructure layer for autonomous software development.</p>
+                <div class="reg">UDYAM-KR-03-0681404</div>
+            </div>
+            <div class="footer-col">
+                <h5>Product</h5>
+                <a href="/omni/">OmniIDE v3.0</a>
+                <a href="/docs/">Documentation</a>
+                <a href="/docs/getting-started/">Getting Started</a>
+                <a href="/blog/">Blog</a>
+            </div>
+            <div class="footer-col">
+                <h5>Compare</h5>
+                <a href="/cursor-alternative/">vs Cursor</a>
+                <a href="/copilot-alternative/">vs Copilot</a>
+                <a href="/windsurf-alternative/">vs Windsurf</a>
+                <a href="/devin-alternative/">vs Devin</a>
+            </div>
+            <div class="footer-col">
+                <h5>Connect</h5>
+                <a href="https://github.com/OMNI-IDE-in" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com/company/omni-ide" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:contact@omniide.com">Email</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 OmniIDE. UDYAM-KR-03-0681404. All rights reserved.</span>
+            <div>
+                <a href="/">Home</a>
+                <a href="/docs/">Docs</a>
+                <a href="/blog/">Blog</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="/assets/js/shared.js"></script>
+</body>
+</html>
