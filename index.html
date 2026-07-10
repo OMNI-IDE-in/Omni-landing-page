@@ -1045,6 +1045,85 @@
             line-height: 1.7
         }
 
+        .v4-badge {
+            background: linear-gradient(135deg, #FF2E93, #FF8A00);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(255, 46, 147, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+            animation: v4-cool-glow 1.5s infinite alternate ease-in-out;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .beta-badge {
+            background: linear-gradient(135deg, #06B6D4, #8B5CF6);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 12px rgba(6, 182, 212, 0.2);
+        }
+
+        .v4-badge .v4-icon {
+            animation: v4-icon-shake 1s infinite alternate ease-in-out;
+            display: inline-block;
+        }
+
+        @keyframes v4-cool-glow {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 10px rgba(255, 46, 147, 0.3), 0 0 2px rgba(255, 138, 0, 0.1);
+            }
+            100% {
+                transform: scale(1.05);
+                box-shadow: 0 0 20px rgba(255, 46, 147, 0.6), 0 0 8px rgba(255, 138, 0, 0.3);
+            }
+        }
+
+        @keyframes v4-icon-shake {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(15deg) scale(1.2); }
+        }
+
+        .card-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            color: #1A56DB;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            transition: all 0.3s ease;
+        }
+
+        .card-action .action-arrow {
+            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .eco-card:hover .card-action {
+            color: #1D4ED8;
+        }
+
+        .eco-card:hover .card-action .action-arrow {
+            transform: translateX(6px);
+        }
+
         /* STATS REDESIGN */
         .stats {
             background: #0B1628;
@@ -1478,7 +1557,7 @@
 
         .govt-badges {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 24px;
             margin-top: 40px
         }
@@ -1487,7 +1566,7 @@
             background: #fff;
             border: 1px solid #E5E7EB;
             border-radius: 20px;
-            padding: 28px 24px;
+            padding: 36px 28px;
             text-align: center;
             box-shadow: 0 4px 24px rgba(0, 0, 0, .04);
             transition: transform .3s, box-shadow .3s
@@ -1499,29 +1578,29 @@
         }
 
         .govt-badge img {
-            max-width: 140px;
-            max-height: 80px;
+            max-width: 160px;
+            max-height: 95px;
             object-fit: contain;
-            margin-bottom: 14px
+            margin-bottom: 16px
         }
 
         .govt-badge h4 {
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 700;
             color: #111827;
-            margin-bottom: 4px
+            margin-bottom: 6px
         }
 
         .govt-badge .badge-id {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
+            font-size: 12px;
             color: #6B7280;
-            margin-bottom: 10px
+            margin-bottom: 12px
         }
 
         .govt-badge .badge-desc {
-            font-size: 12px;
-            color: #9CA3AF;
+            font-size: 13px;
+            color: #6B7280;
             line-height: 1.5
         }
 
@@ -2443,48 +2522,58 @@
             <p class="section-sub">From our flagship autonomous workspace to specialized SaaS tiers, Omni powers the
                 next generation of intelligent software systems.</p>
             <div class="eco-grid">
+                <a href="https://omniide.com/omni/" class="eco-card-link" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="eco-card" style="cursor: pointer;">
+                        <div class="eco-icon" style="background: transparent; overflow: hidden; border: 1px solid rgba(0,0,0,0.06);"><img src="assets/images/logo.jpg" alt="Omni Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;"></div>
+                        <div class="eco-status-container" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+                            <div class="eco-status live" style="margin-bottom: 0;">● FLAGSHIP PRODUCT</div>
+                            <span class="v4-badge">v4.0 Releasing Soon <span class="v4-icon">⚡</span></span>
+                        </div>
+                        <h3>Omni IDE</h3>
+                        <div class="tagline">The World’s First Autonomous AI Workspace</div>
+                        <p>Omni IDE handles complex, multi-file refactoring and feature implementation. Built-in
+                            self-healing manages environments and dependencies so you can focus purely on architecture.</p>
+                        <div class="card-action">
+                            <span class="action-text">Explore Omni IDE Workspace</span>
+                            <span class="action-arrow">→</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#syncgraph-demo" class="eco-card-link" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="eco-card" style="cursor: pointer;">
+                        <div class="eco-icon" style="background: transparent; overflow: hidden; border: 1px solid rgba(0,0,0,0.06);"><img src="assets/images/syncgraph-logo.jpg" alt="SyncGraph Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;"></div>
+                        <div class="eco-status live">● B2D — SyncGraph</div>
+                        <h3>SyncGraph</h3>
+                        <div class="tagline">The Elite Tool for Modern Developers</div>
+                        <p>Stop losing green squares. SyncGraph handles secure multi-profile syncing, logs daily learning milestones, and ensures your public GitHub profile reflects your true coding consistency and technical growth with zero setup and absolute privacy.</p>
+                        <div class="card-action">
+                            <span class="action-text">Explore SyncGraph Workspace</span>
+                            <span class="action-arrow">→</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://scanai.omniide.com/" target="_blank" rel="noopener noreferrer" class="eco-card-link" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="eco-card" style="cursor: pointer;">
+                        <div class="eco-icon" style="background: transparent; overflow: hidden; border: 1px solid rgba(0,0,0,0.06);"><img src="assets/images/scanai-logo.png" alt="Scan AI Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;"></div>
+                        <div class="eco-status-container" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+                            <div class="eco-status dev" style="margin-bottom: 0;">● NOW BUILDING — COHORT 03</div>
+                            <span class="beta-badge">BETA</span>
+                        </div>
+                        <h3>Scan AI Innovation School</h3>
+                        <div class="tagline">Build Your Startup With an Entire Venture Team</div>
+                        <p>Accelerating early-stage startups with end-to-end execution. Scan AI partners with founders to handle product validation, design, development, and growth, replacing fragmented agency models with a dedicated, high-alignment venture team committed to your success.</p>
+                        <div class="card-action">
+                            <span class="action-text">Apply for Cohort</span>
+                            <span class="action-arrow">→</span>
+                        </div>
+                    </div>
+                </a>
                 <div class="eco-card">
-                    <div class="eco-icon"><svg viewBox="0 0 24 24">
-                            <polyline points="16 18 22 12 16 6" />
-                            <polyline points="8 6 2 12 8 18" />
-                        </svg></div>
-                    <div class="eco-status live">● FLAGSHIP PRODUCT</div>
-                    <h3>Omni IDE</h3>
-                    <div class="tagline">The World’s First Autonomous AI Workspace</div>
-                    <p>Omni IDE handles complex, multi-file refactoring and feature implementation. Built-in
-                        self-healing manages environments and dependencies so you can focus purely on architecture.</p>
-                </div>
-                <div class="eco-card">
-                    <div class="eco-icon"><svg viewBox="0 0 24 24">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                        </svg></div>
-                    <div class="eco-status live">● B2D — SyncGraph</div>
-                    <h3>SyncGraph</h3>
-                    <div class="tagline">The Elite Tool for Modern Developers</div>
-                    <p>Automates contribution graphs and learning logs to maintain a professional GitHub presence with
-                        zero manual effort.</p>
-                </div>
-                <div class="eco-card">
-                    <div class="eco-icon"><svg viewBox="0 0 24 24">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                        </svg></div>
-                    <div class="eco-status dev">● B2B — Enterprise</div>
-                    <h3>Enterprise Resilience</h3>
-                    <div class="tagline">Self-Healing Corporate Protocols</div>
-                    <p>Autonomous incident response and automated compliance monitoring for cloud-scale businesses and
-                        infrastructure.</p>
-                </div>
-                <div class="eco-card">
-                    <div class="eco-icon"><svg viewBox="0 0 24 24">
-                            <path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z" />
-                            <path d="M12 6v6l4 2" />
-                        </svg></div>
-                    <div class="eco-status upcoming">● B2C — Intelligent Apps</div>
-                    <h3>Everyday Apps</h3>
-                    <div class="tagline">Consumer-Facing Agentic AI</div>
-                    <p>AI applications that utilize Omni’s agentic core to handle complex user tasks with zero manual
-                        input.</p>
+                    <div class="eco-icon" style="background: transparent; overflow: hidden; border: 1px solid rgba(0,0,0,0.06);"><img src="assets/images/carm-gps-logo.png" alt="CArm-Surgical-GPS Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;"></div>
+                    <div class="eco-status upcoming">● B2C — Medical AI</div>
+                    <h3>CArm-Surgical-GPS</h3>
+                    <div class="tagline">Real-Time 2D-to-3D Surgical Navigation</div>
+                    <p>A highly reproducible, conformal prediction AI framework for real-time 2D-to-3D C-Arm X-ray surgical navigation. By automating 3D bone reconstruction and projecting spatial coordinate overlays onto standard operating room displays, it provides sub-millimeter guidance for orthopedic and spinal procedures with absolute mathematical guarantees of accuracy.</p>
                 </div>
             </div>
         </div>
@@ -2735,6 +2824,13 @@
                     <div class="badge-id">National Single Window System</div>
                     <div class="verified-pill"><span class="dot"></span>REGISTERED</div>
                     <p class="badge-desc">Govt. of India — Single window clearance for startups</p>
+                </div>
+                <div class="govt-badge">
+                    <img src="assets/images/aicte-logo.png" alt="AICTE — All India Council for Technical Education" loading="lazy" decoding="async">
+                    <h4>AICTE Approved</h4>
+                    <div class="badge-id">Technical Education Partner</div>
+                    <div class="verified-pill"><span class="dot"></span>APPROVED</div>
+                    <p class="badge-desc">All India Council for Technical Education, Govt. of India</p>
                 </div>
             </div>
         </div>
