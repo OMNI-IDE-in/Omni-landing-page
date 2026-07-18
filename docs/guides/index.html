@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Recovery System — OmniIDE Docs</title>
-    <meta name="description" content="OmniIDE's Recovery System generates and applies fixes when the Verification Engine detects failures during autonomous execution.">
+    <title>Guides — OmniIDE Docs</title>
+    <meta name="description" content="Guides — OmniIDE documentation for step-by-step guides for setting up and using omniide's key features.">
     <meta name="author" content="OmniIDE">
-    <link rel="canonical" href="https://omniide.com/docs/core-concepts/recovery/">
+    <link rel="canonical" href="https://omniide.com/docs/guides/">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="theme-color" content="#0F172A">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://omniide.com/docs/core-concepts/recovery/">
-    <meta property="og:title" content="Recovery System — OmniIDE Docs">
-    <meta property="og:description" content="OmniIDE's Recovery System generates and applies fixes when the Verification Engine detects failures during autonomous execution.">
+    <meta property="og:url" content="https://omniide.com/docs/guides/">
+    <meta property="og:title" content="Guides — OmniIDE Docs">
+    <meta property="og:description" content="Guides — OmniIDE documentation for step-by-step guides for setting up and using omniide's key features.">
     <meta property="og:image" content="https://omniide.com/assets/images/og-image.png">
     <meta property="og:site_name" content="OmniIDE">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Recovery System — OmniIDE Docs">
-    <meta name="twitter:description" content="OmniIDE's Recovery System generates and applies fixes when the Verification Engine detects failures during autonomous execution.">
+    <meta name="twitter:title" content="Guides — OmniIDE Docs">
+    <meta name="twitter:description" content="Guides — OmniIDE documentation for step-by-step guides for setting up and using omniide's key features.">
     <meta name="twitter:image" content="https://omniide.com/assets/images/og-image.png">
     <link rel="icon" type="image/jpeg" href="/assets/images/logo.jpg">
     <link rel="apple-touch-icon" href="/assets/images/logo.jpg">
@@ -36,16 +36,16 @@
             },
             {
                 "@type": "BreadcrumbList",
-                "@id": "https://omniide.com/docs/core-concepts/recovery/#breadcrumb",
+                "@id": "https://omniide.com/docs/guides/#breadcrumb",
                 "itemListElement": [
                     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://omniide.com/" }
                 ]
             },
             {
                 "@type": "WebPage",
-                "url": "https://omniide.com/docs/core-concepts/recovery/",
-                "name": "Recovery System — OmniIDE Docs",
-                "description": "OmniIDE's Recovery System generates and applies fixes when the Verification Engine detects failures during autonomous execution.",
+                "url": "https://omniide.com/docs/guides/",
+                "name": "Guides — OmniIDE Docs",
+                "description": "Guides — OmniIDE documentation for step-by-step guides for setting up and using omniide's key features.",
                 "isPartOf": { "@id": "https://omniide.com/#website" },
                 "publisher": { "@id": "https://omniide.com/#organization" },
                 "datePublished": "2026-02-21",
@@ -53,9 +53,9 @@
             },
             {
                 "@type": "TechArticle",
-                "headline": "Recovery System",
-                "description": "OmniIDE's Recovery System generates and applies fixes when the Verification Engine detects failures during autonomous execution.",
-                "url": "https://omniide.com/docs/core-concepts/recovery/",
+                "headline": "Guides",
+                "description": "Guides — OmniIDE documentation for step-by-step guides for setting up and using omniide's key features.",
+                "url": "https://omniide.com/docs/guides/",
                 "author": { "@id": "https://omniide.com/#organization" },
                 "publisher": { "@id": "https://omniide.com/#organization" },
                 "datePublished": "2026-02-21",
@@ -237,33 +237,34 @@
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
                     Docs Menu
                 </button>
-                <div class="breadcrumbs"><a href="/">Home</a><span class="sep">›</span><a href="javascript:void(0)" class="breadcrumb-docs-menu" onclick="var s=document.querySelector('.sidebar'),b=document.getElementById('sidebar-backdrop');if(s&&b){s.classList.add('active');b.classList.add('active')}">Docs Menu</a><span class="sep">›</span><a href="/docs/core-concepts/">Core Concepts</a><span class="sep">›</span><span class="current">Recovery System</span></div>
+                <div class="breadcrumbs"><a href="/">Home</a><span class="sep">›</span><a href="javascript:void(0)" class="breadcrumb-docs-menu" onclick="var s=document.querySelector('.sidebar'),b=document.getElementById('sidebar-backdrop');if(s&&b){s.classList.add('active');b.classList.add('active')}">Docs Menu</a><span class="sep">›</span><span class="current">Guides</span></div>
                 <div class="content">
-                    <h1>Recovery System</h1>
-    <p>The Recovery System is the final piece of OmniIDE's self-healing architecture. When the <a href="/docs/core-concepts/verification/">Verification Engine</a> detects a failure, the Recovery System generates corrective actions and re-executes.</p>
-    
-    <h2>Recovery Pipeline</h2>
-    <ol>
-        <li><strong>Error Context Assembly</strong> — Collects the error message, stack trace, related source files, and workspace state</li>
-        <li><strong>LLM Analysis</strong> — Sends the error context to Gemini or Ollama for root cause analysis</li>
-        <li><strong>Fix Generation</strong> — The LLM produces a structured fix: code changes, commands, or configuration updates</li>
-        <li><strong>Fix Application</strong> — The fix is applied to the workspace</li>
-        <li><strong>Re-execution</strong> — The original command is re-run to verify the fix worked</li>
-    </ol>
-    
-    <h2>Retry Behavior</h2>
-    <p>The recovery system will attempt up to <code>omni.agent.maxRetries</code> (default: 3) healing iterations. If the issue persists after all retries, the agent reports the failure and asks for human guidance.</p>
-    
-    <div class="info-box tip"><strong>Success rate:</strong> In testing, the self-healing recovery resolves 80%+ of common development errors (missing dependencies, syntax errors, import issues) on the first attempt.</div>
-    
-    <h2>Related</h2>
-    <ul>
-        <li><a href="/docs/core-concepts/verification/">Verification Engine</a> — Error detection</li>
-        <li><a href="/docs/core-concepts/self-healing/">Self-Healing Terminal</a> — The user-facing healing experience</li>
-        <li><a href="/docs/core-concepts/agentic-loop/">Agentic Loop</a> — The execution cycle</li>
-    </ul>
+                    <h1>Guides</h1>
+<p>Step-by-step guides for setting up and using OmniIDE's key features.</p>
+<div class="feature-grid"><a href="/docs/guides/api-key-setup/" class="related-card" style="text-decoration:none">
+    <div class="related-card-title">API Key Setup</div>
+    <div class="related-card-desc">Configure your Google Gemini API key.</div>
+</a><a href="/docs/guides/ollama-setup/" class="related-card" style="text-decoration:none">
+    <div class="related-card-title">Ollama Local Setup</div>
+    <div class="related-card-desc">Set up Ollama for offline AI development.</div>
+</a><a href="/docs/guides/workspace-config/" class="related-card" style="text-decoration:none">
+    <div class="related-card-title">Workspace Configuration</div>
+    <div class="related-card-desc">Configure workspaces and project settings.</div>
+</a><a href="/docs/guides/keyboard-shortcuts/" class="related-card" style="text-decoration:none">
+    <div class="related-card-title">Keyboard Shortcuts</div>
+    <div class="related-card-desc">Essential keyboard shortcuts reference.</div>
+</a><a href="/docs/guides/autonomous-workflows/" class="related-card" style="text-decoration:none">
+    <div class="related-card-title">Autonomous Workflows</div>
+    <div class="related-card-desc">Set up end-to-end autonomous coding workflows.</div>
+</a><a href="/docs/guides/agent-commands/" class="related-card" style="text-decoration:none">
+    <div class="related-card-title">Agent Commands</div>
+    <div class="related-card-desc">Command reference for the Omni-Agent.</div>
+</a><a href="/docs/guides/sandbox-config/" class="related-card" style="text-decoration:none">
+    <div class="related-card-title">Sandbox Configuration</div>
+    <div class="related-card-desc">Configure the hardened sandbox environment.</div>
+</a></div>
                 </div>
-                <div class="page-nav"><a href="/docs/core-concepts/verification/" class="page-nav-link"><span class="page-nav-label">← Previous</span><span class="page-nav-title">Verification Engine</span></a><div></div></div>
+                
                 
             </main>
         </div>

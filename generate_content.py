@@ -6,7 +6,7 @@ import os
 import json
 from datetime import datetime
 
-BASE = r"c:\Users\nihan\OneDrive\Desktop\omni-landing page\Omni-landing-page"
+BASE = os.path.dirname(os.path.abspath(__file__))
 DOMAIN = "https://omniide.com"
 TODAY = datetime.now().strftime("%Y-%m-%d")
 
@@ -38,11 +38,59 @@ def nav_html(active=""):
     </div>
 </nav>
 <div class="mobile-nav">
-    <a href="/">Home</a>
-    <a href="/docs/">Docs</a>
-    <a href="/blog/">Blog</a>
-    <a href="/omni/">Product</a>
-    <a href="/#contact">Contact</a>
+    <div class="mobile-nav-header">
+        <a href="/" class="mobile-nav-logo">
+            <span>OmniIDE</span>
+        </a>
+        <div class="mobile-nav-version">v3.0.0 LIVE</div>
+    </div>
+    
+    <div class="mobile-nav-items">
+        <a href="/" class="mobile-nav-item">
+            <div class="mobile-nav-content">
+                <span class="mobile-nav-title">Home</span>
+                <span class="mobile-nav-subtitle">Return to the main page</span>
+            </div>
+        </a>
+        <a href="/docs/?open-menu=1" class="mobile-nav-item mobile-docs-link">
+            <div class="mobile-nav-content">
+                <span class="mobile-nav-title">Docs Menu</span>
+                <span class="mobile-nav-subtitle">Guides & API reference</span>
+            </div>
+        </a>
+        <a href="/blog/" class="mobile-nav-item">
+            <div class="mobile-nav-content">
+                <span class="mobile-nav-title">Blog</span>
+                <span class="mobile-nav-subtitle">Latest news & tech articles</span>
+            </div>
+        </a>
+        <a href="/omni/" class="mobile-nav-item">
+            <div class="mobile-nav-content">
+                <span class="mobile-nav-title">Product</span>
+                <span class="mobile-nav-subtitle">Explore features & editions</span>
+            </div>
+        </a>
+        <a href="/#contact" class="mobile-nav-item">
+            <div class="mobile-nav-content">
+                <span class="mobile-nav-title">Contact</span>
+                <span class="mobile-nav-subtitle">Get in touch with support</span>
+            </div>
+        </a>
+    </div>
+
+    <div class="mobile-nav-footer">
+        <a href="https://github.com/nihannihu/Omni-IDE/releases/download/v3.0.0/OmniIDE-Setup.exe" class="mobile-nav-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download for Windows
+        </a>
+        <div class="mobile-nav-socials">
+            <a href="https://github.com/nihannihu/Omni-IDE" target="_blank">GitHub</a>
+            <span>•</span>
+            <a href="https://discord.gg/" target="_blank">Discord</a>
+            <span>•</span>
+            <a href="https://x.com/" target="_blank">Twitter</a>
+        </div>
+    </div>
 </div>'''
 
 
@@ -114,7 +162,7 @@ def head_html(title, description, canonical, page_type="WebPage", extra_schema="
     <meta name="twitter:image" content="{DOMAIN}/assets/images/og-image.png">
     <link rel="icon" type="image/jpeg" href="/assets/images/logo.jpg">
     <link rel="apple-touch-icon" href="/assets/images/logo.jpg">
-    <link rel="stylesheet" href="/assets/css/shared.css">
+    <link rel="stylesheet" href="/assets/css/shared.css?v=3.0.4">
     <script type="application/ld+json">
     {{
         "@context": "https://schema.org",
@@ -219,6 +267,12 @@ def doc_sidebar():
         ],
     }
     html = '''<aside class="sidebar">
+    <div class="sidebar-mobile-header">
+        <span class="sidebar-mobile-title">Docs Menu</span>
+        <div class="sidebar-close" id="sidebar-close">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+    </div>
     <div class="sidebar-search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input type="text" id="sidebar-search" placeholder="Search docs..." aria-label="Search documentation">
@@ -237,7 +291,7 @@ def build_doc_page(path, title, description, content_html, prev_link=None, next_
     
     # Build breadcrumb
     parts = [p for p in path.strip('/').split('/') if p]
-    breadcrumb = '<div class="breadcrumbs"><a href="/">Home</a><span class="sep">›</span><a href="/docs/">Docs</a>'
+    breadcrumb = '<div class="breadcrumbs"><a href="/">Home</a><span class="sep">›</span><a href="javascript:void(0)" class="breadcrumb-docs-menu" onclick="var s=document.querySelector(\'.sidebar\'),b=document.getElementById(\'sidebar-backdrop\');if(s&&b){s.classList.add(\'active\');b.classList.add(\'active\')}">Docs Menu</a>'
     if len(parts) > 2:
         section = parts[1].replace('-', ' ').title()
         breadcrumb += f'<span class="sep">›</span><a href="/docs/{parts[1]}/">{section}</a>'
@@ -281,11 +335,16 @@ def build_doc_page(path, title, description, content_html, prev_link=None, next_
     html += f'''
 <body>
 {nav_html("docs")}
+<div class="sidebar-backdrop" id="sidebar-backdrop"></div>
 <div class="page-wrapper">
     <div class="container">
         <div class="content-layout">
             {sidebar_html}
             <main class="content-main">
+                <button class="mobile-sidebar-toggle" id="mobile-sidebar-toggle">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    Docs Menu
+                </button>
                 {breadcrumb}
                 <div class="content">
                     {content_html}
@@ -297,7 +356,7 @@ def build_doc_page(path, title, description, content_html, prev_link=None, next_
     </div>
 </div>
 {footer_html()}
-<script src="/assets/js/shared.js"></script>
+<script src="/assets/js/shared.js?v=3.0.4"></script>
 </body>
 </html>'''
     
@@ -401,7 +460,7 @@ def build_landing_page(path, title, description, hero_badge, hero_title, hero_su
     </section>
 </div>
 {footer_html()}
-<script src="/assets/js/shared.js"></script>
+<script src="/assets/js/shared.js?v=3.0.4"></script>
 </body>
 </html>'''
     
@@ -771,6 +830,86 @@ build_doc_page("/docs/getting-started/configuration/", "Configuration",
         ("/docs/guides/api-key-setup/", "API Key Setup", "Configure your Gemini API key"),
         ("/docs/guides/ollama-setup/", "Ollama Setup", "Set up local AI models"),
     ])
+
+
+# ──── SECTION INDEX PAGES ────
+# Generate index pages for sections that don't have one
+
+section_index_data = {
+    "core-concepts": ("Core Concepts", "Understand the foundational architecture and systems that power OmniIDE's autonomous coding capabilities.", [
+        ("/docs/core-concepts/omni-agent/", "Omni-Agent", "The autonomous coding engine that writes, debugs, and runs code."),
+        ("/docs/core-concepts/agentic-loop/", "Agentic Loop", "The iterative execution cycle driving autonomous development."),
+        ("/docs/core-concepts/self-healing/", "Self-Healing Terminal", "Automatic error detection and recovery in the terminal."),
+        ("/docs/core-concepts/hardened-sandbox/", "Hardened Sandbox", "Secure execution environment for AI-generated code."),
+        ("/docs/core-concepts/execution-kernel/", "Execution Kernel", "The runtime engine that manages code execution."),
+        ("/docs/core-concepts/trajectory/", "Trajectory System", "Logging and replay of agent actions."),
+        ("/docs/core-concepts/memory/", "Memory Architecture", "How the agent maintains context across sessions."),
+        ("/docs/core-concepts/verification/", "Verification Engine", "Automated testing and validation of agent output."),
+        ("/docs/core-concepts/recovery/", "Recovery System", "Graceful recovery from errors and failures."),
+    ]),
+    "features": ("Features", "Explore the full feature set of OmniIDE — from AI-powered coding to zero-telemetry privacy.", [
+        ("/docs/features/ai-coding/", "AI-Powered Coding", "Autonomous code generation and intelligent completions."),
+        ("/docs/features/multi-file-refactoring/", "Multi-File Refactoring", "Refactor across your entire codebase at once."),
+        ("/docs/features/terminal/", "Integrated Terminal", "Built-in terminal with self-healing capabilities."),
+        ("/docs/features/zero-telemetry/", "Zero Telemetry", "Complete privacy — no data ever leaves your machine."),
+        ("/docs/features/offline-mode/", "Offline Mode", "Run AI models locally with Ollama integration."),
+        ("/docs/features/extensions/", "Extensions Support", "Full VS Code extension compatibility."),
+        ("/docs/features/theming/", "Theming & Customization", "Customize the look and feel of your IDE."),
+        ("/docs/features/git-integration/", "Git Integration", "Built-in Git support for version control."),
+        ("/docs/features/debugging/", "Debugging", "Advanced debugging tools and workflows."),
+        ("/docs/features/snippets/", "Code Snippets", "Reusable code snippet management."),
+    ]),
+    "integrations": ("Integrations", "Connect OmniIDE with AI providers, local models, and communication protocols.", [
+        ("/docs/integrations/gemini/", "Google Gemini", "Use Google's Gemini API for cloud-powered AI."),
+        ("/docs/integrations/ollama/", "Ollama", "Run local AI models for offline development."),
+        ("/docs/integrations/openrouter/", "OpenRouter", "Access multiple AI models through OpenRouter."),
+        ("/docs/integrations/mcp/", "Model Context Protocol", "Extend agent capabilities with MCP tools."),
+        ("/docs/integrations/acp/", "Agent Communication Protocol", "Enable multi-agent communication."),
+    ]),
+    "architecture": ("Architecture", "Deep dive into OmniIDE's technical architecture, security model, and build system.", [
+        ("/docs/architecture/overview/", "Architecture Overview", "High-level system architecture and design."),
+        ("/docs/architecture/vscode-core/", "VS Code Core", "How OmniIDE extends the VS Code foundation."),
+        ("/docs/architecture/security/", "Security Model", "Security principles and threat model."),
+        ("/docs/architecture/build-system/", "Build System", "Build toolchain and release pipeline."),
+    ]),
+    "guides": ("Guides", "Step-by-step guides for setting up and using OmniIDE's key features.", [
+        ("/docs/guides/api-key-setup/", "API Key Setup", "Configure your Google Gemini API key."),
+        ("/docs/guides/ollama-setup/", "Ollama Local Setup", "Set up Ollama for offline AI development."),
+        ("/docs/guides/workspace-config/", "Workspace Configuration", "Configure workspaces and project settings."),
+        ("/docs/guides/keyboard-shortcuts/", "Keyboard Shortcuts", "Essential keyboard shortcuts reference."),
+        ("/docs/guides/autonomous-workflows/", "Autonomous Workflows", "Set up end-to-end autonomous coding workflows."),
+        ("/docs/guides/agent-commands/", "Agent Commands", "Command reference for the Omni-Agent."),
+        ("/docs/guides/sandbox-config/", "Sandbox Configuration", "Configure the hardened sandbox environment."),
+    ]),
+    "reference": ("Reference", "Complete reference documentation for CLI, settings, keybindings, and APIs.", [
+        ("/docs/reference/cli/", "CLI Reference", "Command-line interface documentation."),
+        ("/docs/reference/settings/", "Settings Reference", "All configurable settings explained."),
+        ("/docs/reference/keybindings/", "Keybindings", "Default and custom keybinding reference."),
+        ("/docs/reference/changelog/", "Changelog", "Version history and release notes."),
+        ("/docs/reference/api/", "API Reference", "Extension and plugin API documentation."),
+    ]),
+    "troubleshooting": ("Troubleshooting", "Solutions for common issues, agent errors, and performance optimization.", [
+        ("/docs/troubleshooting/common-issues/", "Common Issues", "Frequently encountered problems and fixes."),
+        ("/docs/troubleshooting/agent-errors/", "Agent Errors", "Understanding and resolving agent errors."),
+        ("/docs/troubleshooting/performance/", "Performance", "Tips for optimizing IDE performance."),
+        ("/docs/troubleshooting/faq/", "FAQ", "Frequently asked questions about OmniIDE."),
+    ]),
+}
+
+for section_slug, (section_title, section_desc, pages) in section_index_data.items():
+    cards_html = '<div class="feature-grid">'
+    for href, title, desc in pages:
+        cards_html += f'''<a href="{href}" class="related-card" style="text-decoration:none">
+    <div class="related-card-title">{title}</div>
+    <div class="related-card-desc">{desc}</div>
+</a>'''
+    cards_html += '</div>'
+    content = f'''<h1>{section_title}</h1>
+<p>{section_desc}</p>
+{cards_html}'''
+    build_doc_page(f"/docs/{section_slug}/", section_title,
+        f"{section_title} — OmniIDE documentation for {section_desc.lower()}",
+        content)
 
 
 # ──── CORE CONCEPTS ────
@@ -2490,7 +2629,7 @@ blog_index_html += f'''
     </section>
 </div>
 {footer_html()}
-<script src="/assets/js/shared.js"></script>
+<script src="/assets/js/shared.js?v=3.0.4"></script>
 </body>
 </html>'''
 write_file("/blog/", blog_index_html)
@@ -2536,7 +2675,7 @@ for cat_slug, cat_name in categories.items():
     </section>
 </div>
 {footer_html()}
-<script src="/assets/js/shared.js"></script>
+<script src="/assets/js/shared.js?v=3.0.4"></script>
 </body>
 </html>'''
     write_file(f"/blog/category/{cat_slug}/", cat_page)
@@ -2625,7 +2764,7 @@ for slug, title, category, desc in blog_articles:
     </section>
 </div>
 {footer_html()}
-<script src="/assets/js/shared.js"></script>
+<script src="/assets/js/shared.js?v=3.0.4"></script>
 </body>
 </html>'''
     write_file(f"/blog/{slug}/", article_html)
