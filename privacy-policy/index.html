@@ -22,7 +22,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="../assets/images/logo.jpg">
-    <link rel="stylesheet" href="../assets/css/shared.css?v=3.0.6">
+    <link rel="stylesheet" href="../assets/css/shared.css?v=3.0.7">
 
     <style>
         *, *::before, *::after {
@@ -226,6 +226,10 @@
             justify-content: space-between;
         }
 
+        .mobile-nav-select-wrapper {
+            display: none;
+        }
+
         .toc-nav {
             display: flex;
             flex-direction: column;
@@ -277,6 +281,7 @@
             padding: 36px;
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
             animation: fadeInTab 0.3s ease-out forwards;
+            scroll-margin-top: 80px;
         }
 
         .legal-tab-panel.active-panel {
@@ -428,7 +433,7 @@
             }
             .legal-layout {
                 grid-template-columns: 1fr;
-                gap: 24px;
+                gap: 20px;
             }
             .legal-hero {
                 padding: 90px 16px 36px;
@@ -448,14 +453,32 @@
                 justify-content: center;
             }
             .toc-sidebar {
-                padding: 16px;
+                padding: 14px;
             }
-            .toc-tab-btn {
-                padding: 10px 12px;
-                font-size: 13px;
+            .desktop-toc-nav {
+                display: none !important;
             }
-            .toc-tab-btn.active::after {
-                display: none;
+            .mobile-nav-select-wrapper {
+                display: block;
+            }
+            .mobile-toc-select {
+                width: 100%;
+                background: #0F172A;
+                border: 1.5px solid #38BDF8;
+                color: #FFFFFF;
+                padding: 12px 14px;
+                border-radius: 10px;
+                font-size: 14px;
+                font-weight: 600;
+                font-family: 'Inter', sans-serif;
+                outline: none;
+                cursor: pointer;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            }
+            .mobile-toc-select option {
+                background: #162032;
+                color: #E2E8F0;
+                padding: 10px;
             }
             .legal-tab-panel {
                 padding: 20px 16px;
@@ -497,7 +520,7 @@
                 <span>🛡️ LEGAL & COMPLIANCE</span> • <span>REVISED: JULY 2026</span>
             </div>
             <h1>OmniIDE Privacy Policy</h1>
-            <p>Select any section from the navigation panel to open its exclusive, dedicated legal documentation view instantly.</p>
+            <p>Select any section from the navigation dropdown below to view its exclusive, dedicated legal documentation view instantly.</p>
             <div class="legal-badges">
                 <span class="l-badge">Registered Entity: <strong>OmniIDE</strong></span>
                 <span class="l-badge">Govt MSME Reg: <strong>UDYAM-KR-03-0681404</strong></span>
@@ -510,13 +533,33 @@
     <!-- Main Legal Content -->
     <main class="legal-wrapper">
         <div class="legal-layout">
-            <!-- Sidebar Tab Buttons -->
+            <!-- Sidebar Navigation -->
             <aside class="toc-sidebar">
                 <div class="toc-title">
                     <span>Legal Navigation</span>
                     <span style="font-size:10px;color:#94A3B8;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">TAB VIEW</span>
                 </div>
-                <div class="toc-nav">
+                
+                <!-- Mobile Select Dropdown -->
+                <div class="mobile-nav-select-wrapper">
+                    <select id="mobile-toc-select" class="mobile-toc-select" aria-label="Select Legal Section">
+                        <option value="tab-1">1. Executive Summary</option>
+                        <option value="tab-2">2. Scope & Applicability</option>
+                        <option value="tab-3">3. Zero Telemetry Guarantee</option>
+                        <option value="tab-4">4. Voluntary Information</option>
+                        <option value="tab-5">5. AI Model Integrations</option>
+                        <option value="tab-6">6. Hardened Local Sandbox</option>
+                        <option value="tab-7">7. Cookies & Web Tracking</option>
+                        <option value="tab-8">8. Storage & Data Control</option>
+                        <option value="tab-9">9. Global Regulations</option>
+                        <option value="tab-10">10. Vulnerability Disclosure</option>
+                        <option value="tab-11">11. Corporate Identity</option>
+                        <option value="tab-12">12. Contact & DPO Info</option>
+                    </select>
+                </div>
+
+                <!-- Desktop Sidebar Buttons -->
+                <div class="toc-nav desktop-toc-nav">
                     <button class="toc-tab-btn active" data-tab="tab-1">1. Executive Summary</button>
                     <button class="toc-tab-btn" data-tab="tab-2">2. Scope & Applicability</button>
                     <button class="toc-tab-btn" data-tab="tab-3">3. Zero Telemetry Guarantee</button>
@@ -553,7 +596,7 @@
 
                     <div class="tab-footer-nav">
                         <div></div>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-2')">Next: Scope & Applicability →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-2', true)">Next: Scope & Applicability →</button>
                     </div>
                 </div>
 
@@ -572,8 +615,8 @@
                     <p>This policy does not govern third-party VS Code extensions that you choose to manually install from external marketplaces, nor does it govern third-party cloud AI APIs configured independently by the user.</p>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-1')">← Previous: Executive Summary</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-3')">Next: Zero Telemetry Guarantee →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-1', true)">← Previous: Executive Summary</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-3', true)">Next: Zero Telemetry Guarantee →</button>
                     </div>
                 </div>
 
@@ -625,8 +668,8 @@
                     </div>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-2')">← Previous: Scope & Applicability</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-4')">Next: Voluntary Disclosures →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-2', true)">← Previous: Scope & Applicability</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-4', true)">Next: Voluntary Disclosures →</button>
                     </div>
                 </div>
 
@@ -643,8 +686,8 @@
                     </ul>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-3')">← Previous: Zero Telemetry</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-5')">Next: AI Model Integrations →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-3', true)">← Previous: Zero Telemetry</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-5', true)">Next: AI Model Integrations →</button>
                     </div>
                 </div>
 
@@ -663,8 +706,8 @@
                     When configuring OmniIDE to connect to Google Gemini API via a "Bring Your Own Key" (BYOK) model, your requests travel directly from your machine to Google’s official API endpoints (<code>generativelanguage.googleapis.com</code>). OmniIDE servers do not sit in the middle, record, or inspect these API payloads. Your data handling with cloud models is governed directly by Google API's Data Privacy Terms.</p>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-4')">← Previous: Voluntary Disclosures</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-6')">Next: Hardened Local Sandbox →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-4', true)">← Previous: Voluntary Disclosures</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-6', true)">Next: Hardened Local Sandbox →</button>
                     </div>
                 </div>
 
@@ -678,8 +721,8 @@
                     <p>This local container boundary prevents agent scripts from modifying system configuration files outside your designated project workspace, protecting operating system stability and user security.</p>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-5')">← Previous: AI Model Integrations</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-7')">Next: Cookies & Web Tracking →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-5', true)">← Previous: AI Model Integrations</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-7', true)">Next: Cookies & Web Tracking →</button>
                     </div>
                 </div>
 
@@ -693,8 +736,8 @@
                     <p>No code snippets, personal identifiers, or IDE usage data are ever linked with web analytics cookies.</p>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-6')">← Previous: Hardened Sandbox</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-8')">Next: Storage & Data Control →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-6', true)">← Previous: Hardened Sandbox</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-8', true)">Next: Storage & Data Control →</button>
                     </div>
                 </div>
 
@@ -708,8 +751,8 @@
                     <p>Deleting your local project directory or clearing the application data directory permanently erases all stored state from your machine instantly.</p>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-7')">← Previous: Cookies & Analytics</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-9')">Next: Global Regulations →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-7', true)">← Previous: Cookies & Analytics</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-9', true)">Next: Global Regulations →</button>
                     </div>
                 </div>
 
@@ -727,8 +770,8 @@
                     </ul>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-8')">← Previous: Storage Controls</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-10')">Next: Vulnerability Disclosure →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-8', true)">← Previous: Storage Controls</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-10', true)">Next: Vulnerability Disclosure →</button>
                     </div>
                 </div>
 
@@ -742,8 +785,8 @@
                     <p>Please report findings directly to our security response team at <code>contact@omniide.com</code>. Security disclosures are acknowledged and triaged within 48 hours.</p>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-9')">← Previous: Global Regulations</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-11')">Next: Corporate Identity →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-9', true)">← Previous: Global Regulations</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-11', true)">Next: Corporate Identity →</button>
                     </div>
                 </div>
 
@@ -763,8 +806,8 @@
                     </div>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-10')">← Previous: Vulnerability Disclosure</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-12')">Next: Contact & DPO Info →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-10', true)">← Previous: Vulnerability Disclosure</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-12', true)">Next: Contact & DPO Info →</button>
                     </div>
                 </div>
 
@@ -779,7 +822,7 @@
                     🌐 <strong>Official Website:</strong> <a href="https://omniide.com" style="color:#38BDF8;">https://omniide.com</a></p>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-11')">← Previous: Corporate Identity</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-11', true)">← Previous: Corporate Identity</button>
                         <div></div>
                     </div>
                 </div>
@@ -855,7 +898,7 @@
 
     <!-- Tab Switching Engine Script -->
     <script>
-        function switchTab(tabId) {
+        function switchTab(tabId, scrollOnMobile = false) {
             document.querySelectorAll('.toc-tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
@@ -865,11 +908,18 @@
 
             const targetBtn = document.querySelector(`.toc-tab-btn[data-tab="${tabId}"]`);
             const targetPanel = document.getElementById(tabId);
+            const mobileSelect = document.getElementById('mobile-toc-select');
 
-            if (targetBtn && targetPanel) {
-                targetBtn.classList.add('active');
+            if (targetBtn) targetBtn.classList.add('active');
+            if (mobileSelect) mobileSelect.value = tabId;
+
+            if (targetPanel) {
                 targetPanel.classList.add('active-panel');
                 history.replaceState(null, '', '#' + tabId);
+
+                if (scrollOnMobile && window.innerWidth <= 850) {
+                    targetPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             }
         }
 
@@ -877,14 +927,21 @@
             btn.addEventListener('click', function (e) {
                 e.preventDefault();
                 const tabId = this.getAttribute('data-tab');
-                switchTab(tabId);
+                switchTab(tabId, true);
             });
         });
+
+        const mobileSelect = document.getElementById('mobile-toc-select');
+        if (mobileSelect) {
+            mobileSelect.addEventListener('change', function () {
+                switchTab(this.value, true);
+            });
+        }
 
         window.addEventListener('DOMContentLoaded', () => {
             const hash = window.location.hash.replace('#', '');
             if (hash && document.getElementById(hash)) {
-                switchTab(hash);
+                switchTab(hash, false);
             }
         });
     </script>

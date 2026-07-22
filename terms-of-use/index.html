@@ -22,7 +22,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="../assets/images/logo.jpg">
-    <link rel="stylesheet" href="../assets/css/shared.css?v=3.0.6">
+    <link rel="stylesheet" href="../assets/css/shared.css?v=3.0.7">
 
     <style>
         *, *::before, *::after {
@@ -226,6 +226,10 @@
             justify-content: space-between;
         }
 
+        .mobile-nav-select-wrapper {
+            display: none;
+        }
+
         .toc-nav {
             display: flex;
             flex-direction: column;
@@ -277,6 +281,7 @@
             padding: 36px;
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
             animation: fadeInTab 0.3s ease-out forwards;
+            scroll-margin-top: 80px;
         }
 
         .legal-tab-panel.active-panel {
@@ -395,7 +400,7 @@
             }
             .legal-layout {
                 grid-template-columns: 1fr;
-                gap: 24px;
+                gap: 20px;
             }
             .legal-hero {
                 padding: 90px 16px 36px;
@@ -415,14 +420,32 @@
                 justify-content: center;
             }
             .toc-sidebar {
-                padding: 16px;
+                padding: 14px;
             }
-            .toc-tab-btn {
-                padding: 10px 12px;
-                font-size: 13px;
+            .desktop-toc-nav {
+                display: none !important;
             }
-            .toc-tab-btn.active::after {
-                display: none;
+            .mobile-nav-select-wrapper {
+                display: block;
+            }
+            .mobile-toc-select {
+                width: 100%;
+                background: #0F172A;
+                border: 1.5px solid #38BDF8;
+                color: #FFFFFF;
+                padding: 12px 14px;
+                border-radius: 10px;
+                font-size: 14px;
+                font-weight: 600;
+                font-family: 'Inter', sans-serif;
+                outline: none;
+                cursor: pointer;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            }
+            .mobile-toc-select option {
+                background: #162032;
+                color: #E2E8F0;
+                padding: 10px;
             }
             .legal-tab-panel {
                 padding: 20px 16px;
@@ -464,7 +487,7 @@
                 <span>📜 LEGAL TERMS & CONDITIONS</span> • <span>REVISED: JULY 2026</span>
             </div>
             <h1>OmniIDE Terms of Use</h1>
-            <p>Select any section from the navigation panel to open its exclusive, dedicated terms documentation view instantly.</p>
+            <p>Select any section from the navigation dropdown below to view its exclusive, dedicated terms documentation view instantly.</p>
             <div class="legal-badges">
                 <span class="l-badge">Licensing: <strong>MIT & Open Source Tooling</strong></span>
                 <span class="l-badge">Govt Reg: <strong>UDYAM-KR-03-0681404</strong></span>
@@ -477,13 +500,33 @@
     <!-- Main Legal Content -->
     <main class="legal-wrapper">
         <div class="legal-layout">
-            <!-- Sidebar Tab Buttons -->
+            <!-- Sidebar Navigation -->
             <aside class="toc-sidebar">
                 <div class="toc-title">
                     <span>Terms Navigation</span>
                     <span style="font-size:10px;color:#94A3B8;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">TAB VIEW</span>
                 </div>
-                <div class="toc-nav">
+                
+                <!-- Mobile Select Dropdown -->
+                <div class="mobile-nav-select-wrapper">
+                    <select id="mobile-toc-select" class="mobile-toc-select" aria-label="Select Terms Section">
+                        <option value="tab-1">1. Acceptance of Terms</option>
+                        <option value="tab-2">2. Software Licensing</option>
+                        <option value="tab-3">3. Acceptable Use Policy</option>
+                        <option value="tab-4">4. AI Agent Disclaimer</option>
+                        <option value="tab-5">5. API Credentials & Costs</option>
+                        <option value="tab-6">6. 100% Code Ownership</option>
+                        <option value="tab-7">7. Warranty Disclaimer</option>
+                        <option value="tab-8">8. Limitation of Liability</option>
+                        <option value="tab-9">9. Indemnification</option>
+                        <option value="tab-10">10. Software Updates</option>
+                        <option value="tab-11">11. Governing Law</option>
+                        <option value="tab-12">12. Corporate Details</option>
+                    </select>
+                </div>
+
+                <!-- Desktop Sidebar Buttons -->
+                <div class="toc-nav desktop-toc-nav">
                     <button class="toc-tab-btn active" data-tab="tab-1">1. Acceptance of Terms</button>
                     <button class="toc-tab-btn" data-tab="tab-2">2. Software Licensing</button>
                     <button class="toc-tab-btn" data-tab="tab-3">3. Acceptable Use Policy</button>
@@ -513,7 +556,7 @@
 
                     <div class="tab-footer-nav">
                         <div></div>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-2')">Next: Software Licensing →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-2', true)">Next: Software Licensing →</button>
                     </div>
                 </div>
 
@@ -527,8 +570,8 @@
                     <p>Core components of the OmniIDE developer suite are distributed under open-source software licenses (including the MIT License). Nothing in these Terms limits or overrides your open-source rights under applicable component licenses.</p>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-1')">← Previous: Acceptance</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-3')">Next: Acceptable Use →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-1', true)">← Previous: Acceptance</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-3', true)">Next: Acceptable Use →</button>
                     </div>
                 </div>
 
@@ -546,8 +589,8 @@
                     </ul>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-2')">← Previous: Software Licensing</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-4')">Next: AI Agent Disclaimer →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-2', true)">← Previous: Software Licensing</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-4', true)">Next: AI Agent Disclaimer →</button>
                     </div>
                 </div>
 
@@ -563,8 +606,8 @@
                     </div>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-3')">← Previous: Acceptable Use</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-5')">Next: API Credentials & Costs →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-3', true)">← Previous: Acceptable Use</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-5', true)">Next: API Credentials & Costs →</button>
                     </div>
                 </div>
 
@@ -582,8 +625,8 @@
                     </ul>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-4')">← Previous: AI Agent Disclaimer</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-6')">Next: 100% Code Ownership →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-4', true)">← Previous: AI Agent Disclaimer</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-6', true)">Next: 100% Code Ownership →</button>
                     </div>
                 </div>
 
@@ -597,8 +640,8 @@
                     <p><strong>Brand Trademarks:</strong> The name "OmniIDE", logos, and brand assets are protected trademarks of OmniIDE and may not be reproduced without written authorization.</p>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-5')">← Previous: API Credentials & Costs</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-7')">Next: Warranty Disclaimer →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-5', true)">← Previous: API Credentials & Costs</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-7', true)">Next: Warranty Disclaimer →</button>
                     </div>
                 </div>
 
@@ -611,8 +654,8 @@
                     <p>OmniIDE software and website services are provided on an <strong>"AS IS"</strong> and <strong>"AS AVAILABLE"</strong> basis without warranties of any kind, whether express, implied, statutory, or otherwise, including implied warranties of merchantability, fitness for a particular purpose, or uninterrupted performance.</p>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-6')">← Previous: Code Ownership</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-8')">Next: Limitation of Liability →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-6', true)">← Previous: Code Ownership</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-8', true)">Next: Limitation of Liability →</button>
                     </div>
                 </div>
 
@@ -625,8 +668,8 @@
                     <p>To the maximum extent permitted by applicable law, in no event shall OmniIDE, its founders (Mohammed Nihan, Shaiban Faraz Khan), or contributors be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, data corruption, or hardware damage arising out of your software execution.</p>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-7')">← Previous: Warranty Disclaimer</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-9')">Next: Indemnification →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-7', true)">← Previous: Warranty Disclaimer</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-9', true)">Next: Indemnification →</button>
                     </div>
                 </div>
 
@@ -639,8 +682,8 @@
                     <p>You agree to defend, indemnify, and hold harmless OmniIDE and its team members from any claims, damages, liabilities, costs, or expenses (including legal fees) arising out of your breach of these Terms or software misuse.</p>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-8')">← Previous: Limitation of Liability</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-10')">Next: Software Updates →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-8', true)">← Previous: Limitation of Liability</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-10', true)">Next: Software Updates →</button>
                     </div>
                 </div>
 
@@ -653,8 +696,8 @@
                     <p>We reserve the right to modify these Terms at any time. Modified terms will post directly with an updated "Revised Date". Continued use of OmniIDE after posted updates constitutes legal acceptance of revised terms.</p>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-9')">← Previous: Indemnification</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-11')">Next: Governing Law →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-9', true)">← Previous: Indemnification</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-11', true)">Next: Governing Law →</button>
                     </div>
                 </div>
 
@@ -667,8 +710,8 @@
                     <p>These Terms shall be governed by and construed in accordance with the laws of the **Republic of India**. Any legal action or dispute arising under these Terms shall be instituted exclusively in the competent courts located in **Bengaluru, Karnataka, India**.</p>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-10')">← Previous: Software Updates</button>
-                        <button class="tab-nav-btn" onclick="switchTab('tab-12')">Next: Corporate Details →</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-10', true)">← Previous: Software Updates</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-12', true)">Next: Corporate Details →</button>
                     </div>
                 </div>
 
@@ -689,7 +732,7 @@
                     </div>
 
                     <div class="tab-footer-nav">
-                        <button class="tab-nav-btn" onclick="switchTab('tab-11')">← Previous: Governing Law</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-11', true)">← Previous: Governing Law</button>
                         <div></div>
                     </div>
                 </div>
@@ -765,7 +808,7 @@
 
     <!-- Tab Switching Engine Script -->
     <script>
-        function switchTab(tabId) {
+        function switchTab(tabId, scrollOnMobile = false) {
             document.querySelectorAll('.toc-tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
@@ -775,11 +818,18 @@
 
             const targetBtn = document.querySelector(`.toc-tab-btn[data-tab="${tabId}"]`);
             const targetPanel = document.getElementById(tabId);
+            const mobileSelect = document.getElementById('mobile-toc-select');
 
-            if (targetBtn && targetPanel) {
-                targetBtn.classList.add('active');
+            if (targetBtn) targetBtn.classList.add('active');
+            if (mobileSelect) mobileSelect.value = tabId;
+
+            if (targetPanel) {
                 targetPanel.classList.add('active-panel');
                 history.replaceState(null, '', '#' + tabId);
+
+                if (scrollOnMobile && window.innerWidth <= 850) {
+                    targetPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             }
         }
 
@@ -787,14 +837,21 @@
             btn.addEventListener('click', function (e) {
                 e.preventDefault();
                 const tabId = this.getAttribute('data-tab');
-                switchTab(tabId);
+                switchTab(tabId, true);
             });
         });
+
+        const mobileSelect = document.getElementById('mobile-toc-select');
+        if (mobileSelect) {
+            mobileSelect.addEventListener('change', function () {
+                switchTab(this.value, true);
+            });
+        }
 
         window.addEventListener('DOMContentLoaded', () => {
             const hash = window.location.hash.replace('#', '');
             if (hash && document.getElementById(hash)) {
-                switchTab(hash);
+                switchTab(hash, false);
             }
         });
     </script>
