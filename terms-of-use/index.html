@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Terms of Use — OmniIDE | Legal Terms & Open Source Licensing</title>
     <meta name="description"
         content="Official Terms of Use for OmniIDE. Multi-tabbed legal framework governing software installation, autonomous agent execution, open-source licensing, and IP ownership.">
@@ -22,35 +22,110 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="../assets/images/logo.jpg">
-    <link rel="stylesheet" href="../assets/css/shared.css?v=3.0.5">
+    <link rel="stylesheet" href="../assets/css/shared.css?v=3.0.6">
 
     <style>
-        :root {
-            --legal-bg: #0F172A;
-            --card-bg: #1E293B;
-            --border-color: rgba(255, 255, 255, 0.1);
-            --accent-blue: #38BDF8;
-            --primary-blue: #3B82F6;
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+            background: #0F172A;
+            color: #E2E8F0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Header Navigation ── */
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 64px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 800;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-family: 'Syne', sans-serif;
+        }
+
+        .nav-logo img {
+            height: 32px;
+            width: 32px;
+            border-radius: 6px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #94A3B8;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #FFFFFF;
+        }
+
+        .nav-btn-cta {
+            background: #1A56DB;
+            color: #FFFFFF !important;
+            padding: 8px 18px;
+            border-radius: 10px;
+            font-size: 13.5px;
+            font-weight: 700;
+            transition: background 0.2s;
+        }
+
+        .nav-btn-cta:hover {
+            background: #1544B5;
+        }
+
+        /* ── Hero Section ── */
         .legal-hero {
-            background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
-            padding: 120px 0 50px;
-            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(180deg, #0F172A 0%, #162032 100%);
+            padding: 120px 20px 50px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
         }
 
-        .legal-hero::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
-            pointer-events: none;
+        .legal-hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .legal-eyebrow {
@@ -70,15 +145,19 @@
         }
 
         .legal-hero h1 {
-            font-size: 42px;
+            font-size: 38px;
             font-weight: 800;
             color: #FFFFFF;
             margin-bottom: 16px;
             letter-spacing: -0.02em;
+            font-family: 'Syne', sans-serif;
+            line-height: 1.15;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .legal-hero p {
-            font-size: 17px;
+            font-size: 16.5px;
             color: #94A3B8;
             max-width: 750px;
             line-height: 1.7;
@@ -88,16 +167,16 @@
         .legal-badges {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 10px;
         }
 
         .l-badge {
             background: rgba(15, 23, 42, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 8px 14px;
+            padding: 7px 12px;
             border-radius: 8px;
             color: #CBD5E1;
-            font-size: 13px;
+            font-size: 12.5px;
             font-family: 'JetBrains Mono', monospace;
             display: inline-flex;
             align-items: center;
@@ -108,16 +187,18 @@
             color: #38BDF8;
         }
 
+        /* ── Main Content Layout ── */
         .legal-wrapper {
-            padding: 50px 0 90px;
+            padding: 50px 20px 90px;
             background: #0F172A;
-            color: #E2E8F0;
-            min-height: 750px;
+            min-height: 700px;
         }
 
         .legal-layout {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: 310px 1fr;
+            grid-template-columns: 300px 1fr;
             gap: 40px;
             align-items: start;
         }
@@ -127,18 +208,18 @@
             background: #162032;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
-            padding: 24px;
+            padding: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .toc-title {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.12em;
             color: #38BDF8;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             align-items: center;
@@ -155,14 +236,14 @@
             background: transparent;
             border: 1px solid transparent;
             color: #94A3B8;
-            padding: 12px 14px;
+            padding: 11px 14px;
             border-radius: 10px;
-            font-size: 14px;
+            font-size: 13.5px;
             font-weight: 500;
             font-family: 'Inter', sans-serif;
             text-align: left;
             cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -172,15 +253,13 @@
         .toc-tab-btn:hover {
             color: #F8FAFC;
             background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(255, 255, 255, 0.08);
         }
 
         .toc-tab-btn.active {
             color: #FFFFFF;
-            background: linear-gradient(135deg, rgba(26, 86, 219, 0.3), rgba(59, 130, 246, 0.2));
+            background: linear-gradient(135deg, rgba(26, 86, 219, 0.35), rgba(59, 130, 246, 0.25));
             border-color: rgba(56, 189, 248, 0.4);
             font-weight: 700;
-            box-shadow: 0 4px 15px rgba(26, 86, 219, 0.2);
         }
 
         .toc-tab-btn.active::after {
@@ -195,9 +274,9 @@
             background: #162032;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 18px;
-            padding: 40px;
+            padding: 36px;
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-            animation: fadeInTab 0.35s ease-out forwards;
+            animation: fadeInTab 0.3s ease-out forwards;
         }
 
         .legal-tab-panel.active-panel {
@@ -205,7 +284,7 @@
         }
 
         @keyframes fadeInTab {
-            from { opacity: 0; transform: translateY(8px); }
+            from { opacity: 0; transform: translateY(6px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -220,70 +299,74 @@
 
         .panel-num {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             color: #38BDF8;
             background: rgba(56, 189, 248, 0.1);
-            padding: 6px 14px;
-            border-radius: 10px;
+            padding: 5px 12px;
+            border-radius: 8px;
             border: 1px solid rgba(56, 189, 248, 0.2);
+            flex-shrink: 0;
         }
 
         .panel-header h2 {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 800;
             color: #FFFFFF;
             margin: 0;
+            font-family: 'Syne', sans-serif;
+            line-height: 1.25;
         }
 
         .legal-tab-panel p {
-            font-size: 16px;
-            line-height: 1.85;
-            color: #CBD5E1;
-            margin-bottom: 20px;
-        }
-
-        .legal-tab-panel ul, .legal-tab-panel ol {
-            margin-bottom: 24px;
-            padding-left: 24px;
-        }
-
-        .legal-tab-panel li {
             font-size: 15.5px;
             line-height: 1.8;
             color: #CBD5E1;
-            margin-bottom: 12px;
+            margin-bottom: 18px;
+        }
+
+        .legal-tab-panel ul, .legal-tab-panel ol {
+            margin-bottom: 22px;
+            padding-left: 20px;
+        }
+
+        .legal-tab-panel li {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #CBD5E1;
+            margin-bottom: 10px;
         }
 
         .legal-box {
             background: rgba(30, 41, 59, 0.9);
             border-left: 4px solid #3B82F6;
             border-radius: 0 12px 12px 0;
-            padding: 22px 26px;
-            margin: 28px 0;
+            padding: 20px 22px;
+            margin: 24px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             border-right: 1px solid rgba(255, 255, 255, 0.05);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .legal-box h4 {
-            font-size: 17px;
+            font-size: 16px;
             color: #60A5FA;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-weight: 700;
         }
 
         .legal-box p {
             margin-bottom: 0;
-            font-size: 15px;
+            font-size: 14.5px;
             color: #E2E8F0;
         }
 
         .tab-footer-nav {
             display: flex;
             justify-content: space-between;
-            margin-top: 40px;
-            padding-top: 24px;
+            gap: 12px;
+            margin-top: 36px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
@@ -291,9 +374,9 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: #38BDF8;
-            padding: 10px 20px;
+            padding: 9px 16px;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 13.5px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -305,17 +388,52 @@
             border-color: #1A56DB;
         }
 
-        @media (max-width: 992px) {
+        /* ── Mobile Responsive Rules ── */
+        @media (max-width: 850px) {
+            .nav-links {
+                display: none !important;
+            }
             .legal-layout {
                 grid-template-columns: 1fr;
+                gap: 24px;
             }
-
-            .legal-tab-panel {
-                padding: 24px;
+            .legal-hero {
+                padding: 90px 16px 36px;
+                text-align: center;
             }
-
             .legal-hero h1 {
-                font-size: 32px;
+                font-size: 26px;
+            }
+            .legal-hero p {
+                font-size: 14.5px;
+            }
+            .legal-badges {
+                justify-content: center;
+            }
+            .l-badge {
+                width: 100%;
+                justify-content: center;
+            }
+            .toc-sidebar {
+                padding: 16px;
+            }
+            .toc-tab-btn {
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+            .toc-tab-btn.active::after {
+                display: none;
+            }
+            .legal-tab-panel {
+                padding: 20px 16px;
+            }
+            .panel-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .panel-header h2 {
+                font-size: 20px;
             }
         }
     </style>
@@ -325,28 +443,28 @@
     <!-- Header Navigation -->
     <header class="site-nav" role="banner">
         <div class="nav-container">
-            <a href="/" class="logo" style="display:flex;align-items:center;gap:12px;font-size:20px;font-weight:800;color:#0F172A;">
-                <img src="../assets/images/logo.jpg" alt="OmniIDE Logo" style="height:32px;width:32px;border-radius:6px;">
+            <a href="/" class="nav-logo">
+                <img src="../assets/images/logo.jpg" alt="OmniIDE Logo">
                 <span>Omni<span style="color:#1A56DB;">IDE</span></span>
             </a>
-            <nav class="nav-links" style="display:flex;gap:32px;align-items:center;">
-                <a href="/#mission" style="font-size:14px;font-weight:600;color:#64748B;">About</a>
-                <a href="/#ecosystem" style="font-size:14px;font-weight:600;color:#64748B;">Ecosystem</a>
-                <a href="/docs/" style="font-size:14px;font-weight:600;color:#64748B;">Docs</a>
-                <a href="/blog/" style="font-size:14px;font-weight:600;color:#64748B;">Blog</a>
-                <a href="/omni/" class="btn-cta" style="background:#1A56DB;color:#fff;padding:8px 20px;border-radius:10px;font-size:14px;font-weight:700;">Try OmniIDE</a>
+            <nav class="nav-links">
+                <a href="/#mission">About</a>
+                <a href="/#ecosystem">Ecosystem</a>
+                <a href="/docs/">Docs</a>
+                <a href="/blog/">Blog</a>
+                <a href="/omni/" class="nav-btn-cta">Try OmniIDE</a>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="legal-hero">
-        <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <div class="legal-hero-inner">
             <div class="legal-eyebrow">
                 <span>📜 LEGAL TERMS & CONDITIONS</span> • <span>REVISED: JULY 2026</span>
             </div>
             <h1>OmniIDE Terms of Use</h1>
-            <p>Select any section from the panel to open its exclusive, dedicated terms documentation view instantly without scrolling.</p>
+            <p>Select any section from the navigation panel to open its exclusive, dedicated terms documentation view instantly.</p>
             <div class="legal-badges">
                 <span class="l-badge">Licensing: <strong>MIT & Open Source Tooling</strong></span>
                 <span class="l-badge">Govt Reg: <strong>UDYAM-KR-03-0681404</strong></span>
@@ -358,267 +476,265 @@
 
     <!-- Main Legal Content -->
     <main class="legal-wrapper">
-        <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px;">
-            <div class="legal-layout">
-                <!-- Sidebar Tab Buttons -->
-                <aside class="toc-sidebar">
-                    <div class="toc-title">
-                        <span>Terms Navigation</span>
-                        <span style="font-size:10px;color:#94A3B8;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">TAB VIEW</span>
-                    </div>
-                    <div class="toc-nav">
-                        <button class="toc-tab-btn active" data-tab="tab-1">1. Acceptance of Terms</button>
-                        <button class="toc-tab-btn" data-tab="tab-2">2. Software Licensing</button>
-                        <button class="toc-tab-btn" data-tab="tab-3">3. Acceptable Use Policy</button>
-                        <button class="toc-tab-btn" data-tab="tab-4">4. AI Agent Disclaimer</button>
-                        <button class="toc-tab-btn" data-tab="tab-5">5. API Credentials & Costs</button>
-                        <button class="toc-tab-btn" data-tab="tab-6">6. 100% Code Ownership</button>
-                        <button class="toc-tab-btn" data-tab="tab-7">7. Warranty Disclaimer</button>
-                        <button class="toc-tab-btn" data-tab="tab-8">8. Limitation of Liability</button>
-                        <button class="toc-tab-btn" data-tab="tab-9">9. Indemnification</button>
-                        <button class="toc-tab-btn" data-tab="tab-10">10. Software Updates</button>
-                        <button class="toc-tab-btn" data-tab="tab-11">11. Governing Law</button>
-                        <button class="toc-tab-btn" data-tab="tab-12">12. Corporate Details</button>
-                    </div>
-                </aside>
-
-                <!-- Dedicated Standalone Tab Content Panels -->
-                <div class="panels-container">
-                    
-                    <!-- TAB 1: ACCEPTANCE -->
-                    <div class="legal-tab-panel active-panel" id="tab-1">
-                        <div class="panel-header">
-                            <span class="panel-num">01</span>
-                            <h2>Agreement & Acceptance of Terms</h2>
-                        </div>
-                        <p>These Terms of Use ("Terms") constitute a legally binding contract between you ("User", "Developer", or "Entity") and <strong>OmniIDE</strong> ("Company", "We", "Us", or "Our"), a registered MSME corporate entity under the Government of India (UDYAM-KR-03-0681404), governing your download, access, installation, execution, and deployment of OmniIDE software client binaries, documentation, and online developer portals (<code>https://omniide.com</code>).</p>
-                        <p>By downloading, executing, or accessing OmniIDE, you explicitly acknowledge that you have read, understood, and agreed to be legally bound by all terms, policies, and conditions set forth herein.</p>
-
-                        <div class="tab-footer-nav">
-                            <div></div>
-                            <button class="tab-nav-btn" onclick="switchTab('tab-2')">Next: Software Licensing →</button>
-                        </div>
-                    </div>
-
-                    <!-- TAB 2: LICENSING -->
-                    <div class="legal-tab-panel" id="tab-2">
-                        <div class="panel-header">
-                            <span class="panel-num">02</span>
-                            <h2>Software License Grant & Open Source Licensing</h2>
-                        </div>
-                        <p>Subject to your compliance with these Terms, OmniIDE grants you a worldwide, non-exclusive, royalty-free, perpetual license to install, run, modify, inspect, and deploy the software client for commercial, personal, institutional, or open-source development.</p>
-                        <p>Core components of the OmniIDE developer suite are distributed under open-source software licenses (including the MIT License). Nothing in these Terms limits or overrides your open-source rights under applicable component licenses.</p>
-
-                        <div class="tab-footer-nav">
-                            <button class="tab-nav-btn" onclick="switchTab('tab-1')">← Previous: Acceptance</button>
-                            <button class="tab-nav-btn" onclick="switchTab('tab-3')">Next: Acceptable Use →</button>
-                        </div>
-                    </div>
-
-                    <!-- TAB 3: ACCEPTABLE USE -->
-                    <div class="legal-tab-panel" id="tab-3">
-                        <div class="panel-header">
-                            <span class="panel-num">03</span>
-                            <h2>Acceptable Use Policy & Security Guardrails</h2>
-                        </div>
-                        <p>You agree not to utilize OmniIDE or its autonomous agent framework for any harmful or illegal activities, including:</p>
-                        <ul>
-                            <li>Developing, compiling, or deploying malware, ransomware, spyware, or exploit scripts intended for unauthorized system intrusion.</li>
-                            <li>Attempting to break, reverse-engineer, or tamper with the Hardened Local Sandbox security boundary.</li>
-                            <li>Using automated AI agent scripts to perform unauthorized network penetration attacks, credential brute-forcing, or denial-of-service operations.</li>
-                        </ul>
-
-                        <div class="tab-footer-nav">
-                            <button class="tab-nav-btn" onclick="switchTab('tab-2')">← Previous: Software Licensing</button>
-                            <button class="tab-nav-btn" onclick="switchTab('tab-4')">Next: AI Agent Disclaimer →</button>
-                        </div>
-                    </div>
-
-                    <!-- TAB 4: AI AGENT DISCLAIMER -->
-                    <div class="legal-tab-panel" id="tab-4">
-                        <div class="panel-header">
-                            <span class="panel-num">04</span>
-                            <h2>Autonomous AI Agent Execution & Developer Responsibility</h2>
-                        </div>
-                        <div class="legal-box">
-                            <h4>Important Legal Notice on AI Code Execution</h4>
-                            <p>OmniIDE incorporates autonomous AI agent features (such as Omni-Agent self-healing terminal execution). All AI suggestions, code patches, terminal command scripts, and refactoring outputs are provided for developer assistance. As the developer, you retain sole responsibility for reviewing, testing, auditing, and validating all AI-generated code prior to deployment in production environments.</p>
-                        </div>
-
-                        <div class="tab-footer-nav">
-                            <button class="tab-nav-btn" onclick="switchTab('tab-3')">← Previous: Acceptable Use</button>
-                            <button class="tab-nav-btn" onclick="switchTab('tab-5')">Next: API Credentials & Costs →</button>
-                        </div>
-                    </div>
-
-                    <!-- TAB 5: API CREDENTIALS & COSTS -->
-                    <div class="legal-tab-panel" id="tab-5">
-                        <div class="panel-header">
-                            <span class="panel-num">05</span>
-                            <h2>API Credentials, Third-Party Costs & Usage Limits</h2>
-                        </div>
-                        <p>When connecting OmniIDE to cloud AI model endpoints (such as Google Gemini API), you supply your own API key ("Bring Your Own Key"). You are strictly responsible for:</p>
-                        <ul>
-                            <li>Securing your API keys against unauthorized access or exposure.</li>
-                            <li>All usage costs, rate limits, and billing incurred under your cloud provider accounts.</li>
-                            <li>Adhering to the third-party API provider's terms of service. OmniIDE bears zero financial liability for third-party API billing overruns.</li>
-                        </ul>
-
-                        <div class="tab-footer-nav">
-                            <button class="tab-nav-btn" onclick="switchTab('tab-4')">← Previous: AI Agent Disclaimer</button>
-                            <button class="tab-nav-btn" onclick="switchTab('tab-6')">Next: 100% Code Ownership →</button>
-                        </div>
-                    </div>
-
-                    <!-- TAB 6: 100% CODE OWNERSHIP -->
-                    <div class="legal-tab-panel" id="tab-6">
-                        <div class="panel-header">
-                            <span class="panel-num">06</span>
-                            <h2>100% Code Ownership & Intellectual Property</h2>
-                        </div>
-                        <p><strong>Absolute Developer Ownership:</strong> You retain 100% unencumbered intellectual property ownership of all source code, software architecture, files, and assets built or refactored using OmniIDE. OmniIDE claims zero ownership, zero copyright, and zero royalty rights over user outputs.</p>
-                        <p><strong>Brand Trademarks:</strong> The name "OmniIDE", logos, and brand assets are protected trademarks of OmniIDE and may not be reproduced without written authorization.</p>
-
-                        <div class="tab-footer-nav">
-                            <button class="tab-nav-btn" onclick="switchTab('tab-5')">← Previous: API Credentials & Costs</button>
-                            <button class="tab-nav-btn" onclick="switchTab('tab-7')">Next: Warranty Disclaimer →</button>
-                        </div>
-                    </div>
-
-                    <!-- TAB 7: WARRANTY DISCLAIMER -->
-                    <div class="legal-tab-panel" id="tab-7">
-                        <div class="panel-header">
-                            <span class="panel-num">07</span>
-                            <h2>Disclaimer of Warranties ("AS IS" Provision)</h2>
-                        </div>
-                        <p>OmniIDE software and website services are provided on an <strong>"AS IS"</strong> and <strong>"AS AVAILABLE"</strong> basis without warranties of any kind, whether express, implied, statutory, or otherwise, including implied warranties of merchantability, fitness for a particular purpose, or uninterrupted performance.</p>
-
-                        <div class="tab-footer-nav">
-                            <button class="tab-nav-btn" onclick="switchTab('tab-6')">← Previous: Code Ownership</button>
-                            <button class="tab-nav-btn" onclick="switchTab('tab-8')">Next: Limitation of Liability →</button>
-                        </div>
-                    </div>
-
-                    <!-- TAB 8: LIMITATION OF LIABILITY -->
-                    <div class="legal-tab-panel" id="tab-8">
-                        <div class="panel-header">
-                            <span class="panel-num">08</span>
-                            <h2>Limitation of Liability</h2>
-                        </div>
-                        <p>To the maximum extent permitted by applicable law, in no event shall OmniIDE, its founders (Mohammed Nihan, Shaiban Faraz Khan), or contributors be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, data corruption, or hardware damage arising out of your software execution.</p>
-
-                        <div class="tab-footer-nav">
-                            <button class="tab-nav-btn" onclick="switchTab('tab-7')">← Previous: Warranty Disclaimer</button>
-                            <button class="tab-nav-btn" onclick="switchTab('tab-9')">Next: Indemnification →</button>
-                        </div>
-                    </div>
-
-                    <!-- TAB 9: INDEMNIFICATION -->
-                    <div class="legal-tab-panel" id="tab-9">
-                        <div class="panel-header">
-                            <span class="panel-num">09</span>
-                            <h2>Indemnification</h2>
-                        </div>
-                        <p>You agree to defend, indemnify, and hold harmless OmniIDE and its team members from any claims, damages, liabilities, costs, or expenses (including legal fees) arising out of your breach of these Terms or software misuse.</p>
-
-                        <div class="tab-footer-nav">
-                            <button class="tab-nav-btn" onclick="switchTab('tab-8')">← Previous: Limitation of Liability</button>
-                            <button class="tab-nav-btn" onclick="switchTab('tab-10')">Next: Software Updates →</button>
-                        </div>
-                    </div>
-
-                    <!-- TAB 10: SOFTWARE UPDATES -->
-                    <div class="legal-tab-panel" id="tab-10">
-                        <div class="panel-header">
-                            <span class="panel-num">10</span>
-                            <h2>Software Updates & Terms Modifications</h2>
-                        </div>
-                        <p>We reserve the right to modify these Terms at any time. Modified terms will post directly with an updated "Revised Date". Continued use of OmniIDE after posted updates constitutes legal acceptance of revised terms.</p>
-
-                        <div class="tab-footer-nav">
-                            <button class="tab-nav-btn" onclick="switchTab('tab-9')">← Previous: Indemnification</button>
-                            <button class="tab-nav-btn" onclick="switchTab('tab-11')">Next: Governing Law →</button>
-                        </div>
-                    </div>
-
-                    <!-- TAB 11: GOVERNING LAW -->
-                    <div class="legal-tab-panel" id="tab-11">
-                        <div class="panel-header">
-                            <span class="panel-num">11</span>
-                            <h2>Governing Law & Judicial Jurisdiction</h2>
-                        </div>
-                        <p>These Terms shall be governed by and construed in accordance with the laws of the **Republic of India**. Any legal action or dispute arising under these Terms shall be instituted exclusively in the competent courts located in **Bengaluru, Karnataka, India**.</p>
-
-                        <div class="tab-footer-nav">
-                            <button class="tab-nav-btn" onclick="switchTab('tab-10')">← Previous: Software Updates</button>
-                            <button class="tab-nav-btn" onclick="switchTab('tab-12')">Next: Corporate Details →</button>
-                        </div>
-                    </div>
-
-                    <!-- TAB 12: CORPORATE DETAILS -->
-                    <div class="legal-tab-panel" id="tab-12">
-                        <div class="panel-header">
-                            <span class="panel-num">12</span>
-                            <h2>Corporate Verification & Contact Information</h2>
-                        </div>
-                        <p>For questions or formal legal notices regarding these Terms of Use, contact our team:</p>
-                        <div class="legal-box">
-                            <h4>Corporate Entity Legal Information</h4>
-                            <p><strong>Entity Name:</strong> OmniIDE<br>
-                            <strong>Govt Registration:</strong> MSME Registered (UDYAM-KR-03-0681404)<br>
-                            <strong>DPIIT Recognition:</strong> IN-0526-9460PZ<br>
-                            <strong>Headquarters:</strong> B-Block, Devgere, Kumbalagodu, Kengeri, Bengaluru, Karnataka 560060, India<br>
-                            <strong>Email:</strong> <a href="mailto:contact@omniide.com" style="color:#38BDF8;">contact@omniide.com</a></p>
-                        </div>
-
-                        <div class="tab-footer-nav">
-                            <button class="tab-nav-btn" onclick="switchTab('tab-11')">← Previous: Governing Law</button>
-                            <div></div>
-                        </div>
-                    </div>
-
+        <div class="legal-layout">
+            <!-- Sidebar Tab Buttons -->
+            <aside class="toc-sidebar">
+                <div class="toc-title">
+                    <span>Terms Navigation</span>
+                    <span style="font-size:10px;color:#94A3B8;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">TAB VIEW</span>
                 </div>
+                <div class="toc-nav">
+                    <button class="toc-tab-btn active" data-tab="tab-1">1. Acceptance of Terms</button>
+                    <button class="toc-tab-btn" data-tab="tab-2">2. Software Licensing</button>
+                    <button class="toc-tab-btn" data-tab="tab-3">3. Acceptable Use Policy</button>
+                    <button class="toc-tab-btn" data-tab="tab-4">4. AI Agent Disclaimer</button>
+                    <button class="toc-tab-btn" data-tab="tab-5">5. API Credentials & Costs</button>
+                    <button class="toc-tab-btn" data-tab="tab-6">6. 100% Code Ownership</button>
+                    <button class="toc-tab-btn" data-tab="tab-7">7. Warranty Disclaimer</button>
+                    <button class="toc-tab-btn" data-tab="tab-8">8. Limitation of Liability</button>
+                    <button class="toc-tab-btn" data-tab="tab-9">9. Indemnification</button>
+                    <button class="toc-tab-btn" data-tab="tab-10">10. Software Updates</button>
+                    <button class="toc-tab-btn" data-tab="tab-11">11. Governing Law</button>
+                    <button class="toc-tab-btn" data-tab="tab-12">12. Corporate Details</button>
+                </div>
+            </aside>
+
+            <!-- Standalone Tab Panels -->
+            <div class="panels-container">
+                
+                <!-- TAB 1: ACCEPTANCE -->
+                <div class="legal-tab-panel active-panel" id="tab-1">
+                    <div class="panel-header">
+                        <span class="panel-num">01</span>
+                        <h2>Agreement & Acceptance of Terms</h2>
+                    </div>
+                    <p>These Terms of Use ("Terms") constitute a legally binding contract between you ("User", "Developer", or "Entity") and <strong>OmniIDE</strong> ("Company", "We", "Us", or "Our"), a registered MSME corporate entity under the Government of India (UDYAM-KR-03-0681404), governing your download, access, installation, execution, and deployment of OmniIDE software client binaries, documentation, and online developer portals (<code>https://omniide.com</code>).</p>
+                    <p>By downloading, executing, or accessing OmniIDE, you explicitly acknowledge that you have read, understood, and agreed to be legally bound by all terms, policies, and conditions set forth herein.</p>
+
+                    <div class="tab-footer-nav">
+                        <div></div>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-2')">Next: Software Licensing →</button>
+                    </div>
+                </div>
+
+                <!-- TAB 2: LICENSING -->
+                <div class="legal-tab-panel" id="tab-2">
+                    <div class="panel-header">
+                        <span class="panel-num">02</span>
+                        <h2>Software License Grant & Open Source Licensing</h2>
+                    </div>
+                    <p>Subject to your compliance with these Terms, OmniIDE grants you a worldwide, non-exclusive, royalty-free, perpetual license to install, run, modify, inspect, and deploy the software client for commercial, personal, institutional, or open-source development.</p>
+                    <p>Core components of the OmniIDE developer suite are distributed under open-source software licenses (including the MIT License). Nothing in these Terms limits or overrides your open-source rights under applicable component licenses.</p>
+
+                    <div class="tab-footer-nav">
+                        <button class="tab-nav-btn" onclick="switchTab('tab-1')">← Previous: Acceptance</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-3')">Next: Acceptable Use →</button>
+                    </div>
+                </div>
+
+                <!-- TAB 3: ACCEPTABLE USE -->
+                <div class="legal-tab-panel" id="tab-3">
+                    <div class="panel-header">
+                        <span class="panel-num">03</span>
+                        <h2>Acceptable Use Policy & Security Guardrails</h2>
+                    </div>
+                    <p>You agree not to utilize OmniIDE or its autonomous agent framework for any harmful or illegal activities, including:</p>
+                    <ul>
+                        <li>Developing, compiling, or deploying malware, ransomware, spyware, or exploit scripts intended for unauthorized system intrusion.</li>
+                        <li>Attempting to break, reverse-engineer, or tamper with the Hardened Local Sandbox security boundary.</li>
+                        <li>Using automated AI agent scripts to perform unauthorized network penetration attacks, credential brute-forcing, or denial-of-service operations.</li>
+                    </ul>
+
+                    <div class="tab-footer-nav">
+                        <button class="tab-nav-btn" onclick="switchTab('tab-2')">← Previous: Software Licensing</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-4')">Next: AI Agent Disclaimer →</button>
+                    </div>
+                </div>
+
+                <!-- TAB 4: AI AGENT DISCLAIMER -->
+                <div class="legal-tab-panel" id="tab-4">
+                    <div class="panel-header">
+                        <span class="panel-num">04</span>
+                        <h2>Autonomous AI Agent Execution & Developer Responsibility</h2>
+                    </div>
+                    <div class="legal-box">
+                        <h4>Important Legal Notice on AI Code Execution</h4>
+                        <p>OmniIDE incorporates autonomous AI agent features (such as Omni-Agent self-healing terminal execution). All AI suggestions, code patches, terminal command scripts, and refactoring outputs are provided for developer assistance. As the developer, you retain sole responsibility for reviewing, testing, auditing, and validating all AI-generated code prior to deployment in production environments.</p>
+                    </div>
+
+                    <div class="tab-footer-nav">
+                        <button class="tab-nav-btn" onclick="switchTab('tab-3')">← Previous: Acceptable Use</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-5')">Next: API Credentials & Costs →</button>
+                    </div>
+                </div>
+
+                <!-- TAB 5: API CREDENTIALS & COSTS -->
+                <div class="legal-tab-panel" id="tab-5">
+                    <div class="panel-header">
+                        <span class="panel-num">05</span>
+                        <h2>API Credentials, Third-Party Costs & Usage Limits</h2>
+                    </div>
+                    <p>When connecting OmniIDE to cloud AI model endpoints (such as Google Gemini API), you supply your own API key ("Bring Your Own Key"). You are strictly responsible for:</p>
+                    <ul>
+                        <li>Securing your API keys against unauthorized access or exposure.</li>
+                        <li>All usage costs, rate limits, and billing incurred under your cloud provider accounts.</li>
+                        <li>Adhering to the third-party API provider's terms of service. OmniIDE bears zero financial liability for third-party API billing overruns.</li>
+                    </ul>
+
+                    <div class="tab-footer-nav">
+                        <button class="tab-nav-btn" onclick="switchTab('tab-4')">← Previous: AI Agent Disclaimer</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-6')">Next: 100% Code Ownership →</button>
+                    </div>
+                </div>
+
+                <!-- TAB 6: 100% CODE OWNERSHIP -->
+                <div class="legal-tab-panel" id="tab-6">
+                    <div class="panel-header">
+                        <span class="panel-num">06</span>
+                        <h2>100% Code Ownership & Intellectual Property</h2>
+                    </div>
+                    <p><strong>Absolute Developer Ownership:</strong> You retain 100% unencumbered intellectual property ownership of all source code, software architecture, files, and assets built or refactored using OmniIDE. OmniIDE claims zero ownership, zero copyright, and zero royalty rights over user outputs.</p>
+                    <p><strong>Brand Trademarks:</strong> The name "OmniIDE", logos, and brand assets are protected trademarks of OmniIDE and may not be reproduced without written authorization.</p>
+
+                    <div class="tab-footer-nav">
+                        <button class="tab-nav-btn" onclick="switchTab('tab-5')">← Previous: API Credentials & Costs</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-7')">Next: Warranty Disclaimer →</button>
+                    </div>
+                </div>
+
+                <!-- TAB 7: WARRANTY DISCLAIMER -->
+                <div class="legal-tab-panel" id="tab-7">
+                    <div class="panel-header">
+                        <span class="panel-num">07</span>
+                        <h2>Disclaimer of Warranties ("AS IS" Provision)</h2>
+                    </div>
+                    <p>OmniIDE software and website services are provided on an <strong>"AS IS"</strong> and <strong>"AS AVAILABLE"</strong> basis without warranties of any kind, whether express, implied, statutory, or otherwise, including implied warranties of merchantability, fitness for a particular purpose, or uninterrupted performance.</p>
+
+                    <div class="tab-footer-nav">
+                        <button class="tab-nav-btn" onclick="switchTab('tab-6')">← Previous: Code Ownership</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-8')">Next: Limitation of Liability →</button>
+                    </div>
+                </div>
+
+                <!-- TAB 8: LIMITATION OF LIABILITY -->
+                <div class="legal-tab-panel" id="tab-8">
+                    <div class="panel-header">
+                        <span class="panel-num">08</span>
+                        <h2>Limitation of Liability</h2>
+                    </div>
+                    <p>To the maximum extent permitted by applicable law, in no event shall OmniIDE, its founders (Mohammed Nihan, Shaiban Faraz Khan), or contributors be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, data corruption, or hardware damage arising out of your software execution.</p>
+
+                    <div class="tab-footer-nav">
+                        <button class="tab-nav-btn" onclick="switchTab('tab-7')">← Previous: Warranty Disclaimer</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-9')">Next: Indemnification →</button>
+                    </div>
+                </div>
+
+                <!-- TAB 9: INDEMNIFICATION -->
+                <div class="legal-tab-panel" id="tab-9">
+                    <div class="panel-header">
+                        <span class="panel-num">09</span>
+                        <h2>Indemnification</h2>
+                    </div>
+                    <p>You agree to defend, indemnify, and hold harmless OmniIDE and its team members from any claims, damages, liabilities, costs, or expenses (including legal fees) arising out of your breach of these Terms or software misuse.</p>
+
+                    <div class="tab-footer-nav">
+                        <button class="tab-nav-btn" onclick="switchTab('tab-8')">← Previous: Limitation of Liability</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-10')">Next: Software Updates →</button>
+                    </div>
+                </div>
+
+                <!-- TAB 10: SOFTWARE UPDATES -->
+                <div class="legal-tab-panel" id="tab-10">
+                    <div class="panel-header">
+                        <span class="panel-num">10</span>
+                        <h2>Software Updates & Terms Modifications</h2>
+                    </div>
+                    <p>We reserve the right to modify these Terms at any time. Modified terms will post directly with an updated "Revised Date". Continued use of OmniIDE after posted updates constitutes legal acceptance of revised terms.</p>
+
+                    <div class="tab-footer-nav">
+                        <button class="tab-nav-btn" onclick="switchTab('tab-9')">← Previous: Indemnification</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-11')">Next: Governing Law →</button>
+                    </div>
+                </div>
+
+                <!-- TAB 11: GOVERNING LAW -->
+                <div class="legal-tab-panel" id="tab-11">
+                    <div class="panel-header">
+                        <span class="panel-num">11</span>
+                        <h2>Governing Law & Judicial Jurisdiction</h2>
+                    </div>
+                    <p>These Terms shall be governed by and construed in accordance with the laws of the **Republic of India**. Any legal action or dispute arising under these Terms shall be instituted exclusively in the competent courts located in **Bengaluru, Karnataka, India**.</p>
+
+                    <div class="tab-footer-nav">
+                        <button class="tab-nav-btn" onclick="switchTab('tab-10')">← Previous: Software Updates</button>
+                        <button class="tab-nav-btn" onclick="switchTab('tab-12')">Next: Corporate Details →</button>
+                    </div>
+                </div>
+
+                <!-- TAB 12: CORPORATE DETAILS -->
+                <div class="legal-tab-panel" id="tab-12">
+                    <div class="panel-header">
+                        <span class="panel-num">12</span>
+                        <h2>Corporate Verification & Contact Information</h2>
+                    </div>
+                    <p>For questions or formal legal notices regarding these Terms of Use, contact our team:</p>
+                    <div class="legal-box">
+                        <h4>Corporate Entity Legal Information</h4>
+                        <p><strong>Entity Name:</strong> OmniIDE<br>
+                        <strong>Govt Registration:</strong> MSME Registered (UDYAM-KR-03-0681404)<br>
+                        <strong>DPIIT Recognition:</strong> IN-0526-9460PZ<br>
+                        <strong>Headquarters:</strong> B-Block, Devgere, Kumbalagodu, Kengeri, Bengaluru, Karnataka 560060, India<br>
+                        <strong>Email:</strong> <a href="mailto:contact@omniide.com" style="color:#38BDF8;">contact@omniide.com</a></p>
+                    </div>
+
+                    <div class="tab-footer-nav">
+                        <button class="tab-nav-btn" onclick="switchTab('tab-11')">← Previous: Governing Law</button>
+                        <div></div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="footer" style="background:#090D16;padding:80px 0 40px;color:#fff;" role="contentinfo">
-        <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px;">
-            <div style="display:grid;grid-template-columns:1.1fr 0.65fr 0.65fr 0.65fr 2fr;gap:24px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.08);align-items:start;">
+    <footer class="footer" style="background:#090D16;padding:70px 20px 40px;color:#fff;" role="contentinfo">
+        <div style="max-width:1200px;margin:0 auto;">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:32px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.08);">
                 <div>
                     <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
                         <img src="../assets/images/logo.jpg" alt="OmniIDE Logo" style="height:34px;width:34px;border-radius:6px;">
                         <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:#fff;">OmniIDE</span>
                     </div>
-                    <p style="font-size:16px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:12px;">Building the open infrastructure layer for autonomous software development.</p>
-                    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(255,255,255,0.45);">UDYAM-KR-03-0681404</div>
+                    <p style="font-size:15px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:12px;">Building the open infrastructure layer for autonomous software development.</p>
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:rgba(255,255,255,0.45);">UDYAM-KR-03-0681404</div>
                 </div>
                 <div>
-                    <h5 style="font-size:15px;font-weight:800;color:rgba(255,255,255,0.95);text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px;">Company</h5>
-                    <a href="/#mission" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">About</a>
-                    <a href="/#mission" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">Mission</a>
-                    <a href="/#team" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">Team</a>
-                    <a href="/blog/" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">Blog</a>
-                    <a href="/docs/" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">Documentation</a>
+                    <h5 style="font-size:14px;font-weight:800;color:rgba(255,255,255,0.95);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;">Company</h5>
+                    <a href="/#mission" style="display:block;font-size:14.5px;color:rgba(255,255,255,0.68);margin-bottom:10px;text-decoration:none;">About</a>
+                    <a href="/#mission" style="display:block;font-size:14.5px;color:rgba(255,255,255,0.68);margin-bottom:10px;text-decoration:none;">Mission</a>
+                    <a href="/#team" style="display:block;font-size:14.5px;color:rgba(255,255,255,0.68);margin-bottom:10px;text-decoration:none;">Team</a>
+                    <a href="/blog/" style="display:block;font-size:14.5px;color:rgba(255,255,255,0.68);margin-bottom:10px;text-decoration:none;">Blog</a>
+                    <a href="/docs/" style="display:block;font-size:14.5px;color:rgba(255,255,255,0.68);margin-bottom:10px;text-decoration:none;">Documentation</a>
                 </div>
                 <div>
-                    <h5 style="font-size:15px;font-weight:800;color:rgba(255,255,255,0.95);text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px;">Products</h5>
-                    <a href="/omni/" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">OmniIDE</a>
-                    <a href="/#ecosystem" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">Omni-Guard</a>
-                    <a href="#" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">Roadmap</a>
-                    <a href="https://github.com/nihannihu/Omni-IDE/releases/tag/v3.0.0" target="_blank" rel="noopener noreferrer" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">GitHub Releases</a>
+                    <h5 style="font-size:14px;font-weight:800;color:rgba(255,255,255,0.95);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;">Products</h5>
+                    <a href="/omni/" style="display:block;font-size:14.5px;color:rgba(255,255,255,0.68);margin-bottom:10px;text-decoration:none;">OmniIDE</a>
+                    <a href="/#ecosystem" style="display:block;font-size:14.5px;color:rgba(255,255,255,0.68);margin-bottom:10px;text-decoration:none;">Omni-Guard</a>
+                    <a href="#" style="display:block;font-size:14.5px;color:rgba(255,255,255,0.68);margin-bottom:10px;text-decoration:none;">Roadmap</a>
+                    <a href="https://github.com/nihannihu/Omni-IDE/releases/tag/v3.0.0" target="_blank" rel="noopener noreferrer" style="display:block;font-size:14.5px;color:rgba(255,255,255,0.68);margin-bottom:10px;text-decoration:none;">GitHub Releases</a>
                 </div>
                 <div>
-                    <h5 style="font-size:15px;font-weight:800;color:rgba(255,255,255,0.95);text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px;">Connect</h5>
-                    <a href="https://github.com/OMNI-IDE-in" target="_blank" rel="noopener noreferrer" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">GitHub</a>
-                    <a href="https://linkedin.com/company/omni-ide" target="_blank" rel="noopener noreferrer" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">LinkedIn</a>
-                    <a href="mailto:contact@omniide.com" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">Email</a>
-                    <a href="https://www.google.co.in/maps/place/Omni+ide/@12.84983,77.4559575,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae479921dfc527:0xcb58f80c1a59088d!8m2!3d12.8498248!4d77.4585324!16s%2Fg%2F11zgytn5fd" target="_blank" rel="noopener noreferrer" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">Google Maps</a>
+                    <h5 style="font-size:14px;font-weight:800;color:rgba(255,255,255,0.95);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;">Connect</h5>
+                    <a href="https://github.com/OMNI-IDE-in" target="_blank" rel="noopener noreferrer" style="display:block;font-size:14.5px;color:rgba(255,255,255,0.68);margin-bottom:10px;text-decoration:none;">GitHub</a>
+                    <a href="https://linkedin.com/company/omni-ide" target="_blank" rel="noopener noreferrer" style="display:block;font-size:14.5px;color:rgba(255,255,255,0.68);margin-bottom:10px;text-decoration:none;">LinkedIn</a>
+                    <a href="mailto:contact@omniide.com" style="display:block;font-size:14.5px;color:rgba(255,255,255,0.68);margin-bottom:10px;text-decoration:none;">Email</a>
+                    <a href="https://www.google.co.in/maps/place/Omni+ide/@12.84983,77.4559575,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae479921dfc527:0xcb58f80c1a59088d!8m2!3d12.8498248!4d77.4585324!16s%2Fg%2F11zgytn5fd" target="_blank" rel="noopener noreferrer" style="display:block;font-size:14.5px;color:rgba(255,255,255,0.68);margin-bottom:10px;text-decoration:none;">Google Maps</a>
                 </div>
-                <div>
-                    <h5 style="font-size:15px;font-weight:800;color:rgba(255,255,255,0.95);text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px;">Find Us</h5>
-                    <div style="position:relative;width:100%;height:280px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,0.15);background:#1e293b;box-shadow:0 16px 36px rgba(0,0,0,0.45);">
+                <div style="min-width:240px;">
+                    <h5 style="font-size:14px;font-weight:800;color:rgba(255,255,255,0.95);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;">Find Us</h5>
+                    <div style="position:relative;width:100%;height:220px;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.15);background:#1e293b;box-shadow:0 12px 30px rgba(0,0,0,0.45);">
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.898609352296!2d77.45595747491619!3d12.849824787454509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae479921dfc527%3A0xcb58f80c1a59088d!2sOmni%20ide!5e0!3m2!1sen!2sin!4v1784739690116!5m2!1sen!2sin" 
                             width="100%" 
@@ -629,19 +745,19 @@
                             referrerpolicy="strict-origin-when-cross-origin" 
                             title="Omni IDE Location Map">
                         </iframe>
-                        <div style="position:absolute;bottom:12px;right:12px;z-index:10;">
-                            <a href="https://maps.google.com/?q=Omni+ide" target="_blank" rel="noopener noreferrer" style="background:rgba(15,23,42,0.88);backdrop-filter:blur(12px);color:#38bdf8;font-size:11.5px;font-weight:600;padding:7px 14px;border-radius:8px;border:1px solid rgba(255,255,255,0.18);box-shadow:0 4px 15px rgba(0,0,0,0.4);display:inline-flex;align-items:center;gap:6px;text-decoration:none;">
+                        <div style="position:absolute;bottom:10px;right:10px;z-index:10;">
+                            <a href="https://maps.google.com/?q=Omni+ide" target="_blank" rel="noopener noreferrer" style="background:rgba(15,23,42,0.88);backdrop-filter:blur(12px);color:#38bdf8;font-size:11px;font-weight:600;padding:6px 12px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);display:inline-flex;align-items:center;gap:4px;text-decoration:none;">
                                 Open Maps ↗
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding-top:28px;flex-wrap:wrap;gap:12px;">
-                <span style="font-size:14px;color:rgba(255,255,255,0.55);">© 2026 OmniIDE. UDYAM-KR-03-0681404. All rights reserved.</span>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding-top:24px;flex-wrap:wrap;gap:12px;">
+                <span style="font-size:13.5px;color:rgba(255,255,255,0.55);">© 2026 OmniIDE. UDYAM-KR-03-0681404. All rights reserved.</span>
                 <div>
-                    <a href="/privacy-policy/" style="font-size:14px;color:rgba(255,255,255,0.6);margin-left:16px;">Privacy Policy</a>
-                    <a href="/terms-of-use/" style="font-size:14px;color:#38BDF8;margin-left:16px;">Terms of Use</a>
+                    <a href="/privacy-policy/" style="font-size:13.5px;color:rgba(255,255,255,0.6);margin-left:14px;text-decoration:none;">Privacy Policy</a>
+                    <a href="/terms-of-use/" style="font-size:13.5px;color:#38BDF8;margin-left:14px;text-decoration:none;">Terms of Use</a>
                 </div>
             </div>
         </div>
@@ -650,17 +766,13 @@
     <!-- Tab Switching Engine Script -->
     <script>
         function switchTab(tabId) {
-            // Remove active state from all buttons
             document.querySelectorAll('.toc-tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-
-            // Hide all tab panels
             document.querySelectorAll('.legal-tab-panel').forEach(panel => {
                 panel.classList.remove('active-panel');
             });
 
-            // Activate target button and panel
             const targetBtn = document.querySelector(`.toc-tab-btn[data-tab="${tabId}"]`);
             const targetPanel = document.getElementById(tabId);
 
@@ -671,7 +783,6 @@
             }
         }
 
-        // Attach click handlers to sidebar tab buttons
         document.querySelectorAll('.toc-tab-btn').forEach(btn => {
             btn.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -680,7 +791,6 @@
             });
         });
 
-        // Check hash on load
         window.addEventListener('DOMContentLoaded', () => {
             const hash = window.location.hash.replace('#', '');
             if (hash && document.getElementById(hash)) {
