@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — OmniIDE | Zero Telemetry & Data Sovereignty</title>
+    <meta name="description"
+        content="Official Privacy Policy of OmniIDE. Multi-tabbed legal framework detailing zero telemetry, local-first execution, and complete code privacy.">
+    <meta name="author" content="OmniIDE">
+    <link rel="canonical" href="https://omniide.com/privacy-policy/">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0F172A">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://omniide.com/privacy-policy/">
+    <meta property="og:title" content="OmniIDE Privacy Policy — Zero Telemetry & Local Data Sovereignty">
+    <meta property="og:description"
+        content="Read OmniIDE's comprehensive Privacy Policy detailing local-first security, zero telemetry data collection, and developer privacy standards.">
+    <meta property="og:image" content="https://omniide.com/assets/images/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="../assets/images/logo.jpg">
+    <link rel="stylesheet" href="../assets/css/shared.css?v=3.0.5">
+
+    <style>
+        :root {
+            --legal-bg: #0F172A;
+            --card-bg: #1E293B;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --accent-blue: #38BDF8;
+            --primary-blue: #3B82F6;
+        }
+
+        .legal-hero {
+            background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
+            padding: 120px 0 50px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .legal-hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .legal-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            border-radius: 30px;
+            color: #60A5FA;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .legal-hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .legal-hero p {
+            font-size: 17px;
+            color: #94A3B8;
+            max-width: 750px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .legal-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .l-badge {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 8px 14px;
+            border-radius: 8px;
+            color: #CBD5E1;
+            font-size: 13px;
+            font-family: 'JetBrains Mono', monospace;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .l-badge strong {
+            color: #38BDF8;
+        }
+
+        .legal-wrapper {
+            padding: 50px 0 90px;
+            background: #0F172A;
+            color: #E2E8F0;
+            min-height: 750px;
+        }
+
+        .legal-layout {
+            display: grid;
+            grid-template-columns: 310px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* Sidebar Navigation */
+        .toc-sidebar {
+            background: #162032;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .toc-title {
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #38BDF8;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .toc-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .toc-tab-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: #94A3B8;
+            padding: 12px 14px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .toc-tab-btn:hover {
+            color: #F8FAFC;
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .toc-tab-btn.active {
+            color: #FFFFFF;
+            background: linear-gradient(135deg, rgba(26, 86, 219, 0.3), rgba(59, 130, 246, 0.2));
+            border-color: rgba(56, 189, 248, 0.4);
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(26, 86, 219, 0.2);
+        }
+
+        .toc-tab-btn.active::after {
+            content: '→';
+            color: #38BDF8;
+            font-weight: 800;
+        }
+
+        /* Content Display Panels */
+        .legal-tab-panel {
+            display: none;
+            background: #162032;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            padding: 40px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+            animation: fadeInTab 0.35s ease-out forwards;
+        }
+
+        .legal-tab-panel.active-panel {
+            display: block;
+        }
+
+        @keyframes fadeInTab {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .panel-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 24px;
+            font-weight: 700;
+            color: #38BDF8;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 6px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .panel-header h2 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin: 0;
+        }
+
+        .legal-tab-panel p {
+            font-size: 16px;
+            line-height: 1.85;
+            color: #CBD5E1;
+            margin-bottom: 20px;
+        }
+
+        .legal-tab-panel ul, .legal-tab-panel ol {
+            margin-bottom: 24px;
+            padding-left: 24px;
+        }
+
+        .legal-tab-panel li {
+            font-size: 15.5px;
+            line-height: 1.8;
+            color: #CBD5E1;
+            margin-bottom: 12px;
+        }
+
+        .legal-box {
+            background: rgba(30, 41, 59, 0.9);
+            border-left: 4px solid #3B82F6;
+            border-radius: 0 12px 12px 0;
+            padding: 22px 26px;
+            margin: 28px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .legal-box h4 {
+            font-size: 17px;
+            color: #60A5FA;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .legal-box p {
+            margin-bottom: 0;
+            font-size: 15px;
+            color: #E2E8F0;
+        }
+
+        .legal-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 28px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .legal-table th, .legal-table td {
+            padding: 16px 20px;
+            text-align: left;
+            font-size: 14.5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .legal-table th {
+            background: #1E293B;
+            color: #F8FAFC;
+            font-weight: 700;
+        }
+
+        .legal-table td {
+            background: rgba(15, 23, 42, 0.5);
+            color: #CBD5E1;
+        }
+
+        .tab-footer-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .tab-nav-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #38BDF8;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-nav-btn:hover {
+            background: #1A56DB;
+            color: #FFFFFF;
+            border-color: #1A56DB;
+        }
+
+        @media (max-width: 992px) {
+            .legal-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .legal-tab-panel {
+                padding: 24px;
+            }
+
+            .legal-hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Navigation -->
+    <header class="site-nav" role="banner">
+        <div class="nav-container">
+            <a href="/" class="logo" style="display:flex;align-items:center;gap:12px;font-size:20px;font-weight:800;color:#0F172A;">
+                <img src="../assets/images/logo.jpg" alt="OmniIDE Logo" style="height:32px;width:32px;border-radius:6px;">
+                <span>Omni<span style="color:#1A56DB;">IDE</span></span>
+            </a>
+            <nav class="nav-links" style="display:flex;gap:32px;align-items:center;">
+                <a href="/#mission" style="font-size:14px;font-weight:600;color:#64748B;">About</a>
+                <a href="/#ecosystem" style="font-size:14px;font-weight:600;color:#64748B;">Ecosystem</a>
+                <a href="/docs/" style="font-size:14px;font-weight:600;color:#64748B;">Docs</a>
+                <a href="/blog/" style="font-size:14px;font-weight:600;color:#64748B;">Blog</a>
+                <a href="/omni/" class="btn-cta" style="background:#1A56DB;color:#fff;padding:8px 20px;border-radius:10px;font-size:14px;font-weight:700;">Try OmniIDE</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="legal-hero">
+        <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px;">
+            <div class="legal-eyebrow">
+                <span>🛡️ LEGAL & COMPLIANCE</span> • <span>REVISED: JULY 2026</span>
+            </div>
+            <h1>OmniIDE Privacy Policy</h1>
+            <p>Select any section from the panel to open its exclusive, dedicated legal documentation view instantly without scrolling.</p>
+            <div class="legal-badges">
+                <span class="l-badge">Registered Entity: <strong>OmniIDE</strong></span>
+                <span class="l-badge">Govt MSME Reg: <strong>UDYAM-KR-03-0681404</strong></span>
+                <span class="l-badge">Architecture: <strong>100% Local-Native</strong></span>
+                <span class="l-badge">Compliance: <strong>GDPR & India DPDP Act 2023</strong></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Legal Content -->
+    <main class="legal-wrapper">
+        <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px;">
+            <div class="legal-layout">
+                <!-- Sidebar Tab Buttons -->
+                <aside class="toc-sidebar">
+                    <div class="toc-title">
+                        <span>Legal Navigation</span>
+                        <span style="font-size:10px;color:#94A3B8;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">TAB VIEW</span>
+                    </div>
+                    <div class="toc-nav">
+                        <button class="toc-tab-btn active" data-tab="tab-1">1. Executive Summary</button>
+                        <button class="toc-tab-btn" data-tab="tab-2">2. Scope & Applicability</button>
+                        <button class="toc-tab-btn" data-tab="tab-3">3. Zero Telemetry Guarantee</button>
+                        <button class="toc-tab-btn" data-tab="tab-4">4. Voluntary Information</button>
+                        <button class="toc-tab-btn" data-tab="tab-5">5. AI Model Integrations</button>
+                        <button class="toc-tab-btn" data-tab="tab-6">6. Hardened Local Sandbox</button>
+                        <button class="toc-tab-btn" data-tab="tab-7">7. Cookies & Web Tracking</button>
+                        <button class="toc-tab-btn" data-tab="tab-8">8. Storage & Data Control</button>
+                        <button class="toc-tab-btn" data-tab="tab-9">9. Global Regulations</button>
+                        <button class="toc-tab-btn" data-tab="tab-10">10. Vulnerability Disclosure</button>
+                        <button class="toc-tab-btn" data-tab="tab-11">11. Corporate Identity</button>
+                        <button class="toc-tab-btn" data-tab="tab-12">12. Contact & DPO Info</button>
+                    </div>
+                </aside>
+
+                <!-- Dedicated Standalone Tab Content Panels -->
+                <div class="panels-container">
+                    
+                    <!-- TAB 1: EXECUTIVE SUMMARY -->
+                    <div class="legal-tab-panel active-panel" id="tab-1">
+                        <div class="panel-header">
+                            <span class="panel-num">01</span>
+                            <h2>Executive Summary & Data Sovereignty</h2>
+                        </div>
+                        <p>At <strong>OmniIDE</strong>, we believe that software source code represents the core intellectual asset of every software engineer, technology startup, and enterprise. Developers must maintain uncompromised, absolute sovereignty over their local codebases, AI prompts, execution logs, and development workflows.</p>
+                        <p>Unlike conventional cloud-bound developer tools that transmit private code snippets, file paths, or developer telemetry to remote server infrastructure, OmniIDE is engineered from the ground up as a <strong>Local-Native Integrated Development Environment (IDE)</strong>. All file parsing, self-healing terminal loops, and syntax analyses operate 100% locally inside your hardware environment.</p>
+                        
+                        <div class="legal-box">
+                            <h4>The Golden Privacy Rule of OmniIDE</h4>
+                            <p>We do NOT track your keystrokes. We do NOT collect your source code. We do NOT train AI models on your private intellectual property. We do NOT maintain remote tracking servers that monitor your IDE sessions.</p>
+                        </div>
+                        
+                        <p>This policy serves as an explicit, legally binding disclosure of how data is handled across our desktop software, official extensions, and online developer portals.</p>
+
+                        <div class="tab-footer-nav">
+                            <div></div>
+                            <button class="tab-nav-btn" onclick="switchTab('tab-2')">Next: Scope & Applicability →</button>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2: SCOPE & APPLICABILITY -->
+                    <div class="legal-tab-panel" id="tab-2">
+                        <div class="panel-header">
+                            <span class="panel-num">02</span>
+                            <h2>Scope & Applicability</h2>
+                        </div>
+                        <p>This Privacy Policy applies strictly and exclusively to:</p>
+                        <ul>
+                            <li>The official <strong>OmniIDE Desktop Application binaries</strong> (Windows 10, Windows 11, macOS, and Linux releases).</li>
+                            <li>The primary web portal located at <code>https://omniide.com</code> and all subpages (including <code>/docs/</code>, <code>/blog/</code>, and <code>/omni/</code>).</li>
+                            <li>Official open-source extensions, CLI tools, and plugins distributed under the <strong>OMNI-IDE-in</strong> GitHub organizational repository.</li>
+                        </ul>
+                        <p>This policy does not govern third-party VS Code extensions that you choose to manually install from external marketplaces, nor does it govern third-party cloud AI APIs (such as custom OpenAI or Anthropic endpoints) configured independently by the user.</p>
+
+                        <div class="tab-footer-nav">
+                            <button class="tab-nav-btn" onclick="switchTab('tab-1')">← Previous: Executive Summary</button>
+                            <button class="tab-nav-btn" onclick="switchTab('tab-3')">Next: Zero Telemetry Guarantee →</button>
+                        </div>
+                    </div>
+
+                    <!-- TAB 3: ZERO TELEMETRY GUARANTEE -->
+                    <div class="legal-tab-panel" id="tab-3">
+                        <div class="panel-header">
+                            <span class="panel-num">03</span>
+                            <h2>The Zero Telemetry Guarantee</h2>
+                        </div>
+                        <p>OmniIDE explicitly guarantees that our desktop software binaries contain <strong>zero telemetry collection code</strong>. We do not track, aggregate, or upload diagnostic metrics, usage telemetry, or project metadata.</p>
+                        
+                        <table class="legal-table">
+                            <thead>
+                                <tr>
+                                    <th>Data Category</th>
+                                    <th>Transmission Status</th>
+                                    <th>Local Storage Location</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Source Code & Project Files</strong></td>
+                                    <td><span style="color:#EF4444;font-weight:700;">🚫 ZERO Transmission</span></td>
+                                    <td>100% Local Filesystem Only</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Local AI Prompts & Chat Logs</strong></td>
+                                    <td><span style="color:#EF4444;font-weight:700;">🚫 ZERO Transmission to OmniIDE</span></td>
+                                    <td>Local Disk (User Profile)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Terminal Execution Logs</strong></td>
+                                    <td><span style="color:#EF4444;font-weight:700;">🚫 ZERO Transmission</span></td>
+                                    <td>Local Hardened Sandbox Runtime</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>API Credentials & Secrets</strong></td>
+                                    <td><span style="color:#EF4444;font-weight:700;">🚫 ZERO Transmission</span></td>
+                                    <td>Encrypted Local Keyring / Store</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>User Behavioral Telemetry</strong></td>
+                                    <td><span style="color:#EF4444;font-weight:700;">🚫 ZERO Transmission</span></td>
+                                    <td>Not Tracked or Recorded</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="tab-footer-nav">
+                            <button class="tab-nav-btn" onclick="switchTab('tab-2')">← Previous: Scope & Applicability</button>
+                            <button class="tab-nav-btn" onclick="switchTab('tab-4')">Next: Voluntary Disclosures →</button>
+                        </div>
+                    </div>
+
+                    <!-- TAB 4: VOLUNTARY INFORMATION -->
+                    <div class="legal-tab-panel" id="tab-4">
+                        <div class="panel-header">
+                            <span class="panel-num">04</span>
+                            <h2>Voluntary Information Disclosures</h2>
+                        </div>
+                        <p>OmniIDE only processes personal information when a user voluntarily initiates contact through our official public communication channels:</p>
+                        <ul>
+                            <li><strong>Website Contact Forms:</strong> When submitting an inquiry via our site contact form (handled via Web3Forms), we receive your name, email address, inquiry topic, and message content solely to respond to your request.</li>
+                            <li><strong>GitHub Contributions:</strong> When submitting issues, feature requests, or pull requests on our GitHub organization (<code>github.com/OMNI-IDE-in</code>), your public GitHub profile name and comments are subject to GitHub's Privacy Statement.</li>
+                        </ul>
+
+                        <div class="tab-footer-nav">
+                            <button class="tab-nav-btn" onclick="switchTab('tab-3')">← Previous: Zero Telemetry</button>
+                            <button class="tab-nav-btn" onclick="switchTab('tab-5')">Next: AI Model Integrations →</button>
+                        </div>
+                    </div>
+
+                    <!-- TAB 5: AI MODEL INTEGRATIONS -->
+                    <div class="legal-tab-panel" id="tab-5">
+                        <div class="panel-header">
+                            <span class="panel-num">05</span>
+                            <h2>AI Model Integrations & Cloud Data Flows</h2>
+                        </div>
+                        <p>OmniIDE features a hybrid AI architecture supporting both local offline models and cloud AI APIs. You maintain 100% control over which execution mode is active:</p>
+                        
+                        <p><strong>A. Local Engine (Ollama Integration):</strong><br>
+                        When using local model execution via Ollama, all inference runs 100% offline on your device’s GPU/CPU. Zero internet connections or data packets leave your hardware during local model interactions.</p>
+                        
+                        <p><strong>B. Cloud Provider Models (Google Gemini API):</strong><br>
+                        When configuring OmniIDE to connect to Google Gemini API via a "Bring Your Own Key" (BYOK) model, your requests travel directly from your machine to Google’s official API endpoints (<code>generativelanguage.googleapis.com</code>). OmniIDE servers do not sit in the middle, record, or inspect these API payloads. Your data handling with cloud models is governed directly by Google API's Data Privacy Terms.</p>
+
+                        <div class="tab-footer-nav">
+                            <button class="tab-nav-btn" onclick="switchTab('tab-4')">← Previous: Voluntary Disclosures</button>
+                            <button class="tab-nav-btn" onclick="switchTab('tab-6')">Next: Hardened Local Sandbox →</button>
+                        </div>
+                    </div>
+
+                    <!-- TAB 6: HARDENED LOCAL SANDBOX -->
+                    <div class="legal-tab-panel" id="tab-6">
+                        <div class="panel-header">
+                            <span class="panel-num">06</span>
+                            <h2>Hardened Local Sandbox & Process Security</h2>
+                        </div>
+                        <p>To ensure security when running autonomous agentic workflows (such as Omni-Agent terminal self-healing), OmniIDE executes agent commands inside a <strong>Hardened Local Sandbox</strong>.</p>
+                        <p>This local container boundary prevents agent scripts from modifying system configuration files outside your designated project workspace, protecting operating system stability and user security.</p>
+
+                        <div class="tab-footer-nav">
+                            <button class="tab-nav-btn" onclick="switchTab('tab-5')">← Previous: AI Model Integrations</button>
+                            <button class="tab-nav-btn" onclick="switchTab('tab-7')">Next: Cookies & Web Tracking →</button>
+                        </div>
+                    </div>
+
+                    <!-- TAB 7: COOKIES & WEB TRACKING -->
+                    <div class="legal-tab-panel" id="tab-7">
+                        <div class="panel-header">
+                            <span class="panel-num">07</span>
+                            <h2>Cookies & Web Tracking Transparency</h2>
+                        </div>
+                        <p>Our website (<code>https://omniide.com</code>) utilizes basic Google Analytics (gtag.js) solely to inspect aggregate visitor statistics (such as overall page views and browser device distribution).</p>
+                        <p>No code snippets, personal identifiers, or IDE usage data are ever linked with web analytics cookies.</p>
+
+                        <div class="tab-footer-nav">
+                            <button class="tab-nav-btn" onclick="switchTab('tab-6')">← Previous: Hardened Sandbox</button>
+                            <button class="tab-nav-btn" onclick="switchTab('tab-8')">Next: Storage & Data Control →</button>
+                        </div>
+                    </div>
+
+                    <!-- TAB 8: STORAGE & DATA CONTROL -->
+                    <div class="legal-tab-panel" id="tab-8">
+                        <div class="panel-header">
+                            <span class="panel-num">08</span>
+                            <h2>Storage Controls & Complete Erasure Rights</h2>
+                        </div>
+                        <p>Because all workspace settings, local model weights, and chat logs are stored strictly on your local disk (under your OS user directory <code>~/.omniide</code> or <code>%APPDATA%\OmniIDE</code>), you possess absolute authority over data retention and erasure.</p>
+                        <p>Deleting your local project directory or clearing the application data directory permanently erases all stored state from your machine instantly.</p>
+
+                        <div class="tab-footer-nav">
+                            <button class="tab-nav-btn" onclick="switchTab('tab-7')">← Previous: Cookies & Analytics</button>
+                            <button class="tab-nav-btn" onclick="switchTab('tab-9')">Next: Global Regulations →</button>
+                        </div>
+                    </div>
+
+                    <!-- TAB 9: GLOBAL REGULATIONS -->
+                    <div class="legal-tab-panel" id="tab-9">
+                        <div class="panel-header">
+                            <span class="panel-num">09</span>
+                            <h2>Global Regulatory Compliance</h2>
+                        </div>
+                        <p>OmniIDE aligns with international data privacy standards:</p>
+                        <ul>
+                            <li><strong>India Digital Personal Data Protection Act 2023 (DPDP):</strong> Fully compliant with strict data minimization and purpose specification rules.</li>
+                            <li><strong>EU General Data Protection Regulation (GDPR):</strong> Compliant with Article 5 principles of privacy by design and default.</li>
+                            <li><strong>California Consumer Privacy Act (CCPA/CPRA):</strong> We do not sell, rent, or trade any personal information.</li>
+                        </ul>
+
+                        <div class="tab-footer-nav">
+                            <button class="tab-nav-btn" onclick="switchTab('tab-8')">← Previous: Storage Controls</button>
+                            <button class="tab-nav-btn" onclick="switchTab('tab-10')">Next: Vulnerability Disclosure →</button>
+                        </div>
+                    </div>
+
+                    <!-- TAB 10: VULNERABILITY DISCLOSURE -->
+                    <div class="legal-tab-panel" id="tab-10">
+                        <div class="panel-header">
+                            <span class="panel-num">10</span>
+                            <h2>Vulnerability Reporting & Disclosure</h2>
+                        </div>
+                        <p>If you identify a security or privacy vulnerability in OmniIDE binaries or web infrastructure, we encourage responsible disclosure.</p>
+                        <p>Please report findings directly to our security response team at <code>contact@omniide.com</code>. Security disclosures are acknowledged and triaged within 48 hours.</p>
+
+                        <div class="tab-footer-nav">
+                            <button class="tab-nav-btn" onclick="switchTab('tab-9')">← Previous: Global Regulations</button>
+                            <button class="tab-nav-btn" onclick="switchTab('tab-11')">Next: Corporate Identity →</button>
+                        </div>
+                    </div>
+
+                    <!-- TAB 11: CORPORATE IDENTITY -->
+                    <div class="legal-tab-panel" id="tab-11">
+                        <div class="panel-header">
+                            <span class="panel-num">11</span>
+                            <h2>Corporate Identity & Government Registration</h2>
+                        </div>
+                        <p>OmniIDE is a registered corporate entity in Bengaluru, India:</p>
+                        <div class="legal-box">
+                            <h4>Corporate Entity Verification</h4>
+                            <p><strong>Entity Name:</strong> OmniIDE<br>
+                            <strong>Govt. Registration:</strong> MSME Registered (UDYAM-KR-03-0681404)<br>
+                            <strong>DPIIT Recognition:</strong> IN-0526-9460PZ<br>
+                            <strong>Headquarters:</strong> B-Block, Devgere, Kumbalagodu, Kengeri, Bengaluru, Karnataka 560060, India</p>
+                        </div>
+
+                        <div class="tab-footer-nav">
+                            <button class="tab-nav-btn" onclick="switchTab('tab-10')">← Previous: Vulnerability Disclosure</button>
+                            <button class="tab-nav-btn" onclick="switchTab('tab-12')">Next: Contact & DPO Info →</button>
+                        </div>
+                    </div>
+
+                    <!-- TAB 12: CONTACT & DPO INFO -->
+                    <div class="legal-tab-panel" id="tab-12">
+                        <div class="panel-header">
+                            <span class="panel-num">12</span>
+                            <h2>Contact & Data Protection Officer</h2>
+                        </div>
+                        <p>For inquiries regarding this Privacy Policy or data privacy rights, reach out to our Data Protection Officer:</p>
+                        <p>📧 <strong>Email:</strong> <a href="mailto:contact@omniide.com" style="color:#38BDF8;">contact@omniide.com</a><br>
+                        🌐 <strong>Official Website:</strong> <a href="https://omniide.com" style="color:#38BDF8;">https://omniide.com</a></p>
+
+                        <div class="tab-footer-nav">
+                            <button class="tab-nav-btn" onclick="switchTab('tab-11')">← Previous: Corporate Identity</button>
+                            <div></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" style="background:#090D16;padding:80px 0 40px;color:#fff;" role="contentinfo">
+        <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px;">
+            <div style="display:grid;grid-template-columns:1.1fr 0.65fr 0.65fr 0.65fr 2fr;gap:24px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.08);align-items:start;">
+                <div>
+                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+                        <img src="../assets/images/logo.jpg" alt="OmniIDE Logo" style="height:34px;width:34px;border-radius:6px;">
+                        <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:#fff;">OmniIDE</span>
+                    </div>
+                    <p style="font-size:16px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:12px;">Building the open infrastructure layer for autonomous software development.</p>
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(255,255,255,0.45);">UDYAM-KR-03-0681404</div>
+                </div>
+                <div>
+                    <h5 style="font-size:15px;font-weight:800;color:rgba(255,255,255,0.95);text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px;">Company</h5>
+                    <a href="/#mission" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">About</a>
+                    <a href="/#mission" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">Mission</a>
+                    <a href="/#team" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">Team</a>
+                    <a href="/blog/" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">Blog</a>
+                    <a href="/docs/" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">Documentation</a>
+                </div>
+                <div>
+                    <h5 style="font-size:15px;font-weight:800;color:rgba(255,255,255,0.95);text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px;">Products</h5>
+                    <a href="/omni/" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">OmniIDE</a>
+                    <a href="/#ecosystem" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">Omni-Guard</a>
+                    <a href="#" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">Roadmap</a>
+                    <a href="https://github.com/nihannihu/Omni-IDE/releases/tag/v3.0.0" target="_blank" rel="noopener noreferrer" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">GitHub Releases</a>
+                </div>
+                <div>
+                    <h5 style="font-size:15px;font-weight:800;color:rgba(255,255,255,0.95);text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px;">Connect</h5>
+                    <a href="https://github.com/OMNI-IDE-in" target="_blank" rel="noopener noreferrer" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">GitHub</a>
+                    <a href="https://linkedin.com/company/omni-ide" target="_blank" rel="noopener noreferrer" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">LinkedIn</a>
+                    <a href="mailto:contact@omniide.com" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">Email</a>
+                    <a href="https://www.google.co.in/maps/place/Omni+ide/@12.84983,77.4559575,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae479921dfc527:0xcb58f80c1a59088d!8m2!3d12.8498248!4d77.4585324!16s%2Fg%2F11zgytn5fd" target="_blank" rel="noopener noreferrer" style="display:block;font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:11px;">Google Maps</a>
+                </div>
+                <div>
+                    <h5 style="font-size:15px;font-weight:800;color:rgba(255,255,255,0.95);text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px;">Find Us</h5>
+                    <div style="position:relative;width:100%;height:280px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,0.15);background:#1e293b;box-shadow:0 16px 36px rgba(0,0,0,0.45);">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.898609352296!2d77.45595747491619!3d12.849824787454509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae479921dfc527%3A0xcb58f80c1a59088d!2sOmni%20ide!5e0!3m2!1sen!2sin!4v1784739690116!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            title="Omni IDE Location Map">
+                        </iframe>
+                        <div style="position:absolute;bottom:12px;right:12px;z-index:10;">
+                            <a href="https://maps.google.com/?q=Omni+ide" target="_blank" rel="noopener noreferrer" style="background:rgba(15,23,42,0.88);backdrop-filter:blur(12px);color:#38bdf8;font-size:11.5px;font-weight:600;padding:7px 14px;border-radius:8px;border:1px solid rgba(255,255,255,0.18);box-shadow:0 4px 15px rgba(0,0,0,0.4);display:inline-flex;align-items:center;gap:6px;text-decoration:none;">
+                                Open Maps ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding-top:28px;flex-wrap:wrap;gap:12px;">
+                <span style="font-size:14px;color:rgba(255,255,255,0.55);">© 2026 OmniIDE. UDYAM-KR-03-0681404. All rights reserved.</span>
+                <div>
+                    <a href="/privacy-policy/" style="font-size:14px;color:#38BDF8;margin-left:16px;">Privacy Policy</a>
+                    <a href="/terms-of-use/" style="font-size:14px;color:rgba(255,255,255,0.6);margin-left:16px;">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Tab Switching Engine Script -->
+    <script>
+        function switchTab(tabId) {
+            // Remove active state from all buttons
+            document.querySelectorAll('.toc-tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Hide all tab panels
+            document.querySelectorAll('.legal-tab-panel').forEach(panel => {
+                panel.classList.remove('active-panel');
+            });
+
+            // Activate target button and panel
+            const targetBtn = document.querySelector(`.toc-tab-btn[data-tab="${tabId}"]`);
+            const targetPanel = document.getElementById(tabId);
+
+            if (targetBtn && targetPanel) {
+                targetBtn.classList.add('active');
+                targetPanel.classList.add('active-panel');
+                history.replaceState(null, '', '#' + tabId);
+            }
+        }
+
+        // Attach click handlers to sidebar tab buttons
+        document.querySelectorAll('.toc-tab-btn').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                const tabId = this.getAttribute('data-tab');
+                switchTab(tabId);
+            });
+        });
+
+        // Check hash on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash && document.getElementById(hash)) {
+                switchTab(hash);
+            }
+        });
+    </script>
+</body>
+
+</html>
