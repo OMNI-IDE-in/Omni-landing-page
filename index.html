@@ -1936,10 +1936,120 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: 48px;
+            grid-template-columns: 1.1fr 0.65fr 0.65fr 0.65fr 2fr;
+            gap: 24px;
             padding-bottom: 40px;
-            border-bottom: 1px solid rgba(255, 255, 255, .08)
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+            align-items: start;
+        }
+
+        .footer-map-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .map-col-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+
+        .map-col-header h5 {
+            margin-bottom: 0 !important;
+        }
+
+        .map-badge {
+            font-size: 11px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3px 10px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(4px);
+        }
+
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            background: #10B981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10B981;
+            animation: mapPulse 2s infinite ease-in-out;
+        }
+
+        @keyframes mapPulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .footer-map-card {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: #1e293b;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .footer-map-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(56, 189, 248, 0.45);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(56, 189, 248, 0.2);
+        }
+
+        .footer-map-card iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 16px;
+            filter: contrast(1.02) saturate(1.05);
+        }
+
+        .map-overlay-controls {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .map-open-btn {
+            position: static !important;
+            background: rgba(15, 23, 42, 0.88) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            color: #38bdf8 !important;
+            font-size: 11.5px !important;
+            font-weight: 600 !important;
+            padding: 7px 14px !important;
+            border-radius: 8px !important;
+            border: 1px solid rgba(255, 255, 255, 0.18) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            transition: all 0.25s ease !important;
+            text-decoration: none !important;
+            margin-bottom: 0 !important;
+        }
+
+        .map-open-btn:hover {
+            background: linear-gradient(135deg, #1a56db, #3b82f6) !important;
+            color: #ffffff !important;
+            border-color: rgba(255, 255, 255, 0.3) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(26, 86, 219, 0.4) !important;
         }
 
         .footer-brand .f-logo {
@@ -1950,51 +2060,53 @@
         }
 
         .footer-brand .f-logo img {
-            height: 30px;
-            width: 30px;
+            height: 34px;
+            width: 34px;
             object-fit: contain;
-            border-radius: 4px
+            border-radius: 6px
         }
 
         .footer-brand .f-logo span {
             font-family: 'Syne', sans-serif;
             font-weight: 800;
-            font-size: 18px;
+            font-size: 22px;
             color: #fff
         }
 
         .footer-brand p {
-            font-size: 14px;
-            color: rgba(255, 255, 255, .45);
-            line-height: 1.6;
-            margin-bottom: 10px
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 12px
         }
 
         .footer-brand .reg {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            color: rgba(255, 255, 255, .25)
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.45)
         }
 
         .footer-col h5 {
-            font-size: 13px;
-            font-weight: 700;
-            color: rgba(255, 255, 255, .7);
+            font-size: 15px;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.95);
             text-transform: uppercase;
-            letter-spacing: .08em;
-            margin-bottom: 16px
+            letter-spacing: .1em;
+            margin-bottom: 18px
         }
 
         .footer-col a {
             display: block;
-            font-size: 14px;
-            color: rgba(255, 255, 255, .45);
-            margin-bottom: 10px;
-            transition: color .2s
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.68);
+            margin-bottom: 12px;
+            transition: all .2s ease
         }
 
         .footer-col a:hover {
-            color: rgba(255, 255, 255, .9)
+            color: #38bdf8;
+            transform: translateX(2px);
         }
 
         .footer-bottom {
@@ -2007,19 +2119,19 @@
         }
 
         .footer-bottom span {
-            font-size: 13px;
-            color: rgba(255, 255, 255, .3)
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.55)
         }
 
         .footer-bottom a {
-            font-size: 13px;
-            color: rgba(255, 255, 255, .35);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
             margin-left: 16px;
             transition: color .2s
         }
 
         .footer-bottom a:hover {
-            color: rgba(255, 255, 255, .8)
+            color: #38bdf8
         }
 
         /* RESPONSIVE */
@@ -3041,6 +3153,30 @@
                         href="https://linkedin.com/company/omni-ide" target="_blank" rel="noopener noreferrer">LinkedIn</a><a
                         href="mailto:contact@omniide.com">Email</a><a href="#">Twitter/X</a>
                 </div>
+                <div class="footer-col footer-map-col">
+                    <div class="map-col-header">
+                        <h5>Find Us</h5>
+                        <span class="map-badge"><span class="pulse-dot"></span> Bengaluru, IN</span>
+                    </div>
+                    <div class="footer-map-card">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.898609352296!2d77.45595747491619!3d12.849824787454509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae479921dfc527%3A0xcb58f80c1a59088d!2sOmni%20ide!5e0!3m2!1sen!2sin!4v1784739690116!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            title="Omni IDE Location Map">
+                        </iframe>
+                        <div class="map-overlay-controls">
+                            <a href="https://maps.google.com/?q=Omni+ide" target="_blank" rel="noopener noreferrer" class="map-open-btn">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                Open Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="footer-bottom">
                 <span>© 2026 OmniIDE. UDYAM-KR-03-0681404. All rights reserved.</span>
@@ -3285,10 +3421,15 @@
 
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', function (e) {
-                e.preventDefault();
-                const t = document.querySelector(this.getAttribute('href'));
-                if (t) {
-                    window.scrollTo({ top: t.offsetTop - 70, behavior: 'smooth' });
+                const href = this.getAttribute('href');
+                if (href && href !== '#') {
+                    try {
+                        const t = document.querySelector(href);
+                        if (t) {
+                            e.preventDefault();
+                            window.scrollTo({ top: t.offsetTop - 70, behavior: 'smooth' });
+                        }
+                    } catch (err) {}
                 }
             });
         });

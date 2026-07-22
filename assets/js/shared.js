@@ -196,10 +196,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // ── Smooth scroll for anchor links ──
     document.querySelectorAll('a[href^="#"]').forEach(function (a) {
         a.addEventListener('click', function (e) {
-            var target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                e.preventDefault();
-                window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+            var href = this.getAttribute('href');
+            if (href && href !== '#') {
+                try {
+                    var target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+                    }
+                } catch (err) {}
             }
         });
     });
