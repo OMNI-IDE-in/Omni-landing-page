@@ -464,6 +464,22 @@
                 font-size: 20px;
             }
         }
+
+        .footer-responsive-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.7fr 0.7fr 0.7fr 1.8fr;
+            gap: 24px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            align-items: start;
+        }
+
+        @media (max-width: 850px) {
+            .footer-responsive-grid {
+                grid-template-columns: 1fr !important;
+                gap: 32px !important;
+            }
+        }
     </style>
 </head>
 
@@ -746,7 +762,7 @@
     <!-- Footer -->
     <footer class="footer" style="background:#0F172A;padding:70px 20px 40px;color:#fff;" role="contentinfo">
         <div style="max-width:1200px;margin:0 auto;">
-            <div class="footer-responsive-grid" style="display:grid;grid-template-columns:1.2fr 0.7fr 0.7fr 0.7fr 1.8fr;gap:24px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.08);align-items:start;">
+            <div class="footer-responsive-grid">
                 <div>
                     <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
                         <img src="../assets/images/logo.jpg" alt="OmniIDE Logo" style="height:34px;width:34px;border-radius:6px;">
