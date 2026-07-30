@@ -3,8 +3,12 @@ OmniIDE Content Generation Engine
 Generates all documentation, landing, comparison, and blog pages.
 """
 import os
+import sys
 import json
 from datetime import datetime
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 DOMAIN = "https://omniide.com"
@@ -481,15 +485,29 @@ def write_file(path, content):
 # OMNIIDE FEATURE DATA (source of truth)
 # ════════════════════════════════════════════
 
+SVG_AGENT = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>'
+SVG_SHIELD = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>'
+SVG_SYNC = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>'
+SVG_LOCK = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>'
+SVG_CORE = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>'
+SVG_BRAIN = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>'
+SVG_FOLDER = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>'
+SVG_TERMINAL = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>'
+SVG_ZAP = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>'
+SVG_LINK = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>'
+SVG_BOOK = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>'
+SVG_LIST = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>'
+SVG_WRENCH = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>'
+
 CORE_FEATURES = [
-    ("🤖", "Omni-Agent", "An autonomous coding agent powered by Google Gemini API that writes, debugs, and runs code without human intervention. It observes errors, generates fixes, and re-executes — a true self-healing development loop."),
-    ("🛡️", "Hardened Sandbox", "Every autonomous command executes inside an isolated sandbox, protecting your host operating system. The agent can experiment freely without risk to your files or system."),
-    ("🔄", "Self-Healing Terminal", "The integrated terminal catches errors in real-time, generates corrective code, and re-executes automatically. Failed builds and crashed scripts recover without manual debugging."),
-    ("🔒", "Zero Telemetry", "OmniIDE collects absolutely no data. No analytics, no tracking, no watermarks, no cloud dependency. Your code stays on your machine, period."),
-    ("🏗️", "VS Code Core", "Built on the production-ready VS Code architecture with TypeScript and Node.js. Get the familiar, high-performance editor experience with full extension compatibility."),
-    ("🧠", "Hybrid AI Engine", "Combines Google Gemini API for cloud-powered intelligence with Ollama for fully local, offline AI execution. Choose cloud, local, or hybrid — your call."),
-    ("📁", "Multi-File Refactoring", "The agent handles complex cross-file code changes autonomously. Rename symbols, restructure modules, and refactor architectures across your entire codebase."),
-    ("💻", "Local-Native", "Runs entirely on your machine. No SaaS subscription, no cloud compute costs. Bring your own API key for Gemini, or run fully offline with Ollama."),
+    (SVG_AGENT, "Omni-Agent", "An autonomous coding agent powered by Google Gemini API that writes, debugs, and runs code without human intervention. It observes errors, generates fixes, and re-executes — a true self-healing development loop."),
+    (SVG_SHIELD, "Hardened Sandbox", "Every autonomous command executes inside an isolated sandbox, protecting your host operating system. The agent can experiment freely without risk to your files or system."),
+    (SVG_SYNC, "Self-Healing Terminal", "The integrated terminal catches errors in real-time, generates corrective code, and re-executes automatically. Failed builds and crashed scripts recover without manual debugging."),
+    (SVG_LOCK, "Zero Telemetry", "OmniIDE collects absolutely no data. No analytics, no tracking, no watermarks, no cloud dependency. Your code stays on your machine, period."),
+    (SVG_CORE, "VS Code Core", "Built on the production-ready VS Code architecture with TypeScript and Node.js. Get the familiar, high-performance editor experience with full extension compatibility."),
+    (SVG_BRAIN, "Hybrid AI Engine", "Combines Google Gemini API for cloud-powered intelligence with Ollama for fully local, offline AI execution. Choose cloud, local, or hybrid — your call."),
+    (SVG_FOLDER, "Multi-File Refactoring", "The agent handles complex cross-file code changes autonomously. Rename symbols, restructure modules, and refactor architectures across your entire codebase."),
+    (SVG_TERMINAL, "Local-Native", "Runs entirely on your machine. No SaaS subscription, no cloud compute costs. Bring your own API key for Gemini, or run fully offline with Ollama."),
 ]
 
 STANDARD_FAQS = [
@@ -520,42 +538,42 @@ docs_index_content = '''<h1>OmniIDE Documentation</h1>
 
 <div class="feature-grid">
     <a href="/docs/getting-started/" class="feature-card" style="text-decoration:none">
-        <div class="feature-icon">🚀</div>
+        <div class="feature-icon">''' + SVG_TERMINAL + '''</div>
         <h3>Getting Started</h3>
         <p>Install OmniIDE, configure your API key, and build your first project with the Omni-Agent.</p>
     </a>
     <a href="/docs/core-concepts/omni-agent/" class="feature-card" style="text-decoration:none">
-        <div class="feature-icon">🤖</div>
+        <div class="feature-icon">''' + SVG_AGENT + '''</div>
         <h3>Core Concepts</h3>
         <p>Understand the Omni-Agent, agentic loop, self-healing terminal, hardened sandbox, and execution kernel.</p>
     </a>
     <a href="/docs/features/ai-coding/" class="feature-card" style="text-decoration:none">
-        <div class="feature-icon">⚡</div>
+        <div class="feature-icon">''' + SVG_ZAP + '''</div>
         <h3>Features</h3>
         <p>Explore AI-powered coding, multi-file refactoring, zero telemetry, offline mode, and extensions.</p>
     </a>
     <a href="/docs/integrations/gemini/" class="feature-card" style="text-decoration:none">
-        <div class="feature-icon">🔗</div>
+        <div class="feature-icon">''' + SVG_LINK + '''</div>
         <h3>Integrations</h3>
         <p>Connect Google Gemini, Ollama, OpenRouter, MCP, and ACP to your development workflow.</p>
     </a>
     <a href="/docs/architecture/overview/" class="feature-card" style="text-decoration:none">
-        <div class="feature-icon">🏗️</div>
+        <div class="feature-icon">''' + SVG_CORE + '''</div>
         <h3>Architecture</h3>
         <p>Deep dive into the VS Code core, security model, build system, and system architecture.</p>
     </a>
     <a href="/docs/guides/api-key-setup/" class="feature-card" style="text-decoration:none">
-        <div class="feature-icon">📖</div>
+        <div class="feature-icon">''' + SVG_BOOK + '''</div>
         <h3>Guides</h3>
         <p>Step-by-step guides for API key setup, Ollama configuration, workspace setup, and autonomous workflows.</p>
     </a>
     <a href="/docs/reference/settings/" class="feature-card" style="text-decoration:none">
-        <div class="feature-icon">📋</div>
+        <div class="feature-icon">''' + SVG_LIST + '''</div>
         <h3>Reference</h3>
         <p>Complete reference for CLI commands, settings, keybindings, changelog, and API.</p>
     </a>
     <a href="/docs/troubleshooting/common-issues/" class="feature-card" style="text-decoration:none">
-        <div class="feature-icon">🔧</div>
+        <div class="feature-icon">''' + SVG_WRENCH + '''</div>
         <h3>Troubleshooting</h3>
         <p>Solutions for common issues, agent errors, performance optimization, and frequently asked questions.</p>
     </a>
