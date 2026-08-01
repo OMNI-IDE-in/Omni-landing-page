@@ -13,6 +13,7 @@
 - Blog: https://omniide.com/blog/
 - GitHub: https://github.com/OMNI-IDE-in
 - LinkedIn: https://linkedin.com/company/omni-ide
+- Instagram: https://www.instagram.com/omni_ide/
 - Version: 3.0.0
 - License: Open Source
 - Price: Free
@@ -27,7 +28,6 @@
 - Headquarters: Bengaluru, Karnataka, India
 - Founded: 2025
 - Founder & CEO: Mohammed Nihan
-- Co-Founder & CTO: Shaiban Faraz Khan
 - COO: Mohammed Bilal D
 - Contact: contact@omniide.com
 

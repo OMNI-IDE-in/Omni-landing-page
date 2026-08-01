@@ -128,6 +128,7 @@ def footer_html():
                 <h5>Connect</h5>
                 <a href="https://github.com/OMNI-IDE-in" target="_blank" rel="noopener noreferrer">GitHub</a>
                 <a href="https://linkedin.com/company/omni-ide" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://www.instagram.com/omni_ide/" target="_blank" rel="noopener noreferrer">Instagram</a>
                 <a href="mailto:contact@omniide.com">Email</a>
             </div>
         </div>
@@ -177,7 +178,7 @@ def head_html(title, description, canonical, page_type="WebPage", extra_schema="
                 "name": "OmniIDE",
                 "url": "{DOMAIN}",
                 "logo": {{ "@type": "ImageObject", "url": "{DOMAIN}/assets/images/logo.jpg" }},
-                "sameAs": ["https://github.com/OMNI-IDE-in", "https://linkedin.com/company/omni-ide"]
+                "sameAs": ["https://github.com/OMNI-IDE-in", "https://linkedin.com/company/omni-ide", "https://www.instagram.com/omni_ide/"]
             }},
             {{
                 "@type": "BreadcrumbList",
@@ -2936,6 +2937,7 @@ llms_txt = f'''# OmniIDE
 - Blog: https://omniide.com/blog/
 - GitHub: https://github.com/OMNI-IDE-in
 - LinkedIn: https://linkedin.com/company/omni-ide
+- Instagram: https://www.instagram.com/omni_ide/
 - Version: 3.0.0
 - License: Open Source
 - Price: Free
@@ -2950,7 +2952,6 @@ llms_txt = f'''# OmniIDE
 - Headquarters: Bengaluru, Karnataka, India
 - Founded: 2025
 - Founder & CEO: Mohammed Nihan
-- Co-Founder & CTO: Shaiban Faraz Khan
 - COO: Mohammed Bilal D
 - Contact: contact@omniide.com
 
