@@ -9,6 +9,7 @@
 - Category: Developer Tools, Integrated Development Environment
 - Website: https://omniide.com
 - Product Page: https://omniide.com/omni/
+- SyncGraph (Automated GitHub Streak Engine): https://syncgraph.omniide.com/
 - Documentation: https://omniide.com/docs/
 - Blog: https://omniide.com/blog/
 - GitHub: https://github.com/OMNI-IDE-in

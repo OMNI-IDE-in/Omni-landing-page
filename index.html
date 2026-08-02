@@ -12,6 +12,8 @@
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="theme-color" content="#0F172A">
     <meta name="application-name" content="OmniIDE">
+    <meta name="keywords"
+        content="OmniIDE, SyncGraph, autonomous coding, AI IDE, automated GitHub contributions, GitHub learning journal, streak automation, developer tools, GitHub contribution engine">
 
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="VOe165Z71F7NhPKtI0_TrXrSHjsVuWkYDEdL1ofbodg" />
@@ -123,6 +125,14 @@
             "email": "contact@omniide.com",
             "contactType": "customer support"
           },
+          "makesOffer": [
+            {
+              "@id": "https://omniide.com/#software"
+            },
+            {
+              "@id": "https://syncgraph.omniide.com/#software"
+            }
+          ],
           "taxID": "UDYAM-KR-03-0681404"
         },
         {
@@ -201,6 +211,62 @@
           ],
           "screenshot": "https://omniide.com/assets/images/og-image.png",
           "softwareRequirements": "Windows 10 or later",
+          "publisher": {
+            "@id": "https://omniide.com/#organization"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://syncgraph.omniide.com/#software",
+          "name": "SyncGraph",
+          "alternateName": [
+            "Sync Graph",
+            "SyncGraph App",
+            "SyncGraph by OmniIDE"
+          ],
+          "applicationCategory": "DeveloperApplication",
+          "applicationSubCategory": "Developer Productivity Tool",
+          "operatingSystem": "Web, Linux, macOS, Windows",
+          "url": "https://syncgraph.omniide.com",
+          "description": "SyncGraph is an automated GitHub contribution engine that generates structured Markdown learning journals and commits them daily to keep your contribution graph active. Features AES-256-GCM encryption, deterministic cron scheduling, and multi-timezone support.",
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "SyncGraph Free",
+              "price": "0",
+              "priceCurrency": "USD",
+              "description": "1 automated commit per day, private repo, streak tracking, email notifications"
+            },
+            {
+              "@type": "Offer",
+              "name": "SyncGraph Pro — 1 Year",
+              "price": "49",
+              "priceCurrency": "USD",
+              "description": "Up to 3 commits per day, custom topics, custom commit window, weekly summary emails"
+            },
+            {
+              "@type": "Offer",
+              "name": "SyncGraph Pro — Lifetime",
+              "price": "99",
+              "priceCurrency": "USD",
+              "description": "All Pro features forever. One-time payment, no subscription."
+            }
+          ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "1200",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "featureList": [
+            "Automated daily Markdown learning journal generation",
+            "Deterministic cron-based commit scheduling",
+            "AES-256-GCM encrypted OAuth token storage",
+            "Multi-timezone support (300+ timezones)",
+            "Customizable commit frequency (1-3 per day)",
+            "GitHub contribution streak tracking & heatmap"
+          ],
           "publisher": {
             "@id": "https://omniide.com/#organization"
           }
@@ -3204,15 +3270,18 @@
                         </div>
                     </div>
                 </a>
-                <a href="#syncgraph-demo" class="eco-card-link" style="text-decoration: none; color: inherit; display: block;">
+                <a href="https://syncgraph.omniide.com/" target="_blank" rel="noopener noreferrer" class="eco-card-link" style="text-decoration: none; color: inherit; display: block;">
                     <div class="eco-card" style="cursor: pointer;">
-                        <div class="eco-icon" style="background: transparent; overflow: hidden; border: 1px solid rgba(0,0,0,0.06);"><img src="assets/images/syncgraph-logo.jpg" alt="SyncGraph Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;"></div>
-                        <div class="eco-status live">● B2D — SyncGraph</div>
+                        <div class="eco-icon" style="background: transparent; overflow: hidden; border: 1px solid rgba(0,0,0,0.06);"><img src="assets/images/syncgraph-logo.jpg" alt="SyncGraph — Automated GitHub Learning Log & Streak Engine" style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;"></div>
+                        <div class="eco-status-container" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+                            <div class="eco-status live" style="margin-bottom: 0;">● LIVE PRODUCT — LAUNCHED</div>
+                            <span class="v4-badge" style="display:inline-flex;align-items:center;gap:4px;background:rgba(16,185,129,0.15);color:#10B981;border:1px solid rgba(16,185,129,0.3);">1,200+ Developers</span>
+                        </div>
                         <h3>SyncGraph</h3>
-                        <div class="tagline">The Elite Tool for Modern Developers</div>
-                        <p>Stop losing green squares. SyncGraph handles secure multi-profile syncing, logs daily learning milestones, and ensures your public GitHub profile reflects your true coding consistency and technical growth with zero setup and absolute privacy.</p>
+                        <div class="tagline">Automated GitHub Learning Log &amp; Streak Engine</div>
+                        <p>Stop losing green squares. SyncGraph automates daily Markdown learning logs and commits them to GitHub on deterministic cron schedules. Build verifiable proof-of-work, maintain your coding streak on autopilot, and secure tokens with AES-256-GCM encryption.</p>
                         <div class="card-action">
-                            <span class="action-text">Explore SyncGraph Workspace</span>
+                            <span class="action-text">Launch SyncGraph Engine</span>
                             <span class="action-arrow">→</span>
                         </div>
                     </div>
@@ -3709,7 +3778,8 @@
                         href="/blog/">Blog</a><a href="/docs/">Documentation</a>
                 </div>
                 <div class="footer-col">
-                    <h5>Products</h5><a href="/omni/">OmniIDE</a><a href="#ecosystem">Omni-Guard</a><a
+                    <h5>Products</h5><a href="/omni/">OmniIDE</a><a href="https://syncgraph.omniide.com/"
+                        target="_blank" rel="noopener noreferrer">SyncGraph</a><a href="#ecosystem">Omni-Guard</a><a
                         href="#">Roadmap</a><a href="https://github.com/nihannihu/Omni-IDE/releases/tag/v3.0.0"
                         target="_blank" rel="noopener noreferrer">GitHub Releases</a>
                 </div>
