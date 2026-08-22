@@ -3315,6 +3315,22 @@
                         </div>
                     </div>
                 </a>
+                <a href="#contact-form" onclick="requestHealthEarlyAccess(event)" class="eco-card-link" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="eco-card" style="cursor: pointer;">
+                        <div class="eco-icon" style="background: transparent; overflow: hidden; border: 1px solid rgba(0,0,0,0.06);"><img src="assets/images/omni-health-logo.jpg" alt="OmniHealth Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;"></div>
+                        <div class="eco-status-container" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+                            <div class="eco-status dev" style="margin-bottom: 0;">● LAUNCHING SOON</div>
+                            <span class="v4-badge" style="display:inline-flex;align-items:center;gap:4px;background:rgba(99,102,241,0.15);color:#6366F1;border:1px solid rgba(99,102,241,0.3);box-shadow:none;animation:none;text-shadow:none;">Early Access Preview</span>
+                        </div>
+                        <h3>Omni Health</h3>
+                        <div class="tagline">Next-Gen ABDM &amp; NHCX Digital Health Platform</div>
+                        <p>Enterprise digital health suite and claims adjudication platform built for India's Ayushman Bharat Digital Mission (ABDM M1–M4) and NHCX. Powers ABHA identity generation, Fidelius end-to-end encrypted health data exchange, FHIR R4 clinical records, and automated cashless insurance claims settlement.</p>
+                        <div class="card-action">
+                            <span class="action-text">Launching Soon — Request Early Access</span>
+                            <span class="action-arrow">→</span>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -3724,6 +3740,7 @@
                         </div>
                         <div class="form-group"><label for="cf-subject">Subject</label><select name="subject" id="cf-subject" required>
                                 <option value="">Select a topic</option>
+                                <option value="Omni Health Early Access">Omni Health Early Access</option>
                                 <option>Press Inquiry</option>
                                 <option>Partnership</option>
                                 <option>Investor Inquiry</option>
@@ -4061,6 +4078,23 @@
 
         if (btt) btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
         document.getElementById('msme-qr').src = "assets/images/msme-qr.png?v=3";
+
+        function requestHealthEarlyAccess(e) {
+            if (e) e.preventDefault();
+            const formTarget = document.getElementById('contact-form') || document.getElementById('contact');
+            if (formTarget) {
+                const targetY = formTarget.getBoundingClientRect().top + window.pageYOffset - 85;
+                window.scrollTo({ top: targetY, behavior: 'smooth' });
+            }
+            const subj = document.getElementById('cf-subject');
+            if (subj) subj.value = 'Omni Health Early Access';
+            const msg = document.getElementById('cf-message');
+            if (msg && !msg.value.trim()) {
+                msg.value = 'Hi Omni Team,\n\nI would like to request early access / preview credentials for the Omni Health (ABDM & NHCX) platform.';
+                setTimeout(() => msg.focus(), 600);
+            }
+        }
+        window.requestHealthEarlyAccess = requestHealthEarlyAccess;
 
         // Blast Effect
         function createBlast(x, y) {
