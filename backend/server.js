@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-// Enable CORS for all origins or specific frontend
+// Enable CORS for all incoming client requests
 app.use(cors({
     origin: '*',
     methods: ['GET', 'POST', 'OPTIONS'],
@@ -18,22 +18,41 @@ app.use(cors({
 
 app.use(express.json());
 
-// Initialize Razorpay client
-const razorpay = new Razorpay({
-    key_id: process.env.RAZORPAY_KEY_ID || '',
-    key_secret: process.env.RAZORPAY_KEY_SECRET || ''
-});
+// Fallback Key ID if not passed via process.env
+const DEFAULT_KEY_ID = 'rzp_live_TKoC4DwlGTAk8b';
+
+// Safe Razorpay instance getter (Prevents startup crash if env vars are being configured)
+function getRazorpayClient() {
+    const key_id = process.env.RAZORPAY_KEY_ID || DEFAULT_KEY_ID;
+    const key_secret = process.env.RAZORPAY_KEY_SECRET || '';
+
+    if (!key_id || !key_secret) {
+        return null;
+    }
+
+    try {
+        return new Razorpay({ key_id, key_secret });
+    } catch (e) {
+        console.error('Error initializing Razorpay client:', e.message);
+        return null;
+    }
+}
 
 // Fixed Internship Program Price (₹2,599 in paise)
 const INTERNSHIP_PRICE_PAISE = 259900;
 
-// 1. Health check endpoint
+// 1. Health check & status endpoint (Always returns 200 OK)
 app.get('/', (req, res) => {
+    const hasKey = Boolean(process.env.RAZORPAY_KEY_ID || DEFAULT_KEY_ID);
+    const hasSecret = Boolean(process.env.RAZORPAY_KEY_SECRET);
+
     res.json({
         service: 'OmniIDE Payment Gateway Backend',
         status: 'online',
         timestamp: new Date().toISOString(),
-        razorpay_configured: Boolean(process.env.RAZORPAY_KEY_ID && process.env.RAZORPAY_KEY_SECRET)
+        razorpay_configured: hasKey && hasSecret,
+        key_id_set: hasKey,
+        key_secret_set: hasSecret
     });
 });
 
@@ -53,10 +72,11 @@ app.post('/api/create-order', async (req, res) => {
             });
         }
 
-        if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
+        const rzp = getRazorpayClient();
+        if (!rzp) {
             return res.status(500).json({
                 success: false,
-                error: 'Razorpay API credentials not configured in environment variables.'
+                error: 'Razorpay credentials not fully set on server. Please ensure RAZORPAY_KEY_SECRET is added to Railway environment variables.'
             });
         }
 
@@ -77,14 +97,14 @@ app.post('/api/create-order', async (req, res) => {
             }
         };
 
-        const order = await razorpay.orders.create(orderOptions);
+        const order = await rzp.orders.create(orderOptions);
 
         return res.status(200).json({
             success: true,
             orderId: order.id,
             amount: order.amount,
             currency: order.currency,
-            keyId: process.env.RAZORPAY_KEY_ID
+            keyId: process.env.RAZORPAY_KEY_ID || DEFAULT_KEY_ID
         });
     } catch (err) {
         console.error('Error creating Razorpay order:', err);
@@ -101,8 +121,7 @@ app.post('/api/verify-payment', (req, res) => {
         const {
             razorpay_order_id,
             razorpay_payment_id,
-            razorpay_signature,
-            candidate
+            razorpay_signature
         } = req.body;
 
         if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
@@ -120,7 +139,7 @@ app.post('/api/verify-payment', (req, res) => {
             });
         }
 
-        // Generate expected signature
+        // Generate expected cryptographic signature
         const expectedSignature = crypto
             .createHmac('sha256', secret)
             .update(`${razorpay_order_id}|${razorpay_payment_id}`)
