@@ -816,6 +816,41 @@
             margin-bottom: 8px;
         }
 
+        .project-link-title {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--ink-900);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .project-link-title:hover {
+            color: var(--blue-600);
+        }
+
+        .project-link-icon {
+            opacity: 0.5;
+            transition: transform 0.15s ease, opacity 0.15s ease;
+        }
+
+        .project-link-title:hover .project-link-icon {
+            opacity: 1;
+            transform: translate(2px, -2px);
+        }
+
+        .project-status-pill {
+            font-size: 10.5px;
+            font-weight: 600;
+            color: var(--ink-500);
+            background: var(--bg-alt);
+            border: 1px solid var(--line);
+            padding: 2px 7px;
+            border-radius: 4px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
         .project-desc {
             font-size: 14px;
             color: var(--ink-600);
@@ -1738,7 +1773,12 @@
                             <img src="/assets/images/logo.jpg" alt="Omni IDE" class="project-logo">
                             <span class="project-tag mono">IDE &amp; COMPILER SYSTEMS</span>
                         </div>
-                        <h3 class="project-name">Omni IDE Core Platform</h3>
+                        <h3 class="project-name">
+                            <a href="https://omniide.com/" target="_blank" rel="noopener noreferrer" class="project-link-title">
+                                <span>Omni IDE Core Platform</span>
+                                <svg class="project-link-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+                            </a>
+                        </h3>
                         <p class="project-desc">
                             Autonomous AI coding editor with self-healing terminals, multi-turn agentic loops, and isolated process sandboxing.
                         </p>
@@ -1756,7 +1796,12 @@
                             <img src="/assets/images/syncgraph-logo.jpg" alt="SyncGraph" class="project-logo">
                             <span class="project-tag mono">DATA &amp; ACTIVITY PLATFORM</span>
                         </div>
-                        <h3 class="project-name">SyncGraph Engine</h3>
+                        <h3 class="project-name">
+                            <a href="https://syncgraph.omniide.com/" target="_blank" rel="noopener noreferrer" class="project-link-title">
+                                <span>SyncGraph Engine</span>
+                                <svg class="project-link-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+                            </a>
+                        </h3>
                         <p class="project-desc">
                             Automated GitHub learning log engine, distributed activity aggregation, and streak analytics pipeline.
                         </p>
@@ -1774,7 +1819,12 @@
                             <img src="/assets/images/omni_rovis_icon.png" alt="Omni Rovis" class="project-logo">
                             <span class="project-tag mono">HEALTHCARE &amp; COMPUTER VISION</span>
                         </div>
-                        <h3 class="project-name">Omni Rovis Medical Platform</h3>
+                        <h3 class="project-name">
+                            <a href="https://rovis.omniide.com/" target="_blank" rel="noopener noreferrer" class="project-link-title">
+                                <span>Omni Rovis Medical Platform</span>
+                                <svg class="project-link-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+                            </a>
+                        </h3>
                         <p class="project-desc">
                             Autonomous fluoroscopy navigation and sub-millimeter surgical visual servoing platform with 78.4% radiation reduction.
                         </p>
@@ -1792,7 +1842,10 @@
                             <img src="/assets/images/omni-health-logo.jpg" alt="Omni Health" class="project-logo">
                             <span class="project-tag mono">DIGITAL HEALTH &amp; STANDARDS</span>
                         </div>
-                        <h3 class="project-name">Omni Health Platform</h3>
+                        <h3 class="project-name">
+                            <span>Omni Health Platform</span>
+                            <span class="project-status-pill mono">LAUNCHING SOON</span>
+                        </h3>
                         <p class="project-desc">
                             National digital health platform compliant with ABDM M1–M4 encrypted record exchanges and NHCX insurance claims bridge.
                         </p>
