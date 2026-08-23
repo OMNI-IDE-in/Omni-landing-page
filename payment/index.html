@@ -1448,8 +1448,8 @@
                 body: payload
             }).catch(err => console.warn('Web3Forms dispatch:', err));
 
-            // Razorpay Gateway Integration (Supports Railway Backend & Direct Key Fallback)
-            const BACKEND_API_URL = window.OMNI_BACKEND_URL || ''; // e.g. 'https://your-app.railway.app'
+            // Razorpay Gateway Integration (Connected to Live Railway Backend)
+            const BACKEND_API_URL = window.OMNI_BACKEND_URL || 'https://omni-landing-page-production-2149.up.railway.app';
             const FALLBACK_KEY = 'rzp_live_TKoC4DwlGTAk8b';
 
             async function initiateCheckout() {
