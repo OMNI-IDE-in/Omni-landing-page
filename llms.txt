@@ -80,7 +80,7 @@ Key differentiators: Fully autonomous (not just assisted), free (no subscription
 
 - Home: https://omniide.com/
 - Product: https://omniide.com/omni/
-- Industry Internship & Training: https://omniide.com/payment/
+- Industry Internship & Training: https://omniide.com/interns/
 - Documentation: https://omniide.com/docs/
 - Blog: https://omniide.com/blog/
 - Getting Started: https://omniide.com/docs/getting-started/
