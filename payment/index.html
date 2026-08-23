@@ -133,47 +133,41 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 12px;
         }
 
         .nav-brand {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-decoration: none;
+            min-width: 0;
         }
 
         .nav-logo-img {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
+            width: 30px;
+            height: 30px;
+            border-radius: 7px;
             object-fit: cover;
             border: 1px solid var(--border-light);
+            flex-shrink: 0;
         }
 
         .nav-brand-text {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             color: var(--text-main);
             letter-spacing: -0.01em;
+            white-space: nowrap;
         }
 
-        .nav-divider {
-            width: 1px;
-            height: 18px;
-            background: var(--border-light);
-            margin: 0 2px;
-        }
-
-        .nav-tag {
-            font-size: 13px;
+        .nav-tag-subtitle {
+            font-size: 11px;
+            font-weight: 600;
             color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        @media (max-width: 500px) {
-            .nav-divider, .nav-tag {
-                display: none;
-            }
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            display: block;
         }
 
         .nav-back {
@@ -188,11 +182,38 @@
             border: 1px solid var(--border-light);
             background: #FFFFFF;
             transition: all 0.15s ease;
+            flex-shrink: 0;
+            white-space: nowrap;
         }
 
         .nav-back:hover {
             border-color: var(--text-subtle);
             color: var(--text-main);
+        }
+
+        @media (max-width: 640px) {
+            .site-nav {
+                padding: 6px 0;
+            }
+            .nav-inner {
+                height: auto;
+                min-height: 48px;
+            }
+            .nav-logo-img {
+                width: 24px;
+                height: 24px;
+                border-radius: 5px;
+            }
+            .nav-brand-text {
+                font-size: 13px;
+            }
+            .nav-tag-subtitle {
+                display: none;
+            }
+            .nav-back {
+                padding: 5px 8px;
+                font-size: 12px;
+            }
         }
 
         /* 2. HERO SECTION */
@@ -958,7 +979,7 @@
                 </div>
                 <div style="display: flex; flex-direction: column;">
                     <span class="nav-brand-text">OMNI IDE × SCAN AI</span>
-                    <span style="font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em;">Engineering Internship Portal</span>
+                    <span class="nav-tag-subtitle">Engineering Internship Portal</span>
                 </div>
             </a>
             <a href="/" class="nav-back">
@@ -1494,7 +1515,37 @@
                         "prefill": {
                             "name": name,
                             "email": email,
-                            "contact": phone
+                            "contact": phone,
+                            "method": "upi"
+                        },
+                        "config": {
+                            "display": {
+                                "blocks": {
+                                    "upi": {
+                                        "name": "Pay with UPI (Google Pay / PhonePe / Paytm / QR)",
+                                        "instruments": [
+                                            {
+                                                "method": "upi"
+                                            }
+                                        ]
+                                    },
+                                    "other": {
+                                        "name": "Debit / Credit Cards & NetBanking",
+                                        "instruments": [
+                                            {
+                                                "method": "card"
+                                            },
+                                            {
+                                                "method": "netbanking"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "sequence": ["block.upi", "block.other"],
+                                "preferences": {
+                                    "show_default_blocks": true
+                                }
+                            }
                         },
                         "notes": {
                             "program": "3-Month Industry Internship",
