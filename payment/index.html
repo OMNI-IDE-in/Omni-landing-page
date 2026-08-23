@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K63KTZ5GLS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-K63KTZ5GLS');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#FFFFFF">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <title>OmniIDE — 3-Month Industry Internship & Engineering Training</title>
+    <link rel="icon" type="image/jpeg" href="/assets/images/logo.jpg">
+    <link rel="apple-touch-icon" href="/assets/images/logo.jpg">
+    <meta name="description"
+        content="Official 3-Month Industry Internship & Advanced Engineering Program at OmniIDE. AICTE approved & VTU academic credit compliant. Build real-world production systems with 1-on-1 senior mentorship.">
+    <meta name="author" content="OmniIDE">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://omniide.com/payment/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://omniide.com/payment/">
+    <meta property="og:title" content="OmniIDE — 3-Month Industry Internship & Engineering Training">
+    <meta property="og:description"
+        content="Official 3-Month Industry Internship. Build live production codebases in Omni IDE, SyncGraph, Omni Rovis, and Omni Health. AICTE & VTU credit eligible.">
+    <meta property="og:image" content="https://omniide.com/assets/images/og-image.png">
+    <meta property="og:site_name" content="OmniIDE">
+
+    <!-- Fonts: Inter & Plus Jakarta Sans for Stripe/Linear typographic fidelity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Razorpay Checkout SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <style>
+        :root {
+            --bg-base: #FAFAFC;
+            --bg-surface: #FFFFFF;
+            --text-main: #0F172A;
+            --text-body: #334155;
+            --text-muted: #64748B;
+            --text-subtle: #94A3B8;
+            --border-light: #E2E8F0;
+            --border-card: #E5E7EB;
+            --border-focus: #2563EB;
+            --primary: #1A56DB;
+            --primary-hover: #1E40AF;
+            --primary-soft: #EFF6FF;
+            --emerald: #059669;
+            --emerald-soft: #ECFDF5;
+            --emerald-border: #A7F3D0;
+            --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+            --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-elevated: 0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            --radius-xs: 6px;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-body);
+            line-height: 1.55;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .brand-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        a:hover {
+            color: var(--primary-hover);
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 16px;
+            }
+        }
+
+        /* 1. MINIMAL STRIPE-STYLE NAVBAR */
+        .site-nav {
+            background: #FFFFFF;
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .nav-inner {
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid var(--border-light);
+        }
+
+        .nav-brand-text {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.01em;
+        }
+
+        .nav-divider {
+            width: 1px;
+            height: 18px;
+            background: var(--border-light);
+            margin: 0 2px;
+        }
+
+        .nav-tag {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        @media (max-width: 500px) {
+            .nav-divider, .nav-tag {
+                display: none;
+            }
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-body);
+            padding: 6px 12px;
+            border-radius: var(--radius-xs);
+            border: 1px solid var(--border-light);
+            background: #FFFFFF;
+            transition: all 0.15s ease;
+        }
+
+        .nav-back:hover {
+            border-color: var(--text-subtle);
+            color: var(--text-main);
+        }
+
+        /* 2. HERO SECTION */
+        .hero {
+            padding: 48px 0 24px;
+            background: #FFFFFF;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 32px 0 20px;
+            }
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 12px;
+        }
+
+        .hero-eyebrow-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .hero-headline {
+            font-size: clamp(28px, 4vw, 42px);
+            line-height: 1.15;
+            color: var(--text-main);
+            margin-bottom: 16px;
+            max-width: 840px;
+        }
+
+        .hero-desc {
+            font-size: clamp(15px, 2vw, 17px);
+            color: var(--text-body);
+            line-height: 1.6;
+            max-width: 780px;
+            margin-bottom: 28px;
+        }
+
+        /* 3. LOGO TRUST STRIP */
+        .trust-strip {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px 32px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .trust-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+        }
+
+        .trust-logos {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--text-body);
+        }
+
+        .trust-item img {
+            height: 26px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(15%);
+        }
+
+        @media (max-width: 640px) {
+            .trust-strip {
+                gap: 14px 20px;
+            }
+            .trust-logos {
+                gap: 16px;
+            }
+            .trust-item {
+                font-size: 11.5px;
+            }
+            .trust-item img {
+                height: 22px;
+            }
+        }
+
+        /* 4. MAIN TWO-COLUMN WORKBENCH */
+        .main-layout {
+            padding: 40px 0 60px;
+        }
+
+        @media (max-width: 640px) {
+            .main-layout {
+                padding: 24px 0 40px;
+            }
+        }
+
+        .grid-split {
+            display: grid;
+            grid-template-columns: 1.25fr 0.95fr;
+            gap: 36px;
+            align-items: start;
+        }
+
+        @media (max-width: 960px) {
+            .grid-split {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        /* 5. STRIPE-STYLE SECTION CARDS */
+        .card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            box-shadow: var(--shadow-subtle);
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 640px) {
+            .card {
+                padding: 18px 16px;
+            }
+        }
+
+        .card-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .card-header h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .card-header-badge {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* TRACK SELECTION LIST */
+        .track-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .track-box {
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 14px 16px;
+            background: #FFFFFF;
+            transition: all 0.15s ease;
+        }
+
+        .track-box:hover {
+            border-color: #CBD5E1;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .track-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4px;
+            gap: 8px;
+        }
+
+        .track-title {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .track-chip {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--primary-soft);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .track-tools {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .track-desc {
+            font-size: 13px;
+            color: var(--text-body);
+            line-height: 1.5;
+        }
+
+        /* 3-MONTH TIMELINE */
+        .roadmap-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .roadmap-row {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .roadmap-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            background: var(--bg-base);
+            border: 1px solid var(--border-light);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .roadmap-content h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 3px;
+        }
+
+        .roadmap-content p {
+            font-size: 13px;
+            color: var(--text-body);
+            line-height: 1.5;
+        }
+
+        /* ECOSYSTEM REPOSITORIES GRID */
+        .eco-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        @media (max-width: 500px) {
+            .eco-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .eco-card {
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #FFFFFF;
+        }
+
+        .eco-card img {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 1px solid var(--border-light);
+        }
+
+        .eco-info h4 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+
+        .eco-info p {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        /* 6. RIGHT COLUMN: CHECKOUT PANEL */
+        .checkout-col {
+            position: sticky;
+            top: 80px;
+        }
+
+        .checkout-box {
+            background: #FFFFFF;
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-elevated);
+            padding: 24px;
+        }
+
+        @media (max-width: 640px) {
+            .checkout-box {
+                padding: 20px 16px;
+            }
+        }
+
+        .checkout-top {
+            margin-bottom: 18px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .checkout-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .checkout-sub {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .price-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .price-current {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.03em;
+        }
+
+        .price-strike {
+            font-size: 15px;
+            color: var(--text-subtle);
+            text-decoration: line-through;
+            margin-left: 6px;
+        }
+
+        .price-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--emerald);
+            background: var(--emerald-soft);
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--emerald-border);
+        }
+
+        /* ITEMIZED SUMMARY TABLE */
+        .summary-table {
+            background: var(--bg-base);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-xs);
+            padding: 12px 14px;
+            margin-bottom: 18px;
+            font-size: 12.5px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-body);
+        }
+
+        .summary-row.discount {
+            color: var(--emerald);
+        }
+
+        .summary-row.total {
+            border-top: 1px solid var(--border-light);
+            padding-top: 6px;
+            margin-top: 2px;
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 13.5px;
+        }
+
+        /* FORM INPUTS */
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 5px;
+        }
+
+        .form-label .req {
+            color: #E11D48;
+            margin-left: 2px;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            height: 42px;
+            padding: 0 12px;
+            font-size: 14px;
+            font-family: inherit;
+            color: var(--text-main);
+            background: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            border-radius: var(--radius-xs);
+            outline: none;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .form-input:focus, .form-select:focus {
+            border-color: var(--border-focus);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        .form-input::placeholder {
+            color: #9CA3AF;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        @media (max-width: 480px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* CHECKOUT BUTTON */
+        .btn-submit {
+            width: 100%;
+            height: 48px;
+            background: #0F172A;
+            color: #FFFFFF;
+            border: none;
+            border-radius: var(--radius-xs);
+            font-size: 15px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.15s ease, transform 0.1s ease;
+            margin-top: 16px;
+        }
+
+        .btn-submit:hover {
+            background: #1E293B;
+        }
+
+        .btn-submit:active {
+            transform: scale(0.99);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .checkout-guarantee {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        /* 7. FAQ SECTION */
+        .faq-wrap {
+            margin-top: 40px;
+            padding-top: 36px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .faq-title {
+            font-size: 20px;
+            color: var(--text-main);
+            margin-bottom: 16px;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .faq-item {
+            background: #FFFFFF;
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+
+        .faq-q {
+            padding: 14px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .faq-q:hover {
+            background: var(--bg-base);
+        }
+
+        .faq-chevron {
+            color: var(--text-muted);
+            transition: transform 0.15s ease;
+        }
+
+        .faq-item.open .faq-chevron {
+            transform: rotate(180deg);
+        }
+
+        .faq-a {
+            padding: 0 16px 14px;
+            font-size: 13.5px;
+            color: var(--text-body);
+            line-height: 1.55;
+            display: none;
+        }
+
+        .faq-item.open .faq-a {
+            display: block;
+        }
+
+        /* 8. MODAL DIALOG (STRIPE STYLE CONFIRMATION) */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .modal-backdrop.active {
+            display: flex;
+        }
+
+        .modal-card {
+            background: #FFFFFF;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-card);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-width: 500px;
+            width: 100%;
+            padding: 28px;
+            animation: modal-slide 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes modal-slide {
+            from {
+                opacity: 0;
+                transform: translateY(8px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-icon-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--emerald-soft);
+            border: 1px solid var(--emerald-border);
+            color: var(--emerald);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .modal-heading {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .modal-ref-tag {
+            display: inline-block;
+            font-size: 12px;
+            color: var(--text-muted);
+            background: var(--bg-base);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 16px;
+        }
+
+        .modal-data-box {
+            background: var(--bg-base);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-xs);
+            padding: 12px 14px;
+            margin-bottom: 16px;
+            font-size: 13px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .modal-data-row {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-body);
+        }
+
+        .modal-data-row strong {
+            color: var(--text-main);
+        }
+
+        .modal-message {
+            font-size: 13px;
+            color: var(--text-body);
+            line-height: 1.55;
+            background: #F8FAFC;
+            border-left: 3px solid var(--primary);
+            padding: 10px 12px;
+            margin-bottom: 20px;
+        }
+
+        .modal-btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .btn-modal-green {
+            width: 100%;
+            height: 44px;
+            background: #16A34A;
+            color: #FFFFFF;
+            border: none;
+            border-radius: var(--radius-xs);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn-modal-green:hover {
+            background: #15803D;
+        }
+
+        .btn-modal-ghost {
+            width: 100%;
+            height: 40px;
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-xs);
+            font-size: 13.5px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .btn-modal-ghost:hover {
+            background: var(--bg-base);
+            color: var(--text-main);
+        }
+
+        /* 9. MINIMAL FOOTER */
+        .site-footer {
+            border-top: 1px solid var(--border-light);
+            background: #FFFFFF;
+            padding: 32px 0 24px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 18px;
+        }
+
+        .footer-nav a {
+            color: var(--text-muted);
+        }
+
+        .footer-nav a:hover {
+            color: var(--text-main);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. NAVIGATION -->
+    <header class="site-nav">
+        <div class="container nav-inner">
+            <a href="/" class="nav-brand" aria-label="OmniIDE x Scan AI">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <img src="/assets/images/logo.jpg" alt="OmniIDE Logo" class="nav-logo-img">
+                    <span style="font-size: 13px; font-weight: 700; color: #94A3B8;">×</span>
+                    <img src="/assets/images/scanai-logo.png" alt="Scan AI Logo" class="nav-logo-img">
+                </div>
+                <div style="display: flex; flex-direction: column;">
+                    <span class="nav-brand-text">OMNI IDE × SCAN AI</span>
+                    <span style="font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em;">Engineering Internship Portal</span>
+                </div>
+            </a>
+            <a href="/" class="nav-back">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- 2. HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-eyebrow">
+                <span class="hero-eyebrow-dot"></span>
+                <span>Official 3-Month Industry Internship</span>
+            </div>
+
+            <h1 class="hero-headline">
+                Build Production Software. Earn Verified Industry Credentials.
+            </h1>
+
+            <p class="hero-desc">
+                An immersive engineering internship for students, graduates, and professionals. Write and deploy production code directly into OmniIDE's software ecosystem with dedicated 1-on-1 senior mentorship.
+            </p>
+
+            <!-- AUTHENTIC ACCREDITATION LOGO ROW -->
+            <div class="trust-strip">
+                <span class="trust-label">Official Recognition &amp; Compliance:</span>
+                <div class="trust-logos">
+                    <div class="trust-item" title="AICTE Approved Technical Education Partner">
+                        <img src="/assets/images/aicte-logo.png" alt="AICTE">
+                        <span>AICTE Partner</span>
+                    </div>
+                    <div class="trust-item" title="VTU Academic Credit Compliant">
+                        <img src="/assets/images/vtu-logo.png" alt="VTU">
+                        <span>VTU Compliant</span>
+                    </div>
+                    <div class="trust-item" title="DPIIT Startup India Recognized">
+                        <img src="/assets/images/dpiit-startup-india.png" alt="Startup India">
+                        <span>Startup India</span>
+                    </div>
+                    <div class="trust-item" title="Ministry of MSME Registered">
+                        <img src="/assets/images/msme-logo.png" alt="MSME">
+                        <span>MSME Certified</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. MAIN WORKBENCH -->
+    <main class="container main-layout">
+        <div class="grid-split">
+
+            <!-- LEFT COLUMN: TRACKS, ROADMAP, ECOSYSTEM -->
+            <div class="content-col">
+
+                <!-- TRACKS -->
+                <section class="card">
+                    <div class="card-header">
+                        <h3>Available Engineering Tracks</h3>
+                        <span class="card-header-badge">5 Specialized Roles</span>
+                    </div>
+
+                    <div class="track-list">
+                        <div class="track-box">
+                            <div class="track-head">
+                                <span class="track-title">Full-Stack Software Engineer</span>
+                                <span class="track-chip">Web Architecture</span>
+                            </div>
+                            <div class="track-tools mono">React 19 · TypeScript · Fastify / Node.js · PostgreSQL · Microservices</div>
+                            <p class="track-desc">Design scalable client-server architectures, build enterprise dashboard interfaces, and develop high-throughput REST and GraphQL endpoints.</p>
+                        </div>
+
+                        <div class="track-box">
+                            <div class="track-head">
+                                <span class="track-title">Full-Stack AI Developer</span>
+                                <span class="track-chip">Agentic AI</span>
+                            </div>
+                            <div class="track-tools mono">Agentic Loops · Gemini API · Ollama · MCP Protocol · Vector Embeddings</div>
+                            <p class="track-desc">Engineer autonomous coding loops, LLM orchestration pipelines, self-healing terminal systems, and local edge inference engines.</p>
+                        </div>
+
+                        <div class="track-box">
+                            <div class="track-head">
+                                <span class="track-title">Systems &amp; Desktop Software Engineer</span>
+                                <span class="track-chip">Native Systems</span>
+                            </div>
+                            <div class="track-tools mono">Electron Internals · C++ / Rust · IPC Protocols · Process Isolation</div>
+                            <p class="track-desc">Build low-latency native desktop applications, containerized process isolations, file system monitors, and hardened developer toolchains.</p>
+                        </div>
+
+                        <div class="track-box">
+                            <div class="track-head">
+                                <span class="track-title">Healthcare AI &amp; Computer Vision Engineer</span>
+                                <span class="track-chip">MedTech</span>
+                            </div>
+                            <div class="track-tools mono">FHIR R4 Bundles · ABDM M1–M4 · Kinematic Servoing · PyTorch</div>
+                            <p class="track-desc">Implement ABDM-compliant encrypted health record exchanges, sub-millimeter surgical visual tracking algorithms, and NHCX insurance claims engines.</p>
+                        </div>
+
+                        <div class="track-box">
+                            <div class="track-head">
+                                <span class="track-title">Cloud Infrastructure &amp; DevOps Engineer</span>
+                                <span class="track-chip">Platform &amp; Reliability</span>
+                            </div>
+                            <div class="track-tools mono">Docker · Kubernetes · GitHub Actions CI/CD · Linux Kernels · AWS / GCP</div>
+                            <p class="track-desc">Design automated zero-downtime deployment pipelines, container orchestration, telemetry logging clusters, and edge caching networks.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ROADMAP -->
+                <section class="card">
+                    <div class="card-header">
+                        <h3>3-Month Sprint Structure</h3>
+                        <span class="card-header-badge">Weekly Milestones</span>
+                    </div>
+
+                    <div class="roadmap-list">
+                        <div class="roadmap-row">
+                            <div class="roadmap-num">1</div>
+                            <div class="roadmap-content">
+                                <h4>Month 1 — Architecture Dissection &amp; Core Tooling</h4>
+                                <p>Deep-dive into production codebases. Master Git workflows, branch strategies, automated test suites, and agentic debugging frameworks.</p>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-row">
+                            <div class="roadmap-num">2</div>
+                            <div class="roadmap-content">
+                                <h4>Month 2 — Feature Engineering &amp; Sprint Execution</h4>
+                                <p>Assigned to an active sprint on a live Omni product. Develop real modules, write integration tests, and submit production Pull Requests under senior mentor guidance.</p>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-row">
+                            <div class="roadmap-num">3</div>
+                            <div class="roadmap-content">
+                                <h4>Month 3 — Production Deployment &amp; Certification</h4>
+                                <p>Deploy features to staging and production, undergo code audits, complete capstone evaluation defense, and receive verifiable AICTE &amp; VTU credentials.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- LIVE PRODUCTION REPOSITORIES -->
+                <section class="card">
+                    <div class="card-header">
+                        <h3>Production Codebases You Will Build On</h3>
+                        <span class="card-header-badge">Live Products</span>
+                    </div>
+
+                    <div class="eco-grid">
+                        <div class="eco-card">
+                            <img src="/assets/images/logo.jpg" alt="Omni IDE">
+                            <div class="eco-info">
+                                <h4>Omni IDE Core</h4>
+                                <p>Autonomous AI code editor with self-healing terminals.</p>
+                            </div>
+                        </div>
+
+                        <div class="eco-card">
+                            <img src="/assets/images/syncgraph-logo.jpg" alt="SyncGraph">
+                            <div class="eco-info">
+                                <h4>SyncGraph</h4>
+                                <p>Automated GitHub learning log engine &amp; streak cron.</p>
+                            </div>
+                        </div>
+
+                        <div class="eco-card">
+                            <img src="/assets/images/omni_rovis_icon.png" alt="Omni Rovis">
+                            <div class="eco-info">
+                                <h4>Omni Rovis</h4>
+                                <p>AI surgical motion compensation &amp; fluoroscopy platform.</p>
+                            </div>
+                        </div>
+
+                        <div class="eco-card">
+                            <img src="/assets/images/omni-health-logo.jpg" alt="Omni Health">
+                            <div class="eco-info">
+                                <h4>Omni Health</h4>
+                                <p>ABDM M1–M4 &amp; NHCX digital health platform.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- DELIVERABLES & CREDENTIALS -->
+                <section class="card">
+                    <div class="card-header">
+                        <h3>Official Certification &amp; Deliverables</h3>
+                        <span class="card-header-badge">Verified Output</span>
+                    </div>
+
+                    <div style="font-size: 13.5px; line-height: 1.6; color: var(--text-body);">
+                        <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 8px;">
+                            <li><strong>AICTE &amp; VTU Compliant Certificate:</strong> Unique digital QR verification for college academic evaluations.</li>
+                            <li><strong>Letter of Recommendation (LOR):</strong> Performance-backed recommendation signed by company leadership.</li>
+                            <li><strong>GitHub Proof of Work:</strong> Verifiable merged pull requests on production open-source repositories.</li>
+                            <li><strong>1-on-1 Senior Mentorship:</strong> Weekly code review sessions and architectural guidance.</li>
+                            <li><strong>Internship Portal Access:</strong> Individual account with task boards, sprint logs, and technical resources.</li>
+                        </ul>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- RIGHT COLUMN: ENROLLMENT & PAYMENT -->
+            <div class="checkout-col">
+                <div class="checkout-box" id="enrollment-panel">
+                    <div class="checkout-top">
+                        <div class="checkout-title">Program Enrollment</div>
+                        <div class="checkout-sub">3-Month Industry Internship &amp; Engineering Training</div>
+                        <div class="price-row">
+                            <div>
+                                <span class="price-current">₹2,599</span>
+                                <span class="price-strike">₹8,999</span>
+                            </div>
+                            <span class="price-tag">Academic Grant Applied</span>
+                        </div>
+                    </div>
+
+                    <!-- FEE BREAKDOWN -->
+                    <div class="summary-table">
+                        <div class="summary-row">
+                            <span>Standard Program Fee</span>
+                            <span>₹8,999</span>
+                        </div>
+                        <div class="summary-row discount">
+                            <span>Academic Subsidy Grant</span>
+                            <span>-₹6,400</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>1-on-1 Mentor Allocation</span>
+                            <span>Included</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Portal &amp; Verification Credential</span>
+                            <span>Included</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Net Total Payable</span>
+                            <span class="mono">₹2,599 (One-Time)</span>
+                        </div>
+                    </div>
+
+                    <!-- REGISTRATION FORM -->
+                    <form id="checkout-form" method="POST">
+                        <input type="hidden" name="access_key" value="fc355b0a-58b0-49d5-a597-e8a20fce9d9d">
+                        <input type="hidden" name="from_name" value="OmniIDE Internship Portal">
+                        <input type="hidden" name="subject" value="New 3-Month Internship Registration">
+                        <input type="checkbox" name="botcheck" style="display: none;">
+
+                        <div class="form-group">
+                            <label class="form-label" for="reg-name">Full Legal Name <span class="req">*</span></label>
+                            <input type="text" id="reg-name" name="name" class="form-input" placeholder="e.g. Rahul Sharma" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="reg-email">Email Address <span class="req">*</span></label>
+                            <input type="email" id="reg-email" name="email" class="form-input" placeholder="e.g. rahul@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="reg-phone">WhatsApp / Phone Number <span class="req">*</span></label>
+                            <input type="tel" id="reg-phone" name="phone" class="form-input" placeholder="e.g. +91 98765 43210" pattern="[0-9+ -]{10,15}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="reg-role">Selected Engineering Track <span class="req">*</span></label>
+                            <select id="reg-role" name="role" class="form-select" required>
+                                <option value="Full-Stack Software Engineer" selected>Full-Stack Software Engineer</option>
+                                <option value="Full-Stack AI Developer">Full-Stack AI Developer</option>
+                                <option value="Systems & Desktop Software Engineer">Systems &amp; Desktop Software Engineer</option>
+                                <option value="Healthcare AI & Computer Vision Engineer">Healthcare AI &amp; Computer Vision Engineer</option>
+                                <option value="Cloud Infrastructure & DevOps Engineer">Cloud Infrastructure &amp; DevOps Engineer</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="reg-college">College / University</label>
+                                <input type="text" id="reg-college" name="institution" class="form-input" placeholder="e.g. VTU Affiliated College">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="reg-year">Year / Experience</label>
+                                <select id="reg-year" name="status" class="form-select">
+                                    <option value="4th Year (Final Year)" selected>4th Year (Final Year)</option>
+                                    <option value="3rd Year Student">3rd Year Student</option>
+                                    <option value="1st / 2nd Year Student">1st / 2nd Year Student</option>
+                                    <option value="Recent Graduate">Recent Graduate</option>
+                                    <option value="Working Professional">Working Professional</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="btn-pay-action" class="btn-submit">
+                            <span>Proceed to Payment (₹2,599)</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </form>
+
+                    <div class="checkout-guarantee">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <span>256-bit encrypted · Portal credentials issued within 2–4 hours</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 7. FREQUENTLY ASKED QUESTIONS -->
+        <section class="faq-wrap">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item open">
+                    <div class="faq-q" onclick="toggleFaq(this)">
+                        <span>Is this internship accepted for VTU and university academic credits?</span>
+                        <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="faq-a">
+                        Yes. OmniIDE is an AICTE Approved Technical Education Partner and MSME registered entity. The 3-month curriculum complies with university mandatory internship guidelines (including 7th &amp; 8th semester VTU engineering credits). You receive an official verifiable certificate with a unique QR code and project completion evaluation report.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)">
+                        <span>What is the expected weekly time commitment?</span>
+                        <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="faq-a">
+                        The program requires approximately 10–15 hours per week. Sprints are asynchronous with scheduled weekly mentor syncs, allowing you to balance regular semester exams and classes without conflict.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)">
+                        <span>How is 1-on-1 mentor guidance structured?</span>
+                        <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="faq-a">
+                        Upon enrollment, a senior software engineer from our core engineering team is assigned to you based on your selected track. They conduct weekly 1-on-1 sprint reviews, unblock technical issues, audit your pull requests, and provide guidance on system architecture.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)">
+                        <span>When will I receive my portal access after payment?</span>
+                        <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="faq-a">
+                        Immediately after registration, an on-screen reference ID is generated. Our engineering admissions team will dispatch your official Internship Portal username, password, onboarding documentation, and mentor calendar link to your registered email and WhatsApp within 2–4 hours.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 8. POST-PAYMENT ONBOARDING CONFIRMATION MODAL -->
+    <div class="modal-backdrop" id="modal-container">
+        <div class="modal-card">
+            <div class="modal-icon-circle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+
+            <h3 class="modal-heading">Registration Confirmed</h3>
+            <div class="modal-ref-tag" id="ref-tag">REF: OMNI-INT-2026-8492</div>
+
+            <div class="modal-data-box">
+                <div class="modal-data-row">
+                    <span>Candidate:</span>
+                    <strong id="modal-name">Candidate Name</strong>
+                </div>
+                <div class="modal-data-row">
+                    <span>Track:</span>
+                    <strong id="modal-role">Full-Stack Software Engineer</strong>
+                </div>
+                <div class="modal-data-row">
+                    <span>Amount Paid:</span>
+                    <strong class="mono" style="color: var(--emerald);">₹2,599 (3-Month Program)</strong>
+                </div>
+                <div class="modal-data-row">
+                    <span>Verification:</span>
+                    <strong>AICTE &amp; VTU Compliant</strong>
+                </div>
+            </div>
+
+            <div class="modal-message">
+                <strong>Next Steps:</strong>
+                Our admissions and engineering team will review your registration and dispatch your <strong>Internship Portal Access (Username &amp; Password)</strong> along with your <strong>Dedicated Mentor Assignment</strong> to your registered email and WhatsApp within <strong>2–4 hours</strong>.
+            </div>
+
+            <div class="modal-btn-group">
+                <a href="https://wa.me/919482186835?text=Hello%20OmniIDE%20Team%2C%20I%20have%20completed%20my%20internship%20registration%20for%20the%203-Month%20Program." target="_blank" rel="noopener noreferrer" class="btn-modal-green" style="text-decoration:none;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                    <span>Connect with Admissions on WhatsApp</span>
+                </a>
+                <button type="button" class="btn-modal-ghost" onclick="closeModal()">
+                    <span>Return to OmniIDE Home</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div>
+                <strong>OmniIDE Systems</strong> — Ministry of MSME Registered · DPIIT Startup India Recognized
+            </div>
+            <div class="footer-nav">
+                <a href="/terms-of-use/">Terms</a>
+                <a href="/privacy-policy/">Privacy</a>
+                <a href="mailto:founder@omniide.com">founder@omniide.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTION & PAYMENT SCRIPT -->
+    <script>
+        function toggleFaq(el) {
+            const item = el.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        function generateRef() {
+            const num = Math.floor(1000 + Math.random() * 9000);
+            return `OMNI-INT-2026-${num}`;
+        }
+
+        function openModal(data) {
+            const ref = generateRef();
+            document.getElementById('ref-tag').textContent = `REF: ${ref}`;
+            document.getElementById('modal-name').textContent = data.name || 'Candidate';
+            document.getElementById('modal-role').textContent = data.role || 'Full-Stack Software Engineer';
+            
+            const modal = document.getElementById('modal-container');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal-container');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            window.location.href = '/';
+        }
+
+        const checkoutForm = document.getElementById('checkout-form');
+        const submitButton = document.getElementById('btn-pay-action');
+
+        checkoutForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('reg-name').value.trim();
+            const email = document.getElementById('reg-email').value.trim();
+            const phone = document.getElementById('reg-phone').value.trim();
+            const role = document.getElementById('reg-role').value;
+
+            if (!name || !email || !phone || !role) {
+                alert('Please complete all mandatory fields.');
+                return;
+            }
+
+            submitButton.disabled = true;
+            submitButton.innerHTML = `<span>Processing Enrollment...</span>`;
+
+            // Web3Forms payload dispatch to log lead & notify founder@omniide.com
+            const formData = new FormData(checkoutForm);
+            formData.append('Amount', '₹2,599');
+            formData.append('Program', '3-Month Industry Internship');
+            formData.append('Notification_Recipient', 'founder@omniide.com');
+
+            const payload = JSON.stringify(Object.fromEntries(formData));
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: payload
+            }).catch(err => console.warn('Web3Forms dispatch:', err));
+
+            // Razorpay Gateway Integration (Supports Railway Backend & Direct Key Fallback)
+            const BACKEND_API_URL = window.OMNI_BACKEND_URL || ''; // e.g. 'https://your-app.railway.app'
+            const FALLBACK_KEY = 'rzp_live_TKoC4DwlGTAk8b';
+
+            async function initiateCheckout() {
+                let orderId = null;
+                let activeKey = FALLBACK_KEY;
+
+                // 1. Try to fetch verified server-side order from Railway backend if available
+                if (BACKEND_API_URL) {
+                    try {
+                        const orderRes = await fetch(`${BACKEND_API_URL}/api/create-order`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                name: name,
+                                email: email,
+                                phone: phone,
+                                role: role,
+                                institution: document.getElementById('reg-college').value.trim() || 'N/A',
+                                status: document.getElementById('reg-year').value
+                            })
+                        });
+                        const orderData = await orderRes.json();
+                        if (orderData && orderData.success && orderData.orderId) {
+                            orderId = orderData.orderId;
+                            if (orderData.keyId) activeKey = orderData.keyId;
+                        }
+                    } catch (e) {
+                        console.warn('Backend order creation offline, using direct checkout fallback:', e);
+                    }
+                }
+
+                // 2. Launch Razorpay Checkout Modal
+                if (typeof Razorpay !== 'undefined') {
+                    const options = {
+                        "key": activeKey,
+                        "amount": 259900, // ₹2,599.00 in paise
+                        "currency": "INR",
+                        "name": "OmniIDE Systems",
+                        "description": `3-Month Industry Internship — ${role}`,
+                        "image": "https://omniide.com/assets/images/logo.jpg",
+                        ...(orderId ? { "order_id": orderId } : {}),
+                        "prefill": {
+                            "name": name,
+                            "email": email,
+                            "contact": phone
+                        },
+                        "notes": {
+                            "program": "3-Month Industry Internship",
+                            "track": role,
+                            "institution": document.getElementById('reg-college').value.trim() || "N/A",
+                            "experience": document.getElementById('reg-year').value
+                        },
+                        "theme": {
+                            "color": "#0F172A"
+                        },
+                        "handler": function (response) {
+                            // Verify on backend if backend URL is configured
+                            if (BACKEND_API_URL && response.razorpay_order_id && response.razorpay_signature) {
+                                fetch(`${BACKEND_API_URL}/api/verify-payment`, {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({
+                                        razorpay_order_id: response.razorpay_order_id,
+                                        razorpay_payment_id: response.razorpay_payment_id,
+                                        razorpay_signature: response.razorpay_signature
+                                    })
+                                }).catch(err => console.warn('Backend verification logging:', err));
+                            }
+
+                            openModal({ 
+                                name: name, 
+                                email: email, 
+                                phone: phone, 
+                                role: role, 
+                                paymentId: response.razorpay_payment_id 
+                            });
+                        },
+                        "modal": {
+                            "ondismiss": function() {
+                                submitButton.disabled = false;
+                                submitButton.innerHTML = `<span>Proceed to Payment (₹2,599)</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+                            }
+                        }
+                    };
+
+                    const rzp = new Razorpay(options);
+                    rzp.on('payment.failed', function (response) {
+                        alert('Payment could not be completed: ' + (response.error.description || 'Transaction cancelled'));
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = `<span>Proceed to Payment (₹2,599)</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+                    });
+                    rzp.open();
+                } else {
+                    setTimeout(() => {
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = `<span>Proceed to Payment (₹2,599)</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+                        openModal({ name, email, phone, role });
+                    }, 600);
+                }
+            }
+
+            initiateCheckout();
+        });
+    </script>
+</body>
+
+</html>
