@@ -17,55 +17,60 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <title>OmniIDE — 3-Month Industry Internship & Engineering Training</title>
+    <title>OmniIDE × Scan AI — 12-Week Advanced Engineering Internship</title>
     <link rel="icon" type="image/jpeg" href="/assets/images/logo.jpg">
     <link rel="apple-touch-icon" href="/assets/images/logo.jpg">
     <meta name="description"
-        content="Official 3-Month Industry Internship & Advanced Engineering Program at OmniIDE. AICTE approved & VTU academic credit compliant. Build real-world production systems with 1-on-1 senior mentorship.">
+        content="An immersive 12-week engineering internship for students, graduates, and professionals. Build and deploy production systems with 1-on-1 senior mentorship. AICTE approved & VTU credit compliant.">
     <meta name="author" content="OmniIDE">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://omniide.com/payment/">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://omniide.com/payment/">
-    <meta property="og:title" content="OmniIDE — 3-Month Industry Internship & Engineering Training">
+    <meta property="og:title" content="OmniIDE × Scan AI — Advanced Engineering Internship">
     <meta property="og:description"
-        content="Official 3-Month Industry Internship. Build live production codebases in Omni IDE, SyncGraph, Omni Rovis, and Omni Health. AICTE & VTU credit eligible.">
+        content="Build production software. Earn verified engineering credentials. 12-week immersive program on live OmniIDE ecosystem codebases.">
     <meta property="og:image" content="https://omniide.com/assets/images/og-image.png">
     <meta property="og:site_name" content="OmniIDE">
 
-    <!-- Fonts: Inter & Plus Jakarta Sans for Stripe/Linear typographic fidelity -->
+    <!-- Fonts: Inter for editorial legibility, Plus Jakarta Sans for titles, JetBrains Mono for system metadata -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Razorpay Checkout SDK -->
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
     <style>
         :root {
-            --bg-base: #FAFAFC;
-            --bg-surface: #FFFFFF;
-            --text-main: #0F172A;
-            --text-body: #334155;
-            --text-muted: #64748B;
-            --text-subtle: #94A3B8;
-            --border-light: #E2E8F0;
-            --border-card: #E5E7EB;
-            --border-focus: #2563EB;
-            --primary: #1A56DB;
-            --primary-hover: #1E40AF;
-            --primary-soft: #EFF6FF;
-            --emerald: #059669;
-            --emerald-soft: #ECFDF5;
+            --bg: #FFFFFF;
+            --bg-subtle: #F8F9FA;
+            --bg-alt: #F3F4F6;
+            --ink-900: #0B1220;
+            --ink-800: #111827;
+            --ink-700: #374151;
+            --ink-600: #4B5563;
+            --ink-500: #6B7280;
+            --ink-400: #9CA3AF;
+            --ink-300: #D1D5DB;
+            --ink-200: #E5E7EB;
+            --ink-100: #F3F4F6;
+            --line: #E5E7EB;
+            --line-subtle: #F0F2F5;
+            --blue-600: #2563EB;
+            --blue-700: #1D4ED8;
+            --blue-50: #EFF6FF;
+            --emerald-600: #059669;
+            --emerald-50: #ECFDF5;
             --emerald-border: #A7F3D0;
-            --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
-            --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            --shadow-elevated: 0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
-            --radius-xs: 6px;
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-display: 'Plus Jakarta Sans', var(--font-sans);
+            --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            --max-w: 1200px;
+            --radius-btn: 6px;
+            --radius-input: 6px;
+            --radius-box: 10px;
         }
 
         * {
@@ -75,40 +80,42 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg);
+        }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--bg-base);
-            color: var(--text-body);
-            line-height: 1.55;
+            font-family: var(--font-sans);
+            color: var(--ink-700);
+            background-color: var(--bg);
+            line-height: 1.6;
             font-size: 15px;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, .brand-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: var(--text-main);
+        h1, h2, h3, h4, h5 {
+            font-family: var(--font-display);
+            color: var(--ink-900);
             font-weight: 700;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
         }
 
         .mono {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
         }
 
         a {
-            color: var(--primary);
+            color: inherit;
             text-decoration: none;
             transition: color 0.15s ease;
         }
 
-        a:hover {
-            color: var(--primary-hover);
-        }
-
         .container {
-            max-width: 1180px;
+            max-width: var(--max-w);
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -119,113 +126,136 @@
             }
         }
 
-        /* 1. MINIMAL STRIPE-STYLE NAVBAR */
+        /* 1. ENTERPRISE NAVIGATION */
         .site-nav {
-            background: #FFFFFF;
-            border-bottom: 1px solid var(--border-light);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--line);
             position: sticky;
             top: 0;
-            z-index: 50;
+            z-index: 100;
         }
 
         .nav-inner {
-            height: 64px;
+            height: 68px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 12px;
+            gap: 16px;
         }
 
         .nav-brand {
             display: flex;
             align-items: center;
-            gap: 10px;
-            text-decoration: none;
+            gap: 12px;
             min-width: 0;
         }
 
-        .nav-logo-img {
-            width: 30px;
-            height: 30px;
-            border-radius: 7px;
-            object-fit: cover;
-            border: 1px solid var(--border-light);
+        .nav-logos {
+            display: flex;
+            align-items: center;
+            gap: 6px;
             flex-shrink: 0;
         }
 
-        .nav-brand-text {
-            font-size: 15px;
+        .nav-logo-mark {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            object-fit: cover;
+            border: 1px solid var(--line);
+        }
+
+        .nav-x {
+            font-size: 12px;
+            color: var(--ink-400);
+            font-weight: 600;
+        }
+
+        .nav-brand-title {
+            font-family: var(--font-display);
+            font-size: 14px;
             font-weight: 700;
-            color: var(--text-main);
+            color: var(--ink-900);
             letter-spacing: -0.01em;
             white-space: nowrap;
         }
 
-        .nav-tag-subtitle {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            display: block;
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
         }
 
-        .nav-back {
+        .nav-link {
+            font-size: 13.5px;
+            font-weight: 500;
+            color: var(--ink-600);
+            transition: color 0.15s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--ink-900);
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .btn-nav-apply {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            height: 38px;
+            padding: 0 16px;
+            background: var(--ink-900);
+            color: #FFFFFF;
             font-size: 13px;
             font-weight: 600;
-            color: var(--text-body);
-            padding: 6px 12px;
-            border-radius: var(--radius-xs);
-            border: 1px solid var(--border-light);
-            background: #FFFFFF;
-            transition: all 0.15s ease;
-            flex-shrink: 0;
+            border-radius: var(--radius-btn);
+            border: 1px solid var(--ink-900);
+            transition: background 0.15s ease;
             white-space: nowrap;
         }
 
-        .nav-back:hover {
-            border-color: var(--text-subtle);
-            color: var(--text-main);
+        .btn-nav-apply:hover {
+            background: #1F2937;
+            color: #FFFFFF;
         }
 
-        @media (max-width: 640px) {
-            .site-nav {
-                padding: 6px 0;
-            }
-            .nav-inner {
-                height: auto;
-                min-height: 48px;
-            }
-            .nav-logo-img {
-                width: 24px;
-                height: 24px;
-                border-radius: 5px;
-            }
-            .nav-brand-text {
-                font-size: 13px;
-            }
-            .nav-tag-subtitle {
-                display: none;
-            }
-            .nav-back {
-                padding: 5px 8px;
-                font-size: 12px;
-            }
-        }
-
-        /* 2. HERO SECTION */
+        /* 2. HERO SECTION (EDITORIAL + TECHNICAL ARCHITECTURE) */
         .hero {
-            padding: 48px 0 24px;
-            background: #FFFFFF;
-            border-bottom: 1px solid var(--border-light);
+            padding: 80px 0 60px;
+            border-bottom: 1px solid var(--line);
+            background: radial-gradient(circle at 100% 0%, rgba(37, 99, 235, 0.03) 0%, transparent 60%);
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 960px) {
             .hero {
-                padding: 32px 0 20px;
+                padding: 48px 0 40px;
+            }
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        @media (max-width: 960px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
             }
         }
 
@@ -233,566 +263,1044 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--blue-600);
             text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 12px;
-        }
-
-        .hero-eyebrow-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--primary);
+            letter-spacing: 0.08em;
+            margin-bottom: 20px;
         }
 
         .hero-headline {
-            font-size: clamp(28px, 4vw, 42px);
-            line-height: 1.15;
-            color: var(--text-main);
-            margin-bottom: 16px;
-            max-width: 840px;
+            font-size: clamp(34px, 4.5vw, 56px);
+            line-height: 1.08;
+            color: var(--ink-900);
+            margin-bottom: 22px;
+            letter-spacing: -0.03em;
         }
 
-        .hero-desc {
-            font-size: clamp(15px, 2vw, 17px);
-            color: var(--text-body);
+        .hero-subtext {
+            font-size: clamp(16px, 1.8vw, 18px);
+            color: var(--ink-600);
             line-height: 1.6;
-            max-width: 780px;
-            margin-bottom: 28px;
+            margin-bottom: 32px;
+            max-width: 580px;
         }
 
-        /* 3. LOGO TRUST STRIP */
-        .trust-strip {
+        .hero-cta-group {
             display: flex;
             align-items: center;
+            gap: 14px;
             flex-wrap: wrap;
-            gap: 20px 32px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-light);
+            margin-bottom: 24px;
         }
 
-        .trust-label {
-            font-size: 12px;
+        .btn-hero-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            height: 48px;
+            padding: 0 24px;
+            background: var(--ink-900);
+            color: #FFFFFF;
+            font-size: 14.5px;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-muted);
+            border-radius: var(--radius-btn);
+            border: 1px solid var(--ink-900);
+            transition: all 0.15s ease;
         }
 
-        .trust-logos {
-            display: flex;
+        .btn-hero-primary:hover {
+            background: #1F2937;
+            color: #FFFFFF;
+            transform: translateY(-1px);
+        }
+
+        .btn-hero-secondary {
+            display: inline-flex;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 24px;
+            gap: 6px;
+            height: 48px;
+            padding: 0 20px;
+            background: var(--bg);
+            color: var(--ink-800);
+            font-size: 14.5px;
+            font-weight: 500;
+            border-radius: var(--radius-btn);
+            border: 1px solid var(--line);
+            transition: all 0.15s ease;
         }
 
-        .trust-item {
+        .btn-hero-secondary:hover {
+            background: var(--bg-subtle);
+            border-color: var(--ink-400);
+        }
+
+        .hero-meta-strip {
+            font-size: 12.5px;
+            color: var(--ink-500);
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 12.5px;
-            font-weight: 600;
-            color: var(--text-body);
+            flex-wrap: wrap;
         }
 
-        .trust-item img {
+        .hero-meta-sep {
+            color: var(--ink-300);
+        }
+
+        /* HERO TECHNICAL ARCHITECTURE DIAGRAM */
+        .system-diagram {
+            border: 1px solid var(--line);
+            border-radius: var(--radius-box);
+            background: #FFFFFF;
+            padding: 24px;
+            position: relative;
+        }
+
+        .diagram-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 14px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--line-subtle);
+            font-size: 11.5px;
+            color: var(--ink-500);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .diagram-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--emerald-600);
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--emerald-600);
+        }
+
+        .arch-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .arch-node {
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            padding: 12px 14px;
+            background: var(--bg-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: border-color 0.15s ease;
+        }
+
+        .arch-node:hover {
+            border-color: var(--blue-600);
+            background: #FFFFFF;
+        }
+
+        .arch-node-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ink-900);
+        }
+
+        .arch-node-tag {
+            font-size: 11px;
+            color: var(--ink-500);
+            background: #FFFFFF;
+            border: 1px solid var(--line);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .arch-arrow {
+            display: flex;
+            justify-content: center;
+            color: var(--ink-400);
+            margin: -4px 0;
+        }
+
+        /* 3. INSTITUTIONAL CREDIBILITY STRIP */
+        .trust-section {
+            padding: 32px 0;
+            border-bottom: 1px solid var(--line);
+            background: var(--bg-subtle);
+        }
+
+        .trust-grid {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px 32px;
+        }
+
+        .trust-caption {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--ink-500);
+        }
+
+        .trust-logos-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 28px;
+        }
+
+        .trust-mark {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ink-800);
+        }
+
+        .trust-mark img {
             height: 26px;
             width: auto;
             object-fit: contain;
-            filter: grayscale(15%);
         }
 
-        @media (max-width: 640px) {
-            .trust-strip {
-                gap: 14px 20px;
+        @media (max-width: 768px) {
+            .trust-logos-row {
+                gap: 16px 20px;
             }
-            .trust-logos {
-                gap: 16px;
+            .trust-mark {
+                font-size: 12px;
             }
-            .trust-item {
-                font-size: 11.5px;
-            }
-            .trust-item img {
+            .trust-mark img {
                 height: 22px;
             }
         }
 
-        /* 4. MAIN TWO-COLUMN WORKBENCH */
-        .main-layout {
-            padding: 40px 0 60px;
+        /* 4. EDITORIAL SECTION HEADERS */
+        .section-wrap {
+            padding: 96px 0;
+            border-bottom: 1px solid var(--line);
         }
 
-        @media (max-width: 640px) {
-            .main-layout {
-                padding: 24px 0 40px;
+        @media (max-width: 768px) {
+            .section-wrap {
+                padding: 60px 0;
             }
         }
 
-        .grid-split {
+        .section-header {
+            margin-bottom: 48px;
+        }
+
+        .section-kicker {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--blue-600);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 3.2vw, 40px);
+            color: var(--ink-900);
+            margin-bottom: 14px;
+        }
+
+        .section-desc {
+            font-size: 16px;
+            color: var(--ink-600);
+            max-width: 680px;
+            line-height: 1.6;
+        }
+
+        /* 5. ENGINEERING TRACKS EXPLORER */
+        .tracks-layout {
             display: grid;
-            grid-template-columns: 1.25fr 0.95fr;
-            gap: 36px;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 32px;
             align-items: start;
         }
 
-        @media (max-width: 960px) {
-            .grid-split {
+        @media (max-width: 900px) {
+            .tracks-layout {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        .track-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .track-nav-item {
+            padding: 16px 18px;
+            border: 1px solid transparent;
+            border-radius: var(--radius-btn);
+            background: transparent;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.15s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .track-nav-item:hover {
+            background: var(--bg-subtle);
+        }
+
+        .track-nav-item.active {
+            background: var(--bg-subtle);
+            border-color: var(--line);
+        }
+
+        .track-item-left {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .track-index {
+            font-size: 12px;
+            color: var(--ink-400);
+            font-weight: 600;
+        }
+
+        .track-nav-item.active .track-index {
+            color: var(--blue-600);
+        }
+
+        .track-item-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--ink-800);
+        }
+
+        .track-nav-item.active .track-item-name {
+            color: var(--ink-900);
+            font-weight: 700;
+        }
+
+        .track-nav-arrow {
+            color: var(--ink-300);
+            transition: transform 0.15s ease;
+        }
+
+        .track-nav-item.active .track-nav-arrow {
+            color: var(--blue-600);
+            transform: translateX(3px);
+        }
+
+        /* TRACK DETAIL PANE */
+        .track-detail-pane {
+            border: 1px solid var(--line);
+            border-radius: var(--radius-box);
+            padding: 32px;
+            background: #FFFFFF;
+        }
+
+        @media (max-width: 640px) {
+            .track-detail-pane {
+                padding: 20px;
+            }
+        }
+
+        .detail-kicker {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--blue-600);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
+        }
+
+        .detail-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--ink-900);
+            margin-bottom: 12px;
+        }
+
+        .detail-summary {
+            font-size: 14.5px;
+            color: var(--ink-600);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .detail-block-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--ink-500);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+        }
+
+        .stack-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 24px;
+        }
+
+        .stack-tag {
+            font-size: 12px;
+            background: var(--bg-alt);
+            color: var(--ink-800);
+            padding: 3px 9px;
+            border-radius: 4px;
+            border: 1px solid var(--line);
+        }
+
+        .detail-outcomes {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+
+        .detail-outcomes li {
+            font-size: 13.5px;
+            color: var(--ink-700);
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .outcome-check {
+            color: var(--emerald-600);
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .btn-select-track {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: var(--ink-900);
+            color: #FFFFFF;
+            font-size: 13.5px;
+            font-weight: 600;
+            border-radius: var(--radius-btn);
+            border: none;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .btn-select-track:hover {
+            background: #1F2937;
+        }
+
+        /* 6. 12-WEEK ENGINEERING PROGRESSION TIMELINE */
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            border-top: 1px solid var(--line);
+            padding-top: 32px;
+        }
+
+        @media (max-width: 900px) {
+            .timeline-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 28px 20px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .timeline-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .timeline-step {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .timeline-num {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--blue-600);
+            margin-bottom: 8px;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-phase {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--ink-900);
+            margin-bottom: 4px;
+        }
+
+        .timeline-weeks {
+            font-size: 12px;
+            color: var(--ink-500);
+            margin-bottom: 12px;
+        }
+
+        .timeline-body {
+            font-size: 13.5px;
+            color: var(--ink-600);
+            line-height: 1.55;
+        }
+
+        /* 7. PRODUCTION SYSTEMS SHOWCASE (EDITORIAL ROWS) */
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid var(--line);
+        }
+
+        .project-row {
+            padding: 32px 0;
+            border-bottom: 1px solid var(--line);
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .project-row {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                padding: 24px 0;
+            }
+        }
+
+        .project-meta-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .project-logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 5px;
+            object-fit: cover;
+            border: 1px solid var(--line);
+        }
+
+        .project-tag {
+            font-size: 11px;
+            color: var(--ink-500);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 600;
+        }
+
+        .project-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--ink-900);
+            margin-bottom: 8px;
+        }
+
+        .project-desc {
+            font-size: 14px;
+            color: var(--ink-600);
+            line-height: 1.55;
+            max-width: 600px;
+        }
+
+        .project-specs {
+            background: var(--bg-subtle);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 12.5px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .spec-label {
+            color: var(--ink-500);
+        }
+
+        .spec-val {
+            font-weight: 600;
+            color: var(--ink-800);
+            text-align: right;
+        }
+
+        /* 8. MENTORSHIP WORKFLOW */
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        @media (max-width: 800px) {
+            .workflow-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .workflow-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .workflow-card {
+            border: 1px solid var(--line);
+            border-radius: var(--radius-btn);
+            padding: 20px;
+            background: #FFFFFF;
+        }
+
+        .workflow-step-num {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--blue-600);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .workflow-step-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--ink-900);
+            margin-bottom: 8px;
+        }
+
+        .workflow-step-desc {
+            font-size: 13px;
+            color: var(--ink-600);
+            line-height: 1.5;
+        }
+
+        /* 9. CREDENTIAL SPECIFICATION PREVIEW */
+        .credential-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        @media (max-width: 880px) {
+            .credential-layout {
                 grid-template-columns: 1fr;
                 gap: 32px;
             }
         }
 
-        /* 5. STRIPE-STYLE SECTION CARDS */
-        .card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-card);
-            border-radius: var(--radius-md);
-            padding: 24px;
-            box-shadow: var(--shadow-subtle);
-            margin-bottom: 24px;
-        }
-
-        @media (max-width: 640px) {
-            .card {
-                padding: 18px 16px;
-            }
-        }
-
-        .card-header {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .card-header h3 {
-            font-size: 17px;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .card-header-badge {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-
-        /* TRACK SELECTION LIST */
-        .track-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .track-box {
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-sm);
-            padding: 14px 16px;
-            background: #FFFFFF;
-            transition: all 0.15s ease;
-        }
-
-        .track-box:hover {
-            border-color: #CBD5E1;
-            box-shadow: var(--shadow-subtle);
-        }
-
-        .track-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 4px;
-            gap: 8px;
-        }
-
-        .track-title {
-            font-size: 14.5px;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .track-chip {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--primary);
-            background: var(--primary-soft);
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-
-        .track-tools {
-            font-size: 12.5px;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-        }
-
-        .track-desc {
-            font-size: 13px;
-            color: var(--text-body);
-            line-height: 1.5;
-        }
-
-        /* 3-MONTH TIMELINE */
-        .roadmap-list {
+        .credential-points {
+            list-style: none;
             display: flex;
             flex-direction: column;
             gap: 16px;
         }
 
-        .roadmap-row {
-            display: flex;
-            gap: 14px;
-            align-items: flex-start;
-        }
-
-        .roadmap-num {
-            width: 28px;
-            height: 28px;
-            border-radius: 6px;
-            background: var(--bg-base);
-            border: 1px solid var(--border-light);
-            font-size: 12px;
+        .credential-point-item h4 {
+            font-size: 15px;
             font-weight: 700;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            margin-top: 2px;
+            color: var(--ink-900);
+            margin-bottom: 4px;
         }
 
-        .roadmap-content h4 {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 3px;
-        }
-
-        .roadmap-content p {
-            font-size: 13px;
-            color: var(--text-body);
+        .credential-point-item p {
+            font-size: 13.5px;
+            color: var(--ink-600);
             line-height: 1.5;
         }
 
-        /* ECOSYSTEM REPOSITORIES GRID */
-        .eco-grid {
+        .credential-document {
+            border: 1px solid var(--line);
+            border-radius: var(--radius-box);
+            background: #FFFFFF;
+            padding: 28px;
+            box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+            position: relative;
+        }
+
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--line);
+            margin-bottom: 20px;
+        }
+
+        .doc-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--ink-900);
+            letter-spacing: -0.01em;
+        }
+
+        .doc-subtitle {
+            font-size: 11.5px;
+            color: var(--ink-500);
+        }
+
+        .doc-badge {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--emerald-600);
+            background: var(--emerald-50);
+            border: 1px solid var(--emerald-border);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .doc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+            font-size: 12.5px;
+        }
+
+        .doc-field-label {
+            color: var(--ink-400);
+            margin-bottom: 2px;
+        }
+
+        .doc-field-val {
+            font-weight: 600;
+            color: var(--ink-900);
+        }
+
+        .doc-footer {
+            padding-top: 14px;
+            border-top: 1px solid var(--line-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: var(--ink-400);
+        }
+
+        /* 10. ENROLLMENT & CHECKOUT SECTION (TWO-COLUMN FINANCIAL SPLIT) */
+        .enrollment-wrap {
+            padding: 80px 0 100px;
+            background: var(--bg-subtle);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .enrollment-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        @media (max-width: 880px) {
+            .enrollment-split {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+        }
+
+        .enrollment-info {
+            padding-right: 20px;
+        }
+
+        @media (max-width: 880px) {
+            .enrollment-info {
+                padding-right: 0;
+            }
+        }
+
+        .pricing-hero-block {
+            margin: 28px 0;
+            padding: 24px 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .price-display {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .price-main {
+            font-size: 44px;
+            font-weight: 800;
+            color: var(--ink-900);
+            letter-spacing: -0.04em;
+            line-height: 1;
+        }
+
+        .price-strike {
+            font-size: 18px;
+            color: var(--ink-400);
+            text-decoration: line-through;
+        }
+
+        .price-grant-badge {
+            display: inline-block;
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--emerald-600);
+            background: var(--emerald-50);
+            border: 1px solid var(--emerald-border);
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+
+        .price-explanation {
+            font-size: 13px;
+            color: var(--ink-500);
+            line-height: 1.5;
+        }
+
+        .investment-breakdown {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 13px;
+            margin-bottom: 24px;
+        }
+
+        .breakdown-row {
+            display: flex;
+            justify-content: space-between;
+            color: var(--ink-600);
+        }
+
+        .breakdown-row.discount {
+            color: var(--emerald-600);
+        }
+
+        .breakdown-row.total {
+            border-top: 1px solid var(--line);
+            padding-top: 8px;
+            font-weight: 700;
+            color: var(--ink-900);
+            font-size: 14px;
+        }
+
+        /* APPLICATION FORM */
+        .form-container {
+            background: #FFFFFF;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-box);
+            padding: 32px;
+            box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.04);
+        }
+
+        @media (max-width: 640px) {
+            .form-container {
+                padding: 20px 16px;
+            }
+        }
+
+        .form-section-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--ink-500);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ink-900);
+            margin-bottom: 6px;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            height: 44px;
+            padding: 0 14px;
+            font-size: 14px;
+            font-family: inherit;
+            color: var(--ink-900);
+            background: #FFFFFF;
+            border: 1px solid var(--ink-300);
+            border-radius: var(--radius-input);
+            outline: none;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .form-input:focus, .form-select:focus {
+            border-color: var(--blue-600);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+        }
+
+        .form-input::placeholder {
+            color: var(--ink-400);
+        }
+
+        .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
         }
 
         @media (max-width: 500px) {
-            .eco-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .eco-card {
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-sm);
-            padding: 12px 14px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: #FFFFFF;
-        }
-
-        .eco-card img {
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            object-fit: cover;
-            flex-shrink: 0;
-            border: 1px solid var(--border-light);
-        }
-
-        .eco-info h4 {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 2px;
-        }
-
-        .eco-info p {
-            font-size: 11.5px;
-            color: var(--text-muted);
-            line-height: 1.35;
-        }
-
-        /* 6. RIGHT COLUMN: CHECKOUT PANEL */
-        .checkout-col {
-            position: sticky;
-            top: 80px;
-        }
-
-        .checkout-box {
-            background: #FFFFFF;
-            border: 1px solid var(--border-card);
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-elevated);
-            padding: 24px;
-        }
-
-        @media (max-width: 640px) {
-            .checkout-box {
-                padding: 20px 16px;
-            }
-        }
-
-        .checkout-top {
-            margin-bottom: 18px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .checkout-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 4px;
-        }
-
-        .checkout-sub {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        .price-row {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-
-        .price-current {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--text-main);
-            letter-spacing: -0.03em;
-        }
-
-        .price-strike {
-            font-size: 15px;
-            color: var(--text-subtle);
-            text-decoration: line-through;
-            margin-left: 6px;
-        }
-
-        .price-tag {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--emerald);
-            background: var(--emerald-soft);
-            padding: 3px 8px;
-            border-radius: 4px;
-            border: 1px solid var(--emerald-border);
-        }
-
-        /* ITEMIZED SUMMARY TABLE */
-        .summary-table {
-            background: var(--bg-base);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-xs);
-            padding: 12px 14px;
-            margin-bottom: 18px;
-            font-size: 12.5px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            color: var(--text-body);
-        }
-
-        .summary-row.discount {
-            color: var(--emerald);
-        }
-
-        .summary-row.total {
-            border-top: 1px solid var(--border-light);
-            padding-top: 6px;
-            margin-top: 2px;
-            font-weight: 700;
-            color: var(--text-main);
-            font-size: 13.5px;
-        }
-
-        /* FORM INPUTS */
-        .form-group {
-            margin-bottom: 12px;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 12.5px;
-            font-weight: 600;
-            color: var(--text-main);
-            margin-bottom: 5px;
-        }
-
-        .form-label .req {
-            color: #E11D48;
-            margin-left: 2px;
-        }
-
-        .form-input, .form-select {
-            width: 100%;
-            height: 42px;
-            padding: 0 12px;
-            font-size: 14px;
-            font-family: inherit;
-            color: var(--text-main);
-            background: #FFFFFF;
-            border: 1px solid #D1D5DB;
-            border-radius: var(--radius-xs);
-            outline: none;
-            transition: border-color 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .form-input:focus, .form-select:focus {
-            border-color: var(--border-focus);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-        }
-
-        .form-input::placeholder {
-            color: #9CA3AF;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        @media (max-width: 480px) {
             .form-row {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* CHECKOUT BUTTON */
-        .btn-submit {
+        .btn-checkout-action {
             width: 100%;
-            height: 48px;
-            background: #0F172A;
+            height: 50px;
+            background: var(--ink-900);
             color: #FFFFFF;
-            border: none;
-            border-radius: var(--radius-xs);
             font-size: 15px;
             font-weight: 600;
             font-family: inherit;
+            border: none;
+            border-radius: var(--radius-btn);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
             transition: background 0.15s ease, transform 0.1s ease;
-            margin-top: 16px;
+            margin-top: 20px;
         }
 
-        .btn-submit:hover {
-            background: #1E293B;
+        .btn-checkout-action:hover {
+            background: #1F2937;
         }
 
-        .btn-submit:active {
+        .btn-checkout-action:active {
             transform: scale(0.99);
         }
 
-        .btn-submit:disabled {
+        .btn-checkout-action:disabled {
             opacity: 0.6;
             cursor: not-allowed;
         }
 
-        .checkout-guarantee {
+        .checkout-trust-foot {
+            font-size: 11.5px;
+            color: var(--ink-500);
+            text-align: center;
+            margin-top: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 6px;
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 12px;
-            text-align: center;
         }
 
-        /* 7. FAQ SECTION */
-        .faq-wrap {
-            margin-top: 40px;
-            padding-top: 36px;
-            border-top: 1px solid var(--border-light);
-        }
-
-        .faq-title {
-            font-size: 20px;
-            color: var(--text-main);
-            margin-bottom: 16px;
-        }
-
+        /* 11. FAQ ACCORDION */
         .faq-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            border-top: 1px solid var(--line);
         }
 
         .faq-item {
-            background: #FFFFFF;
-            border: 1px solid var(--border-card);
-            border-radius: var(--radius-sm);
-            overflow: hidden;
+            border-bottom: 1px solid var(--line);
         }
 
-        .faq-q {
-            padding: 14px 16px;
-            font-size: 14px;
+        .faq-trigger {
+            padding: 20px 0;
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            font-family: var(--font-display);
+            font-size: 16px;
             font-weight: 600;
-            color: var(--text-main);
+            color: var(--ink-900);
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            user-select: none;
+            gap: 16px;
         }
 
-        .faq-q:hover {
-            background: var(--bg-base);
+        .faq-icon {
+            color: var(--ink-400);
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
         }
 
-        .faq-chevron {
-            color: var(--text-muted);
-            transition: transform 0.15s ease;
-        }
-
-        .faq-item.open .faq-chevron {
+        .faq-item.open .faq-icon {
             transform: rotate(180deg);
         }
 
-        .faq-a {
-            padding: 0 16px 14px;
-            font-size: 13.5px;
-            color: var(--text-body);
-            line-height: 1.55;
+        .faq-content {
+            padding: 0 0 20px;
+            font-size: 14.5px;
+            color: var(--ink-600);
+            line-height: 1.6;
             display: none;
         }
 
-        .faq-item.open .faq-a {
+        .faq-item.open .faq-content {
             display: block;
         }
 
-        /* 8. MODAL DIALOG (STRIPE STYLE CONFIRMATION) */
-        .modal-backdrop {
+        /* 12. MINIMAL ENTERPRISE FOOTER */
+        .site-footer {
+            padding: 48px 0;
+            background: #FFFFFF;
+            border-top: 1px solid var(--line);
+            font-size: 13px;
+            color: var(--ink-500);
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a:hover {
+            color: var(--ink-900);
+        }
+
+        /* 13. ONBOARDING CONFIRMATION MODAL */
+        .modal-overlay {
             position: fixed;
             inset: 0;
-            z-index: 100;
-            background: rgba(15, 23, 42, 0.6);
+            z-index: 200;
+            background: rgba(11, 18, 32, 0.65);
             backdrop-filter: blur(4px);
             display: none;
             align-items: center;
@@ -800,458 +1308,699 @@
             padding: 16px;
         }
 
-        .modal-backdrop.active {
+        .modal-overlay.active {
             display: flex;
         }
 
-        .modal-card {
+        .modal-sheet {
             background: #FFFFFF;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border-card);
+            border-radius: var(--radius-box);
+            border: 1px solid var(--line);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            max-width: 500px;
+            max-width: 480px;
             width: 100%;
             padding: 28px;
-            animation: modal-slide 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: modal-fade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
             max-height: 90vh;
             overflow-y: auto;
         }
 
-        @keyframes modal-slide {
-            from {
-                opacity: 0;
-                transform: translateY(8px) scale(0.98);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+        @keyframes modal-fade {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .modal-icon-circle {
-            width: 48px;
-            height: 48px;
+        .modal-badge-ok {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            background: var(--emerald-soft);
+            background: var(--emerald-50);
             border: 1px solid var(--emerald-border);
-            color: var(--emerald);
+            color: var(--emerald-600);
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 16px;
         }
 
-        .modal-heading {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 6px;
-        }
-
-        .modal-ref-tag {
+        .modal-ref-id {
             display: inline-block;
             font-size: 12px;
-            color: var(--text-muted);
-            background: var(--bg-base);
+            color: var(--ink-600);
+            background: var(--bg-alt);
             padding: 3px 8px;
             border-radius: 4px;
-            font-family: 'JetBrains Mono', monospace;
-            margin-bottom: 16px;
+            margin: 6px 0 16px;
         }
 
-        .modal-data-box {
-            background: var(--bg-base);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-xs);
-            padding: 12px 14px;
-            margin-bottom: 16px;
+        .modal-summary-box {
+            background: var(--bg-subtle);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            padding: 14px;
             font-size: 13px;
             display: flex;
             flex-direction: column;
             gap: 6px;
+            margin-bottom: 18px;
         }
 
-        .modal-data-row {
+        .modal-row {
             display: flex;
             justify-content: space-between;
-            color: var(--text-body);
+            color: var(--ink-700);
         }
 
-        .modal-data-row strong {
-            color: var(--text-main);
+        .modal-row strong {
+            color: var(--ink-900);
         }
 
-        .modal-message {
+        .modal-guidance {
             font-size: 13px;
-            color: var(--text-body);
+            color: var(--ink-700);
             line-height: 1.55;
             background: #F8FAFC;
-            border-left: 3px solid var(--primary);
-            padding: 10px 12px;
+            border-left: 3px solid var(--blue-600);
+            padding: 12px;
             margin-bottom: 20px;
         }
 
-        .modal-btn-group {
+        .modal-actions {
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
 
-        .btn-modal-green {
-            width: 100%;
+        .btn-modal-wa {
             height: 44px;
             background: #16A34A;
             color: #FFFFFF;
             border: none;
-            border-radius: var(--radius-xs);
+            border-radius: var(--radius-btn);
             font-size: 14px;
             font-weight: 600;
-            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 8px;
+            cursor: pointer;
         }
 
-        .btn-modal-green:hover {
+        .btn-modal-wa:hover {
             background: #15803D;
         }
 
-        .btn-modal-ghost {
-            width: 100%;
+        .btn-modal-exit {
             height: 40px;
             background: transparent;
-            color: var(--text-muted);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-xs);
+            color: var(--ink-600);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-btn);
             font-size: 13.5px;
             font-weight: 500;
             cursor: pointer;
         }
 
-        .btn-modal-ghost:hover {
-            background: var(--bg-base);
-            color: var(--text-main);
-        }
-
-        /* 9. MINIMAL FOOTER */
-        .site-footer {
-            border-top: 1px solid var(--border-light);
-            background: #FFFFFF;
-            padding: 32px 0 24px;
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        .footer-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .footer-nav {
-            display: flex;
-            gap: 18px;
-        }
-
-        .footer-nav a {
-            color: var(--text-muted);
-        }
-
-        .footer-nav a:hover {
-            color: var(--text-main);
+        .btn-modal-exit:hover {
+            background: var(--bg-subtle);
+            color: var(--ink-900);
         }
     </style>
 </head>
 
 <body>
 
-    <!-- 1. NAVIGATION -->
+    <!-- 1. ENTERPRISE NAVIGATION -->
     <header class="site-nav">
         <div class="container nav-inner">
             <a href="/" class="nav-brand" aria-label="OmniIDE x Scan AI">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <img src="/assets/images/logo.jpg" alt="OmniIDE Logo" class="nav-logo-img">
-                    <span style="font-size: 13px; font-weight: 700; color: #94A3B8;">×</span>
-                    <img src="/assets/images/scanai-logo.png" alt="Scan AI Logo" class="nav-logo-img">
+                <div class="nav-logos">
+                    <img src="/assets/images/logo.jpg" alt="OmniIDE" class="nav-logo-mark">
+                    <span class="nav-x">×</span>
+                    <img src="/assets/images/scanai-logo.png" alt="Scan AI" class="nav-logo-mark">
                 </div>
-                <div style="display: flex; flex-direction: column;">
-                    <span class="nav-brand-text">OMNI IDE × SCAN AI</span>
-                    <span class="nav-tag-subtitle">Engineering Internship Portal</span>
-                </div>
+                <span class="nav-brand-title">OMNI IDE × SCAN AI</span>
             </a>
-            <a href="/" class="nav-back">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                <span>Back to Home</span>
-            </a>
+
+            <nav class="nav-links" aria-label="Primary Navigation">
+                <a href="#overview" class="nav-link">Program</a>
+                <a href="#tracks" class="nav-link">Engineering Tracks</a>
+                <a href="#curriculum" class="nav-link">Curriculum</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="#apply" class="btn-nav-apply">Apply Now</a>
+            </div>
         </div>
     </header>
 
-    <!-- 2. HERO -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-eyebrow">
-                <span class="hero-eyebrow-dot"></span>
-                <span>Official 3-Month Industry Internship</span>
+    <!-- 2. HERO SECTION -->
+    <section class="hero" id="overview">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-eyebrow mono">
+                    <span>Engineering Internship · 12 Weeks</span>
+                </div>
+
+                <h1 class="hero-headline">
+                    Build Production Software. Earn Real Credentials.
+                </h1>
+
+                <p class="hero-subtext">
+                    An immersive engineering program for students, graduates, and working professionals. Work on production-grade codebases with senior engineering mentorship and ship software that demonstrates real-world engineering ability.
+                </p>
+
+                <div class="hero-cta-group">
+                    <a href="#apply" class="btn-hero-primary">
+                        <span>Apply for the Program</span>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#tracks" class="btn-hero-secondary">
+                        <span>Explore 5 Engineering Tracks</span>
+                    </a>
+                </div>
+
+                <div class="hero-meta-strip mono">
+                    <span>12 Weeks</span>
+                    <span class="hero-meta-sep">/</span>
+                    <span>1-on-1 Mentorship</span>
+                    <span class="hero-meta-sep">/</span>
+                    <span>Live Repositories</span>
+                    <span class="hero-meta-sep">/</span>
+                    <span>AICTE &amp; VTU Compliant</span>
+                </div>
             </div>
 
-            <h1 class="hero-headline">
-                Build Production Software. Earn Verified Industry Credentials.
-            </h1>
+            <!-- SYSTEM ARCHITECTURE DIAGRAM -->
+            <div class="system-diagram">
+                <div class="diagram-header mono">
+                    <span>SYSTEM EXECUTION PIPELINE</span>
+                    <div class="diagram-status">
+                        <span class="status-dot"></span>
+                        <span>LIVE SPRINT</span>
+                    </div>
+                </div>
 
-            <p class="hero-desc">
-                An immersive engineering internship for students, graduates, and professionals. Write and deploy production code directly into OmniIDE's software ecosystem with dedicated 1-on-1 senior mentorship.
-            </p>
+                <div class="arch-flow">
+                    <div class="arch-node">
+                        <div>
+                            <div class="arch-node-title">01 · Engineer Workspace</div>
+                            <div class="mono" style="font-size: 11px; color: var(--ink-500);">Local Workstation &amp; Feature Branch</div>
+                        </div>
+                        <span class="arch-node-tag mono">Git / CLI</span>
+                    </div>
 
-            <!-- AUTHENTIC ACCREDITATION LOGO ROW -->
-            <div class="trust-strip">
-                <span class="trust-label">Official Recognition &amp; Compliance:</span>
-                <div class="trust-logos">
-                    <div class="trust-item" title="AICTE Approved Technical Education Partner">
-                        <img src="/assets/images/aicte-logo.png" alt="AICTE">
-                        <span>AICTE Partner</span>
+                    <div class="arch-arrow">↓</div>
+
+                    <div class="arch-node">
+                        <div>
+                            <div class="arch-node-title">02 · Autonomous Agentic Engine</div>
+                            <div class="mono" style="font-size: 11px; color: var(--ink-500);">Compiler Verification &amp; Self-Healing Loop</div>
+                        </div>
+                        <span class="arch-node-tag mono">Omni Core</span>
                     </div>
-                    <div class="trust-item" title="VTU Academic Credit Compliant">
-                        <img src="/assets/images/vtu-logo.png" alt="VTU">
-                        <span>VTU Compliant</span>
+
+                    <div class="arch-arrow">↓</div>
+
+                    <div class="arch-node">
+                        <div>
+                            <div class="arch-node-title">03 · Senior Mentor Code Review</div>
+                            <div class="mono" style="font-size: 11px; color: var(--ink-500);">Architecture Audit &amp; Test Coverage</div>
+                        </div>
+                        <span class="arch-node-tag mono">1-on-1 Sync</span>
                     </div>
-                    <div class="trust-item" title="DPIIT Startup India Recognized">
-                        <img src="/assets/images/dpiit-startup-india.png" alt="Startup India">
-                        <span>Startup India</span>
-                    </div>
-                    <div class="trust-item" title="Ministry of MSME Registered">
-                        <img src="/assets/images/msme-logo.png" alt="MSME">
-                        <span>MSME Certified</span>
+
+                    <div class="arch-arrow">↓</div>
+
+                    <div class="arch-node" style="border-color: var(--blue-600); background: #FFFFFF;">
+                        <div>
+                            <div class="arch-node-title" style="color: var(--blue-600);">04 · Production Deployment</div>
+                            <div class="mono" style="font-size: 11px; color: var(--ink-600);">Merged Pull Request &amp; Verified Credential</div>
+                        </div>
+                        <span class="arch-node-tag mono" style="background: var(--blue-50); color: var(--blue-600); border-color: var(--blue-600);">Ship</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. MAIN WORKBENCH -->
-    <main class="container main-layout">
-        <div class="grid-split">
+    <!-- 3. INSTITUTIONAL CREDIBILITY STRIP -->
+    <section class="trust-section">
+        <div class="container trust-grid">
+            <span class="trust-caption mono">Recognized &amp; Structured for Professional Engineering Education</span>
+            <div class="trust-logos-row">
+                <div class="trust-mark" title="AICTE Approved Technical Education Partner">
+                    <img src="/assets/images/aicte-logo.png" alt="AICTE">
+                    <span>AICTE Partner</span>
+                </div>
+                <div class="trust-mark" title="VTU Academic Credit Compliant">
+                    <img src="/assets/images/vtu-logo.png" alt="VTU">
+                    <span>VTU Compliant</span>
+                </div>
+                <div class="trust-mark" title="DPIIT Startup India Recognized">
+                    <img src="/assets/images/dpiit-startup-india.png" alt="Startup India">
+                    <span>Startup India</span>
+                </div>
+                <div class="trust-mark" title="Ministry of MSME Certified">
+                    <img src="/assets/images/msme-logo.png" alt="MSME">
+                    <span>MSME Certified</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <!-- LEFT COLUMN: TRACKS, ROADMAP, ECOSYSTEM -->
-            <div class="content-col">
-
-                <!-- TRACKS -->
-                <section class="card">
-                    <div class="card-header">
-                        <h3>Available Engineering Tracks</h3>
-                        <span class="card-header-badge">5 Specialized Roles</span>
-                    </div>
-
-                    <div class="track-list">
-                        <div class="track-box">
-                            <div class="track-head">
-                                <span class="track-title">Full-Stack Software Engineer</span>
-                                <span class="track-chip">Web Architecture</span>
-                            </div>
-                            <div class="track-tools mono">React 19 · TypeScript · Fastify / Node.js · PostgreSQL · Microservices</div>
-                            <p class="track-desc">Design scalable client-server architectures, build enterprise dashboard interfaces, and develop high-throughput REST and GraphQL endpoints.</p>
-                        </div>
-
-                        <div class="track-box">
-                            <div class="track-head">
-                                <span class="track-title">Full-Stack AI Developer</span>
-                                <span class="track-chip">Agentic AI</span>
-                            </div>
-                            <div class="track-tools mono">Agentic Loops · Gemini API · Ollama · MCP Protocol · Vector Embeddings</div>
-                            <p class="track-desc">Engineer autonomous coding loops, LLM orchestration pipelines, self-healing terminal systems, and local edge inference engines.</p>
-                        </div>
-
-                        <div class="track-box">
-                            <div class="track-head">
-                                <span class="track-title">Systems &amp; Desktop Software Engineer</span>
-                                <span class="track-chip">Native Systems</span>
-                            </div>
-                            <div class="track-tools mono">Electron Internals · C++ / Rust · IPC Protocols · Process Isolation</div>
-                            <p class="track-desc">Build low-latency native desktop applications, containerized process isolations, file system monitors, and hardened developer toolchains.</p>
-                        </div>
-
-                        <div class="track-box">
-                            <div class="track-head">
-                                <span class="track-title">Healthcare AI &amp; Computer Vision Engineer</span>
-                                <span class="track-chip">MedTech</span>
-                            </div>
-                            <div class="track-tools mono">FHIR R4 Bundles · ABDM M1–M4 · Kinematic Servoing · PyTorch</div>
-                            <p class="track-desc">Implement ABDM-compliant encrypted health record exchanges, sub-millimeter surgical visual tracking algorithms, and NHCX insurance claims engines.</p>
-                        </div>
-
-                        <div class="track-box">
-                            <div class="track-head">
-                                <span class="track-title">Cloud Infrastructure &amp; DevOps Engineer</span>
-                                <span class="track-chip">Platform &amp; Reliability</span>
-                            </div>
-                            <div class="track-tools mono">Docker · Kubernetes · GitHub Actions CI/CD · Linux Kernels · AWS / GCP</div>
-                            <p class="track-desc">Design automated zero-downtime deployment pipelines, container orchestration, telemetry logging clusters, and edge caching networks.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- ROADMAP -->
-                <section class="card">
-                    <div class="card-header">
-                        <h3>3-Month Sprint Structure</h3>
-                        <span class="card-header-badge">Weekly Milestones</span>
-                    </div>
-
-                    <div class="roadmap-list">
-                        <div class="roadmap-row">
-                            <div class="roadmap-num">1</div>
-                            <div class="roadmap-content">
-                                <h4>Month 1 — Architecture Dissection &amp; Core Tooling</h4>
-                                <p>Deep-dive into production codebases. Master Git workflows, branch strategies, automated test suites, and agentic debugging frameworks.</p>
-                            </div>
-                        </div>
-
-                        <div class="roadmap-row">
-                            <div class="roadmap-num">2</div>
-                            <div class="roadmap-content">
-                                <h4>Month 2 — Feature Engineering &amp; Sprint Execution</h4>
-                                <p>Assigned to an active sprint on a live Omni product. Develop real modules, write integration tests, and submit production Pull Requests under senior mentor guidance.</p>
-                            </div>
-                        </div>
-
-                        <div class="roadmap-row">
-                            <div class="roadmap-num">3</div>
-                            <div class="roadmap-content">
-                                <h4>Month 3 — Production Deployment &amp; Certification</h4>
-                                <p>Deploy features to staging and production, undergo code audits, complete capstone evaluation defense, and receive verifiable AICTE &amp; VTU credentials.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- LIVE PRODUCTION REPOSITORIES -->
-                <section class="card">
-                    <div class="card-header">
-                        <h3>Production Codebases You Will Build On</h3>
-                        <span class="card-header-badge">Live Products</span>
-                    </div>
-
-                    <div class="eco-grid">
-                        <div class="eco-card">
-                            <img src="/assets/images/logo.jpg" alt="Omni IDE">
-                            <div class="eco-info">
-                                <h4>Omni IDE Core</h4>
-                                <p>Autonomous AI code editor with self-healing terminals.</p>
-                            </div>
-                        </div>
-
-                        <div class="eco-card">
-                            <img src="/assets/images/syncgraph-logo.jpg" alt="SyncGraph">
-                            <div class="eco-info">
-                                <h4>SyncGraph</h4>
-                                <p>Automated GitHub learning log engine &amp; streak cron.</p>
-                            </div>
-                        </div>
-
-                        <div class="eco-card">
-                            <img src="/assets/images/omni_rovis_icon.png" alt="Omni Rovis">
-                            <div class="eco-info">
-                                <h4>Omni Rovis</h4>
-                                <p>AI surgical motion compensation &amp; fluoroscopy platform.</p>
-                            </div>
-                        </div>
-
-                        <div class="eco-card">
-                            <img src="/assets/images/omni-health-logo.jpg" alt="Omni Health">
-                            <div class="eco-info">
-                                <h4>Omni Health</h4>
-                                <p>ABDM M1–M4 &amp; NHCX digital health platform.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- DELIVERABLES & CREDENTIALS -->
-                <section class="card">
-                    <div class="card-header">
-                        <h3>Official Certification &amp; Deliverables</h3>
-                        <span class="card-header-badge">Verified Output</span>
-                    </div>
-
-                    <div style="font-size: 13.5px; line-height: 1.6; color: var(--text-body);">
-                        <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 8px;">
-                            <li><strong>AICTE &amp; VTU Compliant Certificate:</strong> Unique digital QR verification for college academic evaluations.</li>
-                            <li><strong>Letter of Recommendation (LOR):</strong> Performance-backed recommendation signed by company leadership.</li>
-                            <li><strong>GitHub Proof of Work:</strong> Verifiable merged pull requests on production open-source repositories.</li>
-                            <li><strong>1-on-1 Senior Mentorship:</strong> Weekly code review sessions and architectural guidance.</li>
-                            <li><strong>Internship Portal Access:</strong> Individual account with task boards, sprint logs, and technical resources.</li>
-                        </ul>
-                    </div>
-                </section>
-
+    <!-- 4. ENGINEERING TRACKS EXPLORER -->
+    <section class="section-wrap" id="tracks">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-kicker mono">01 / DISCIPLINARY PATHS</div>
+                <h2 class="section-title">Five Specialized Engineering Tracks</h2>
+                <p class="section-desc">
+                    Select a specialization aligned with your career goals. You will work on real codebases within this technical domain throughout the 12-week program.
+                </p>
             </div>
 
-            <!-- RIGHT COLUMN: ENROLLMENT & PAYMENT -->
-            <div class="checkout-col">
-                <div class="checkout-box" id="enrollment-panel">
-                    <div class="checkout-top">
-                        <div class="checkout-title">Program Enrollment</div>
-                        <div class="checkout-sub">3-Month Industry Internship &amp; Engineering Training</div>
-                        <div class="price-row">
-                            <div>
-                                <span class="price-current">₹2,599</span>
-                                <span class="price-strike">₹8,999</span>
-                            </div>
-                            <span class="price-tag">Academic Grant Applied</span>
+            <div class="tracks-layout">
+                <!-- TRACK NAVIGATION -->
+                <div class="track-nav" id="track-menu">
+                    <button class="track-nav-item active" onclick="selectTrack(0)">
+                        <div class="track-item-left">
+                            <span class="track-index mono">01</span>
+                            <span class="track-item-name">Full-Stack Software Engineer</span>
+                        </div>
+                        <span class="track-nav-arrow">→</span>
+                    </button>
+
+                    <button class="track-nav-item" onclick="selectTrack(1)">
+                        <div class="track-item-left">
+                            <span class="track-index mono">02</span>
+                            <span class="track-item-name">Full-Stack AI Developer</span>
+                        </div>
+                        <span class="track-nav-arrow">→</span>
+                    </button>
+
+                    <button class="track-nav-item" onclick="selectTrack(2)">
+                        <div class="track-item-left">
+                            <span class="track-index mono">03</span>
+                            <span class="track-item-name">Systems &amp; Desktop Engineer</span>
+                        </div>
+                        <span class="track-nav-arrow">→</span>
+                    </button>
+
+                    <button class="track-nav-item" onclick="selectTrack(3)">
+                        <div class="track-item-left">
+                            <span class="track-index mono">04</span>
+                            <span class="track-item-name">Healthcare AI &amp; Vision Engineer</span>
+                        </div>
+                        <span class="track-nav-arrow">→</span>
+                    </button>
+
+                    <button class="track-nav-item" onclick="selectTrack(4)">
+                        <div class="track-item-left">
+                            <span class="track-index mono">05</span>
+                            <span class="track-item-name">Cloud &amp; DevOps Platform Engineer</span>
+                        </div>
+                        <span class="track-nav-arrow">→</span>
+                    </button>
+                </div>
+
+                <!-- TRACK DETAIL PANE -->
+                <div class="track-detail-pane" id="track-detail">
+                    <div class="detail-kicker mono" id="detail-track-kicker">TRACK 01</div>
+                    <h3 class="detail-title" id="detail-track-title">Full-Stack Software Engineer</h3>
+                    <p class="detail-summary" id="detail-track-summary">
+                        Architect and ship scalable client-server applications. Build high-performance user interfaces, design resilient REST and GraphQL microservices, and optimize relational database schemas.
+                    </p>
+
+                    <div class="detail-block-label mono">TECHNOLOGY STACK</div>
+                    <div class="stack-tags" id="detail-track-stack">
+                        <span class="stack-tag mono">React 19</span>
+                        <span class="stack-tag mono">TypeScript</span>
+                        <span class="stack-tag mono">Node.js / Fastify</span>
+                        <span class="stack-tag mono">PostgreSQL</span>
+                        <span class="stack-tag mono">GraphQL</span>
+                        <span class="stack-tag mono">Redis</span>
+                    </div>
+
+                    <div class="detail-block-label mono">WHAT YOU WILL BUILD &amp; SHIP</div>
+                    <ul class="detail-outcomes" id="detail-track-outcomes">
+                        <li>
+                            <svg class="outcome-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Enterprise dashboard interfaces with sub-100ms render performance.</span>
+                        </li>
+                        <li>
+                            <svg class="outcome-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>High-throughput CRUD and analytical microservice APIs with JWT and OAuth2.</span>
+                        </li>
+                        <li>
+                            <svg class="outcome-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Automated database migration pipelines and query optimization suites.</span>
+                        </li>
+                    </ul>
+
+                    <button type="button" class="btn-select-track" onclick="applyWithSelectedTrack()">
+                        <span>Apply for this Track</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 12-WEEK PROGRAM ARCHITECTURE & TIMELINE -->
+    <section class="section-wrap" id="curriculum">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-kicker mono">02 / PROGRAM ARCHITECTURE</div>
+                <h2 class="section-title">A Structured 12-Week Progression</h2>
+                <p class="section-desc">
+                    Engineered to mirror a modern technology company sprint cycle. You transition from architectural dissection to shipping production code.
+                </p>
+            </div>
+
+            <div class="timeline-grid">
+                <div class="timeline-step">
+                    <div class="timeline-num mono">01 — FOUNDATION</div>
+                    <h3 class="timeline-phase">Architecture &amp; Tooling</h3>
+                    <div class="timeline-weeks mono">Weeks 01–03</div>
+                    <p class="timeline-body">
+                        Deep-dive into production codebases. Master Git workflows, branch conventions, automated linting, test suites, and agentic debugging loops.
+                    </p>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="timeline-num mono">02 — BUILD</div>
+                    <h3 class="timeline-phase">Feature Engineering</h3>
+                    <div class="timeline-weeks mono">Weeks 04–07</div>
+                    <p class="timeline-body">
+                        Assigned to an active sprint on a live product repository. Build functional modules, write integration tests, and submit production Pull Requests.
+                    </p>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="timeline-num mono">03 — SCALE &amp; AUDIT</div>
+                    <h3 class="timeline-phase">Performance &amp; Code Review</h3>
+                    <div class="timeline-weeks mono">Weeks 08–10</div>
+                    <p class="timeline-body">
+                        Profile bottleneck latencies, perform security audits, conduct comprehensive peer reviews, and refactor code to enterprise standards.
+                    </p>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="timeline-num mono">04 — SHIP</div>
+                    <h3 class="timeline-phase">Deployment &amp; Certification</h3>
+                    <div class="timeline-weeks mono">Weeks 11–12</div>
+                    <p class="timeline-body">
+                        Deploy features to staging and production, complete capstone evaluation defense, and receive verifiable AICTE &amp; VTU credentials.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. WHAT YOU ACTUALLY BUILD (PRODUCTION SYSTEMS) -->
+    <section class="section-wrap" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-kicker mono">03 / REAL SYSTEMS</div>
+                <h2 class="section-title">You Don't Complete Toy Assignments. You Ship Software.</h2>
+                <p class="section-desc">
+                    Participants write and merge code directly into active software products powering the OmniIDE ecosystem.
+                </p>
+            </div>
+
+            <div class="project-list">
+                <div class="project-row">
+                    <div>
+                        <div class="project-meta-top">
+                            <img src="/assets/images/logo.jpg" alt="Omni IDE" class="project-logo">
+                            <span class="project-tag mono">IDE &amp; COMPILER SYSTEMS</span>
+                        </div>
+                        <h3 class="project-name">Omni IDE Core Platform</h3>
+                        <p class="project-desc">
+                            Autonomous AI coding editor with self-healing terminals, multi-turn agentic loops, and isolated process sandboxing.
+                        </p>
+                    </div>
+                    <div class="project-specs mono">
+                        <div class="spec-item"><span class="spec-label">Stack</span><span class="spec-val">Electron · TypeScript · C++</span></div>
+                        <div class="spec-item"><span class="spec-label">Focus</span><span class="spec-val">IPC Protocols &amp; Memory Safety</span></div>
+                        <div class="spec-item"><span class="spec-label">Output</span><span class="spec-val">Merged Pull Request</span></div>
+                    </div>
+                </div>
+
+                <div class="project-row">
+                    <div>
+                        <div class="project-meta-top">
+                            <img src="/assets/images/syncgraph-logo.jpg" alt="SyncGraph" class="project-logo">
+                            <span class="project-tag mono">DATA &amp; ACTIVITY PLATFORM</span>
+                        </div>
+                        <h3 class="project-name">SyncGraph Engine</h3>
+                        <p class="project-desc">
+                            Automated GitHub learning log engine, distributed activity aggregation, and streak analytics pipeline.
+                        </p>
+                    </div>
+                    <div class="project-specs mono">
+                        <div class="spec-item"><span class="spec-label">Stack</span><span class="spec-val">Fastify · PostgreSQL · Redis</span></div>
+                        <div class="spec-item"><span class="spec-label">Focus</span><span class="spec-val">High-Throughput Webhooks</span></div>
+                        <div class="spec-item"><span class="spec-label">Output</span><span class="spec-val">Production API Service</span></div>
+                    </div>
+                </div>
+
+                <div class="project-row">
+                    <div>
+                        <div class="project-meta-top">
+                            <img src="/assets/images/omni_rovis_icon.png" alt="Omni Rovis" class="project-logo">
+                            <span class="project-tag mono">HEALTHCARE &amp; COMPUTER VISION</span>
+                        </div>
+                        <h3 class="project-name">Omni Rovis Medical Platform</h3>
+                        <p class="project-desc">
+                            Autonomous fluoroscopy navigation and sub-millimeter surgical visual servoing platform with 78.4% radiation reduction.
+                        </p>
+                    </div>
+                    <div class="project-specs mono">
+                        <div class="spec-item"><span class="spec-label">Stack</span><span class="spec-val">PyTorch · OpenCV · C++</span></div>
+                        <div class="spec-item"><span class="spec-label">Focus</span><span class="spec-val">Real-Time Kinematics &amp; Inference</span></div>
+                        <div class="spec-item"><span class="spec-label">Output</span><span class="spec-val">Vision Processing Pipeline</span></div>
+                    </div>
+                </div>
+
+                <div class="project-row">
+                    <div>
+                        <div class="project-meta-top">
+                            <img src="/assets/images/omni-health-logo.jpg" alt="Omni Health" class="project-logo">
+                            <span class="project-tag mono">DIGITAL HEALTH &amp; STANDARDS</span>
+                        </div>
+                        <h3 class="project-name">Omni Health Platform</h3>
+                        <p class="project-desc">
+                            National digital health platform compliant with ABDM M1–M4 encrypted record exchanges and NHCX insurance claims bridge.
+                        </p>
+                    </div>
+                    <div class="project-specs mono">
+                        <div class="spec-item"><span class="spec-label">Stack</span><span class="spec-val">FHIR R4 · Node.js · Cryptography</span></div>
+                        <div class="spec-item"><span class="spec-label">Focus</span><span class="spec-val">Interoperability &amp; Encryption</span></div>
+                        <div class="spec-item"><span class="spec-label">Output</span><span class="spec-val">ABDM Gateway Connector</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. MENTORSHIP & WORKFLOW -->
+    <section class="section-wrap">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-kicker mono">04 / ENGINEERING WORKFLOW</div>
+                <h2 class="section-title">Engineering Review, Not Classroom Lectures</h2>
+                <p class="section-desc">
+                    You work 1-on-1 with senior engineers. Weekly technical reviews focus on architecture decisions, code efficiency, and test coverage.
+                </p>
+            </div>
+
+            <div class="workflow-grid">
+                <div class="workflow-card">
+                    <div class="workflow-step-num mono">STEP 01</div>
+                    <h3 class="workflow-step-name">Sprint Allocation</h3>
+                    <p class="workflow-step-desc">Receive clear sprint objectives, repository branch access, and architecture design specs.</p>
+                </div>
+
+                <div class="workflow-card">
+                    <div class="workflow-step-num mono">STEP 02</div>
+                    <h3 class="workflow-step-name">1-on-1 Code Review</h3>
+                    <p class="workflow-step-desc">Weekly deep-dive code audits with your assigned mentor to discuss structure, edge cases, and optimizations.</p>
+                </div>
+
+                <div class="workflow-card">
+                    <div class="workflow-step-num mono">STEP 03</div>
+                    <h3 class="workflow-step-name">Automated Testing</h3>
+                    <p class="workflow-step-desc">Pass automated CI/CD integration pipelines, stress benchmarks, and linting checks.</p>
+                </div>
+
+                <div class="workflow-card">
+                    <div class="workflow-step-num mono">STEP 04</div>
+                    <h3 class="workflow-step-name">Production Merge</h3>
+                    <p class="workflow-step-desc">Your approved Pull Requests are merged directly into the live product repositories.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. CREDENTIAL SPECIFICATION -->
+    <section class="section-wrap">
+        <div class="container">
+            <div class="credential-layout">
+                <div>
+                    <div class="section-kicker mono">05 / VERIFIABLE PROOF OF WORK</div>
+                    <h2 class="section-title">A Verifiable Record of What You Built</h2>
+                    <p class="section-desc" style="margin-bottom: 24px;">
+                        Engineering resumes should reflect shipped software. Your certificate is cryptographically verifiable and backed by merged GitHub pull requests.
+                    </p>
+
+                    <ul class="credential-points">
+                        <li class="credential-point-item">
+                            <h4>AICTE &amp; VTU Academic Credit Compliant</h4>
+                            <p>Meets mandatory university requirements for 7th &amp; 8th-semester engineering degree evaluations.</p>
+                        </li>
+                        <li class="credential-point-item">
+                            <h4>Unique QR Digital Verification</h4>
+                            <p>Recruiters and university evaluators can scan to view the candidate's verified project evaluations instantly.</p>
+                        </li>
+                        <li class="credential-point-item">
+                            <h4>Executive Letter of Recommendation (LOR)</h4>
+                            <p>Signed recommendation from engineering leadership for top performers.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CREDENTIAL PREVIEW COMPONENT -->
+                <div class="credential-document">
+                    <div class="doc-header">
+                        <div>
+                            <div class="doc-title">CERTIFICATE OF INDUSTRY ENGINEERING</div>
+                            <div class="doc-subtitle mono">OMNIIDE &amp; SCAN AI ACADEMIC COLLABORATION</div>
+                        </div>
+                        <span class="doc-badge mono">VERIFIED CREDENTIAL</span>
+                    </div>
+
+                    <div class="doc-grid mono">
+                        <div>
+                            <div class="doc-field-label">CANDIDATE</div>
+                            <div class="doc-field-val">Candidate Name</div>
+                        </div>
+                        <div>
+                            <div class="doc-field-label">CREDENTIAL ID</div>
+                            <div class="doc-field-val">OMNI-2026-XXXX</div>
+                        </div>
+                        <div>
+                            <div class="doc-field-label">TRACK</div>
+                            <div class="doc-field-val">Full-Stack Software Eng.</div>
+                        </div>
+                        <div>
+                            <div class="doc-field-label">DURATION</div>
+                            <div class="doc-field-val">12 Weeks (3 Months)</div>
+                        </div>
+                        <div>
+                            <div class="doc-field-label">ACCREDITATION</div>
+                            <div class="doc-field-val">AICTE / VTU Eligible</div>
+                        </div>
+                        <div>
+                            <div class="doc-field-label">CODE PROOF</div>
+                            <div class="doc-field-val">Merged GitHub PRs</div>
                         </div>
                     </div>
 
-                    <!-- FEE BREAKDOWN -->
-                    <div class="summary-table">
-                        <div class="summary-row">
+                    <div class="doc-footer mono">
+                        <span>MINISTRY OF MSME REGISTERED</span>
+                        <span>DPIIT STARTUP INDIA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. ENROLLMENT SECTION (TWO-COLUMN FINANCIAL SPLIT) -->
+    <section class="enrollment-wrap" id="apply">
+        <div class="container">
+            <div class="enrollment-split">
+
+                <!-- LEFT COLUMN: INVESTMENT & PROGRAM SUMMARY -->
+                <div class="enrollment-info">
+                    <div class="section-kicker mono">06 / PROGRAM ENROLLMENT</div>
+                    <h2 class="section-title" style="font-size: 32px;">Enroll in the 12-Week Program</h2>
+                    <p class="section-desc" style="font-size: 14.5px;">
+                        Complete your registration to secure your engineering track and assigned senior mentor.
+                    </p>
+
+                    <div class="pricing-hero-block">
+                        <div class="price-grant-badge mono">ACADEMIC GRANT APPLIED</div>
+                        <div class="price-display">
+                            <span class="price-main">₹2,599</span>
+                            <span class="price-strike">₹8,999</span>
+                        </div>
+                        <p class="price-explanation">
+                            One-time subsidized enrollment fee for Indian engineering students, graduates, and working professionals.
+                        </p>
+                    </div>
+
+                    <div class="investment-breakdown mono">
+                        <div class="breakdown-row">
                             <span>Standard Program Fee</span>
                             <span>₹8,999</span>
                         </div>
-                        <div class="summary-row discount">
-                            <span>Academic Subsidy Grant</span>
+                        <div class="breakdown-row discount">
+                            <span>Academic Engineering Grant</span>
                             <span>-₹6,400</span>
                         </div>
-                        <div class="summary-row">
-                            <span>1-on-1 Mentor Allocation</span>
+                        <div class="breakdown-row">
+                            <span>1-on-1 Dedicated Mentor Allocation</span>
                             <span>Included</span>
                         </div>
-                        <div class="summary-row">
-                            <span>Portal &amp; Verification Credential</span>
+                        <div class="breakdown-row">
+                            <span>Verifiable AICTE &amp; VTU Credential</span>
                             <span>Included</span>
                         </div>
-                        <div class="summary-row total">
-                            <span>Net Total Payable</span>
-                            <span class="mono">₹2,599 (One-Time)</span>
+                        <div class="breakdown-row total">
+                            <span>Total Payable</span>
+                            <span style="color: var(--blue-600);">₹2,599 (All-Inclusive)</span>
                         </div>
                     </div>
 
-                    <!-- REGISTRATION FORM -->
-                    <form id="checkout-form" method="POST">
+                    <div style="font-size: 13px; color: var(--ink-600); line-height: 1.55;">
+                        <strong>Onboarding Timeline:</strong> Immediately after enrollment, our admissions desk issues your <strong>Internship Portal Credentials</strong> and <strong>Assigned Mentor Calendar</strong> via email and WhatsApp within <strong>2–4 hours</strong>.
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: STRUCTURED APPLICATION FORM -->
+                <div class="form-container">
+                    <form id="enrollment-form" method="POST">
                         <input type="hidden" name="access_key" value="fc355b0a-58b0-49d5-a597-e8a20fce9d9d">
                         <input type="hidden" name="from_name" value="OmniIDE Internship Portal">
-                        <input type="hidden" name="subject" value="New 3-Month Internship Registration">
+                        <input type="hidden" name="subject" value="New 12-Week Internship Enrollment">
                         <input type="checkbox" name="botcheck" style="display: none;">
 
+                        <div class="form-section-title mono">Personal Information</div>
+
                         <div class="form-group">
-                            <label class="form-label" for="reg-name">Full Legal Name <span class="req">*</span></label>
-                            <input type="text" id="reg-name" name="name" class="form-input" placeholder="e.g. Rahul Sharma" required>
+                            <label class="form-label" for="app-name">Full Legal Name</label>
+                            <input type="text" id="app-name" name="name" class="form-input" placeholder="e.g. Rahul Sharma" required>
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label" for="reg-email">Email Address <span class="req">*</span></label>
-                            <input type="email" id="reg-email" name="email" class="form-input" placeholder="e.g. rahul@example.com" required>
+                            <label class="form-label" for="app-email">Email Address</label>
+                            <input type="email" id="app-email" name="email" class="form-input" placeholder="e.g. rahul@example.com" required>
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label" for="reg-phone">WhatsApp / Phone Number <span class="req">*</span></label>
-                            <input type="tel" id="reg-phone" name="phone" class="form-input" placeholder="e.g. +91 98765 43210" pattern="[0-9+ -]{10,15}" required>
+                            <label class="form-label" for="app-phone">WhatsApp / Phone Number</label>
+                            <input type="tel" id="app-phone" name="phone" class="form-input" placeholder="e.g. 9876543210" pattern="[0-9+ -]{10,15}" required>
                         </div>
 
+                        <div class="form-section-title mono" style="margin-top: 20px;">Academic &amp; Track Selection</div>
+
                         <div class="form-group">
-                            <label class="form-label" for="reg-role">Selected Engineering Track <span class="req">*</span></label>
-                            <select id="reg-role" name="role" class="form-select" required>
+                            <label class="form-label" for="app-role">Selected Engineering Track</label>
+                            <select id="app-role" name="role" class="form-select" required>
                                 <option value="Full-Stack Software Engineer" selected>Full-Stack Software Engineer</option>
                                 <option value="Full-Stack AI Developer">Full-Stack AI Developer</option>
                                 <option value="Systems & Desktop Software Engineer">Systems &amp; Desktop Software Engineer</option>
@@ -1262,12 +2011,13 @@
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label" for="reg-college">College / University</label>
-                                <input type="text" id="reg-college" name="institution" class="form-input" placeholder="e.g. VTU Affiliated College">
+                                <label class="form-label" for="app-college">College / University</label>
+                                <input type="text" id="app-college" name="institution" class="form-input" placeholder="e.g. VTU Affiliated College">
                             </div>
+
                             <div class="form-group">
-                                <label class="form-label" for="reg-year">Year / Experience</label>
-                                <select id="reg-year" name="status" class="form-select">
+                                <label class="form-label" for="app-year">Current Status</label>
+                                <select id="app-year" name="status" class="form-select">
                                     <option value="4th Year (Final Year)" selected>4th Year (Final Year)</option>
                                     <option value="3rd Year Student">3rd Year Student</option>
                                     <option value="1st / 2nd Year Student">1st / 2nd Year Student</option>
@@ -1277,121 +2027,81 @@
                             </div>
                         </div>
 
-                        <button type="submit" id="btn-pay-action" class="btn-submit">
-                            <span>Proceed to Payment (₹2,599)</span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        <button type="submit" id="btn-submit-enroll" class="btn-checkout-action">
+                            <span>Continue to Enrollment (₹2,599)</span>
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </button>
                     </form>
 
-                    <div class="checkout-guarantee">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <div class="checkout-trust-foot mono">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                         <span>256-bit encrypted · Portal credentials issued within 2–4 hours</span>
                     </div>
                 </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. FREQUENTLY ASKED QUESTIONS -->
+    <section class="section-wrap" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-kicker mono">07 / CLARIFICATIONS</div>
+                <h2 class="section-title">Frequently Asked Questions</h2>
             </div>
 
-        </div>
-
-        <!-- 7. FREQUENTLY ASKED QUESTIONS -->
-        <section class="faq-wrap">
-            <h2 class="faq-title">Frequently Asked Questions</h2>
             <div class="faq-list">
                 <div class="faq-item open">
-                    <div class="faq-q" onclick="toggleFaq(this)">
-                        <span>Is this internship accepted for VTU and university academic credits?</span>
-                        <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-                    </div>
-                    <div class="faq-a">
-                        Yes. OmniIDE is an AICTE Approved Technical Education Partner and MSME registered entity. The 3-month curriculum complies with university mandatory internship guidelines (including 7th &amp; 8th semester VTU engineering credits). You receive an official verifiable certificate with a unique QR code and project completion evaluation report.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-q" onclick="toggleFaq(this)">
-                        <span>What is the expected weekly time commitment?</span>
-                        <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-                    </div>
-                    <div class="faq-a">
-                        The program requires approximately 10–15 hours per week. Sprints are asynchronous with scheduled weekly mentor syncs, allowing you to balance regular semester exams and classes without conflict.
+                    <button class="faq-trigger" onclick="toggleFaq(this)">
+                        <span>Is this internship valid for VTU and university academic credits?</span>
+                        <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-content">
+                        Yes. OmniIDE is an AICTE Approved Technical Education Partner and registered enterprise under the Ministry of MSME. The 12-week curriculum is compliant with mandatory university internship norms, including 7th and 8th-semester VTU academic credit requirements.
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-q" onclick="toggleFaq(this)">
-                        <span>How is 1-on-1 mentor guidance structured?</span>
-                        <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-                    </div>
-                    <div class="faq-a">
-                        Upon enrollment, a senior software engineer from our core engineering team is assigned to you based on your selected track. They conduct weekly 1-on-1 sprint reviews, unblock technical issues, audit your pull requests, and provide guidance on system architecture.
+                    <button class="faq-trigger" onclick="toggleFaq(this)">
+                        <span>What is the weekly time commitment?</span>
+                        <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-content">
+                        The program is designed for 10–15 hours per week. Sprints are asynchronous with flexible working hours and scheduled weekly 1-on-1 mentor syncs, allowing you to participate alongside college classes or full-time jobs.
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-q" onclick="toggleFaq(this)">
-                        <span>When will I receive my portal access after payment?</span>
-                        <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    <button class="faq-trigger" onclick="toggleFaq(this)">
+                        <span>How are mentors assigned and code reviews conducted?</span>
+                        <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-content">
+                        Each participant is paired 1-on-1 with a senior engineer from our core engineering team based on their chosen track. Reviews take place directly on GitHub pull requests and via weekly scheduled video sessions.
                     </div>
-                    <div class="faq-a">
-                        Immediately after registration, an on-screen reference ID is generated. Our engineering admissions team will dispatch your official Internship Portal username, password, onboarding documentation, and mentor calendar link to your registered email and WhatsApp within 2–4 hours.
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger" onclick="toggleFaq(this)">
+                        <span>When do I receive my credentials and portal access?</span>
+                        <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-content">
+                        Upon completing enrollment, an application reference ID is generated instantly on screen. Our engineering admissions team will dispatch your official Internship Portal login details and assigned mentor calendar link to your email and WhatsApp within 2–4 hours.
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- 8. POST-PAYMENT ONBOARDING CONFIRMATION MODAL -->
-    <div class="modal-backdrop" id="modal-container">
-        <div class="modal-card">
-            <div class="modal-icon-circle">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            </div>
-
-            <h3 class="modal-heading">Registration Confirmed</h3>
-            <div class="modal-ref-tag" id="ref-tag">REF: OMNI-INT-2026-8492</div>
-
-            <div class="modal-data-box">
-                <div class="modal-data-row">
-                    <span>Candidate:</span>
-                    <strong id="modal-name">Candidate Name</strong>
-                </div>
-                <div class="modal-data-row">
-                    <span>Track:</span>
-                    <strong id="modal-role">Full-Stack Software Engineer</strong>
-                </div>
-                <div class="modal-data-row">
-                    <span>Amount Paid:</span>
-                    <strong class="mono" style="color: var(--emerald);">₹2,599 (3-Month Program)</strong>
-                </div>
-                <div class="modal-data-row">
-                    <span>Verification:</span>
-                    <strong>AICTE &amp; VTU Compliant</strong>
-                </div>
-            </div>
-
-            <div class="modal-message">
-                <strong>Next Steps:</strong>
-                Our admissions and engineering team will review your registration and dispatch your <strong>Internship Portal Access (Username &amp; Password)</strong> along with your <strong>Dedicated Mentor Assignment</strong> to your registered email and WhatsApp within <strong>2–4 hours</strong>.
-            </div>
-
-            <div class="modal-btn-group">
-                <a href="https://wa.me/919482186835?text=Hello%20OmniIDE%20Team%2C%20I%20have%20completed%20my%20internship%20registration%20for%20the%203-Month%20Program." target="_blank" rel="noopener noreferrer" class="btn-modal-green" style="text-decoration:none;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
-                    <span>Connect with Admissions on WhatsApp</span>
-                </a>
-                <button type="button" class="btn-modal-ghost" onclick="closeModal()">
-                    <span>Return to OmniIDE Home</span>
-                </button>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- 9. FOOTER -->
+    <!-- 11. MINIMAL ENTERPRISE FOOTER -->
     <footer class="site-footer">
-        <div class="container footer-inner">
+        <div class="container footer-grid">
             <div>
                 <strong>OmniIDE Systems</strong> — Ministry of MSME Registered · DPIIT Startup India Recognized
             </div>
-            <div class="footer-nav">
+            <div class="footer-links">
                 <a href="/terms-of-use/">Terms</a>
                 <a href="/privacy-policy/">Privacy</a>
                 <a href="mailto:founder@omniide.com">founder@omniide.com</a>
@@ -1399,10 +2109,161 @@
         </div>
     </footer>
 
-    <!-- INTERACTION & PAYMENT SCRIPT -->
+    <!-- 12. ONBOARDING CONFIRMATION MODAL -->
+    <div class="modal-overlay" id="modal-container">
+        <div class="modal-sheet">
+            <div class="modal-badge-ok">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+
+            <h3 style="font-size: 20px; font-weight: 700; color: var(--ink-900);">Enrollment Confirmed</h3>
+            <div class="modal-ref-id mono" id="ref-tag">REF: OMNI-INT-2026-8492</div>
+
+            <div class="modal-summary-box">
+                <div class="modal-row">
+                    <span>Candidate:</span>
+                    <strong id="modal-name">Candidate Name</strong>
+                </div>
+                <div class="modal-row">
+                    <span>Track:</span>
+                    <strong id="modal-role">Full-Stack Software Engineer</strong>
+                </div>
+                <div class="modal-row">
+                    <span>Amount Paid:</span>
+                    <strong class="mono" style="color: var(--emerald-600);">₹2,599 (12-Week Program)</strong>
+                </div>
+                <div class="modal-row">
+                    <span>Verification:</span>
+                    <strong>AICTE &amp; VTU Compliant</strong>
+                </div>
+            </div>
+
+            <div class="modal-guidance">
+                <strong>Next Steps:</strong> Our engineering admissions desk will review your registration and dispatch your <strong>Internship Portal Credentials</strong> and <strong>Assigned Mentor Calendar</strong> to your email &amp; WhatsApp within <strong>2–4 hours</strong>.
+            </div>
+
+            <div class="modal-actions">
+                <a href="https://wa.me/919482186835?text=Hello%20OmniIDE%20Team%2C%20I%20have%20completed%20my%20enrollment%20for%20the%2012-Week%20Engineering%20Internship." target="_blank" rel="noopener noreferrer" class="btn-modal-wa">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                    <span>Connect with Admissions on WhatsApp</span>
+                </a>
+                <button type="button" class="btn-modal-exit" onclick="closeModal()">
+                    <span>Return to OmniIDE Home</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT: TRACK EXPLORER & PAYMENT INTEGRATION -->
     <script>
-        function toggleFaq(el) {
-            const item = el.parentElement;
+        // TRACK DATA
+        const tracks = [
+            {
+                title: "Full-Stack Software Engineer",
+                kicker: "TRACK 01",
+                summary: "Architect and ship scalable client-server applications. Build high-performance user interfaces, design resilient REST and GraphQL microservices, and optimize relational database schemas.",
+                stack: ["React 19", "TypeScript", "Node.js / Fastify", "PostgreSQL", "GraphQL", "Redis"],
+                outcomes: [
+                    "Enterprise dashboard interfaces with sub-100ms render performance.",
+                    "High-throughput CRUD and analytical microservice APIs with JWT and OAuth2.",
+                    "Automated database migration pipelines and query optimization suites."
+                ]
+            },
+            {
+                title: "Full-Stack AI Developer",
+                kicker: "TRACK 02",
+                summary: "Engineer autonomous agentic workflows, multi-turn LLM orchestration pipelines, local edge inference runtimes, and context-aware tool-calling protocols.",
+                stack: ["Agentic Loops", "Gemini API", "Ollama", "MCP Protocol", "Vector Search", "Python"],
+                outcomes: [
+                    "Multi-agent task decomposition pipelines with self-healing code execution.",
+                    "Low-latency retrieval-augmented generation (RAG) over codebase ASTs.",
+                    "Custom Model Context Protocol (MCP) server implementations."
+                ]
+            },
+            {
+                title: "Systems & Desktop Software Engineer",
+                kicker: "TRACK 03",
+                summary: "Build low-latency native desktop software, containerized process isolations, file system watcher daemons, and hardened developer toolchains.",
+                stack: ["Electron Internals", "C++ / Rust", "IPC Protocols", "Process Sandboxing", "Node.js Addons"],
+                outcomes: [
+                    "Native desktop application modules with zero-copy IPC communication.",
+                    "Memory-safe native extensions and subprocess management kernels.",
+                    "Cross-platform OS level window management and terminal emulators."
+                ]
+            },
+            {
+                title: "Healthcare AI & Computer Vision Engineer",
+                kicker: "TRACK 04",
+                summary: "Implement ABDM-compliant encrypted health record exchanges, sub-millimeter surgical visual servoing algorithms, and NHCX insurance claims bridges.",
+                stack: ["FHIR R4", "ABDM M1–M4", "PyTorch", "OpenCV", "Visual Servoing", "Cryptography"],
+                outcomes: [
+                    "ABDM compliant Milestones 1–4 health record integration connectors.",
+                    "Real-time surgical visual tracking and motion compensation models.",
+                    "Encrypted NHCX healthcare insurance claim transaction pipelines."
+                ]
+            },
+            {
+                title: "Cloud Infrastructure & DevOps Engineer",
+                kicker: "TRACK 05",
+                summary: "Design automated zero-downtime deployment pipelines, container orchestration, telemetry logging clusters, and edge caching networks.",
+                stack: ["Docker", "Kubernetes", "GitHub Actions CI/CD", "Linux Kernels", "AWS / GCP", "Terraform"],
+                outcomes: [
+                    "Production Kubernetes deployment clusters with automated rollback triggers.",
+                    "Zero-downtime CI/CD build matrix with artifact caching and signing.",
+                    "Distributed telemetry dashboards with Prometheus and Grafana alerts."
+                ]
+            }
+        ];
+
+        let selectedTrackIndex = 0;
+
+        function selectTrack(index) {
+            selectedTrackIndex = index;
+            const menuItems = document.querySelectorAll('.track-nav-item');
+            menuItems.forEach((item, i) => {
+                if (i === index) item.classList.add('active');
+                else item.classList.remove('active');
+            });
+
+            const t = tracks[index];
+            document.getElementById('detail-track-kicker').textContent = t.kicker;
+            document.getElementById('detail-track-title').textContent = t.title;
+            document.getElementById('detail-track-summary').textContent = t.summary;
+
+            // Render Stack
+            const stackWrap = document.getElementById('detail-track-stack');
+            stackWrap.innerHTML = t.stack.map(s => `<span class="stack-tag mono">${s}</span>`).join('');
+
+            // Render Outcomes
+            const outcomeWrap = document.getElementById('detail-track-outcomes');
+            outcomeWrap.innerHTML = t.outcomes.map(o => `
+                <li>
+                    <svg class="outcome-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>${o}</span>
+                </li>
+            `).join('');
+
+            // Update form select value
+            const roleSelect = document.getElementById('app-role');
+            if (roleSelect) {
+                roleSelect.value = t.title;
+            }
+        }
+
+        function applyWithSelectedTrack() {
+            const roleSelect = document.getElementById('app-role');
+            if (roleSelect && tracks[selectedTrackIndex]) {
+                roleSelect.value = tracks[selectedTrackIndex].title;
+            }
+            const applySection = document.getElementById('apply');
+            if (applySection) {
+                applySection.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('app-name').focus();
+            }
+        }
+
+        function toggleFaq(button) {
+            const item = button.parentElement;
             const isOpen = item.classList.contains('open');
             document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
             if (!isOpen) {
@@ -1433,16 +2294,17 @@
             window.location.href = '/';
         }
 
-        const checkoutForm = document.getElementById('checkout-form');
-        const submitButton = document.getElementById('btn-pay-action');
+        // PAYMENT INTEGRATION WITH RAILWAY BACKEND & RAZORPAY
+        const enrollmentForm = document.getElementById('enrollment-form');
+        const submitButton = document.getElementById('btn-submit-enroll');
 
-        checkoutForm.addEventListener('submit', function(e) {
+        enrollmentForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const name = document.getElementById('reg-name').value.trim();
-            const email = document.getElementById('reg-email').value.trim();
-            const phone = document.getElementById('reg-phone').value.trim();
-            const role = document.getElementById('reg-role').value;
+            const name = document.getElementById('app-name').value.trim();
+            const email = document.getElementById('app-email').value.trim();
+            const phone = document.getElementById('app-phone').value.trim();
+            const role = document.getElementById('app-role').value;
 
             if (!name || !email || !phone || !role) {
                 alert('Please complete all mandatory fields.');
@@ -1450,26 +2312,21 @@
             }
 
             submitButton.disabled = true;
-            submitButton.innerHTML = `<span>Processing Enrollment...</span>`;
+            submitButton.innerHTML = `<span>Processing Registration...</span>`;
 
-            // Web3Forms payload dispatch to log lead & notify founder@omniide.com
-            const formData = new FormData(checkoutForm);
+            // Web3Forms payload dispatch to log lead
+            const formData = new FormData(enrollmentForm);
             formData.append('Amount', '₹2,599');
-            formData.append('Program', '3-Month Industry Internship');
+            formData.append('Program', '12-Week Advanced Engineering Internship');
             formData.append('Notification_Recipient', 'founder@omniide.com');
-
-            const payload = JSON.stringify(Object.fromEntries(formData));
 
             fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: payload
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(Object.fromEntries(formData))
             }).catch(err => console.warn('Web3Forms dispatch:', err));
 
-            // Razorpay Gateway Integration (Connected to Live Railway Backend)
+            // Backend + Razorpay Integration
             const BACKEND_API_URL = window.OMNI_BACKEND_URL || 'https://omni-landing-page-production-2149.up.railway.app';
             const FALLBACK_KEY = 'rzp_live_TKoC4DwlGTAk8b';
 
@@ -1477,7 +2334,7 @@
                 let orderId = null;
                 let activeKey = FALLBACK_KEY;
 
-                // 1. Try to fetch verified server-side order from Railway backend if available
+                // 1. Fetch verified server-side order from Railway
                 if (BACKEND_API_URL) {
                     try {
                         const orderRes = await fetch(`${BACKEND_API_URL}/api/create-order`, {
@@ -1488,8 +2345,8 @@
                                 email: email,
                                 phone: phone,
                                 role: role,
-                                institution: document.getElementById('reg-college').value.trim() || 'N/A',
-                                status: document.getElementById('reg-year').value
+                                institution: document.getElementById('app-college').value.trim() || 'N/A',
+                                status: document.getElementById('app-year').value
                             })
                         });
                         const orderData = await orderRes.json();
@@ -1498,18 +2355,18 @@
                             if (orderData.keyId) activeKey = orderData.keyId;
                         }
                     } catch (e) {
-                        console.warn('Backend order creation offline, using direct checkout fallback:', e);
+                        console.warn('Backend order offline, using direct fallback:', e);
                     }
                 }
 
-                // 2. Launch Razorpay Checkout Modal
+                // 2. Launch Razorpay Modal with UPI prioritized at the top
                 if (typeof Razorpay !== 'undefined') {
                     const options = {
                         "key": activeKey,
-                        "amount": 259900, // ₹2,599.00 in paise
+                        "amount": 259900, // ₹2,599.00
                         "currency": "INR",
                         "name": "OmniIDE Systems",
-                        "description": `3-Month Industry Internship — ${role}`,
+                        "description": `12-Week Engineering Internship — ${role}`,
                         "image": "https://omniide.com/assets/images/logo.jpg",
                         ...(orderId ? { "order_id": orderId } : {}),
                         "prefill": {
@@ -1523,21 +2380,13 @@
                                 "blocks": {
                                     "upi": {
                                         "name": "Pay with UPI (Google Pay / PhonePe / Paytm / QR)",
-                                        "instruments": [
-                                            {
-                                                "method": "upi"
-                                            }
-                                        ]
+                                        "instruments": [{ "method": "upi" }]
                                     },
                                     "other": {
                                         "name": "Debit / Credit Cards & NetBanking",
                                         "instruments": [
-                                            {
-                                                "method": "card"
-                                            },
-                                            {
-                                                "method": "netbanking"
-                                            }
+                                            { "method": "card" },
+                                            { "method": "netbanking" }
                                         ]
                                     }
                                 },
@@ -1548,16 +2397,16 @@
                             }
                         },
                         "notes": {
-                            "program": "3-Month Industry Internship",
+                            "program": "12-Week Engineering Internship",
                             "track": role,
-                            "institution": document.getElementById('reg-college').value.trim() || "N/A",
-                            "experience": document.getElementById('reg-year').value
+                            "institution": document.getElementById('app-college').value.trim() || "N/A",
+                            "experience": document.getElementById('app-year').value
                         },
                         "theme": {
-                            "color": "#0F172A"
+                            "color": "#0B1220"
                         },
                         "handler": function (response) {
-                            // Verify on backend if backend URL is configured
+                            // Verify on backend if available
                             if (BACKEND_API_URL && response.razorpay_order_id && response.razorpay_signature) {
                                 fetch(`${BACKEND_API_URL}/api/verify-payment`, {
                                     method: 'POST',
@@ -1567,7 +2416,7 @@
                                         razorpay_payment_id: response.razorpay_payment_id,
                                         razorpay_signature: response.razorpay_signature
                                     })
-                                }).catch(err => console.warn('Backend verification logging:', err));
+                                }).catch(err => console.warn('Backend verification:', err));
                             }
 
                             openModal({ 
@@ -1581,22 +2430,22 @@
                         "modal": {
                             "ondismiss": function() {
                                 submitButton.disabled = false;
-                                submitButton.innerHTML = `<span>Proceed to Payment (₹2,599)</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+                                submitButton.innerHTML = `<span>Continue to Enrollment (₹2,599)</span> <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
                             }
                         }
                     };
 
                     const rzp = new Razorpay(options);
                     rzp.on('payment.failed', function (response) {
-                        alert('Payment could not be completed: ' + (response.error.description || 'Transaction cancelled'));
+                        alert('Payment was not completed: ' + (response.error.description || 'Transaction cancelled'));
                         submitButton.disabled = false;
-                        submitButton.innerHTML = `<span>Proceed to Payment (₹2,599)</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+                        submitButton.innerHTML = `<span>Continue to Enrollment (₹2,599)</span> <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
                     });
                     rzp.open();
                 } else {
                     setTimeout(() => {
                         submitButton.disabled = false;
-                        submitButton.innerHTML = `<span>Proceed to Payment (₹2,599)</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+                        submitButton.innerHTML = `<span>Continue to Enrollment (₹2,599)</span> <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
                         openModal({ name, email, phone, role });
                     }, 600);
                 }
