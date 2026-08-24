@@ -11,7 +11,7 @@
 - Product Page: https://omniide.com/omni/
 - SyncGraph (Automated GitHub Streak Engine): https://syncgraph.omniide.com/
 - Omni Rovis (AI Surgical Motion Compensation & Navigation): https://rovis.omniide.com/
-- Arogya Omni (ABDM M1–M4 & NHCX Hospital OS & AI Claims Engine): https://arogya.omniide.com/
+- Arogya Omni (ABDM M1–M4 & NHCX Hospital OS & AI Claims Engine — Launching Soon): https://arogya.omniide.com/
 - Scan AI (Startup Innovation School): https://scanai.omniide.com/
 - Documentation: https://omniide.com/docs/
 - Blog: https://omniide.com/blog/
