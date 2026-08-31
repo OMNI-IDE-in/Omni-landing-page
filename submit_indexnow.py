@@ -44,6 +44,7 @@ payload = {
 }
 
 endpoints = [
+    "https://yandex.com/indexnow",
     "https://api.indexnow.org/indexnow",
     "https://www.bing.com/indexnow"
 ]
@@ -54,16 +55,25 @@ headers = {
     "User-Agent": "OmniIDE-IndexNow-Broadcaster/1.0"
 }
 
-print(f"[*] Submitting {len(URL_LIST)} URLs (Pages + Images) to IndexNow...")
+print(f"[*] Submitting {len(URL_LIST)} URLs (Pages + Images) to IndexNow Network...")
 
+successful = 0
 for endpoint in endpoints:
     try:
         req = urllib.request.Request(endpoint, data=data, headers=headers, method="POST")
         with urllib.request.urlopen(req, timeout=15) as resp:
             status = resp.getcode()
-            print(f"[+] Endpoint: {endpoint} -> HTTP {status} (Success / Queued for Indexing)")
+            print(f"[+] Endpoint: {endpoint} -> HTTP {status} (SUCCESS - Broadcasted to Search Engines)")
+            successful += 1
     except urllib.error.HTTPError as e:
         body = e.read().decode("utf-8", errors="ignore")
-        print(f"[-] Endpoint: {endpoint} -> HTTP {e.code}: {body}")
+        if e.code == 202 or e.code == 200:
+            print(f"[+] Endpoint: {endpoint} -> HTTP {e.code} (SUCCESS)")
+            successful += 1
+        else:
+            print(f"[-] Endpoint: {endpoint} -> HTTP {e.code}: {body[:120]}")
     except Exception as ex:
         print(f"[!] Endpoint: {endpoint} -> Connection Error: {ex}")
+
+if successful > 0:
+    print(f"\n[+] IndexNow Mesh Broadcast COMPLETE ({successful} endpoint(s) accepted your 27 URLs & Images).")
