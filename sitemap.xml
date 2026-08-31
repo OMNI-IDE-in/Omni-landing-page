@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://omniide.com/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://omniide.com/assets/images/nihan-nihu-founder-omni-ide.png</image:loc>
+      <image:title>Mohammed Nihan (Nihan Nihu) — Founder and CEO of Omni IDE</image:title>
+      <image:caption>Mohammed Nihan (Nihan Nihu) Founder and CEO of Omni IDE, open-source AI IDE research lab in Bengaluru</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://omniide.com/assets/images/nihan-nihu-founder-ceo-omni.jpg</image:loc>
+      <image:title>Nihan Nihu — Founder and CEO, Omni IDE</image:title>
+      <image:caption>Nihan Nihu Founder and CEO leading Omni IDE AI software engineering lab</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://omniide.com/assets/images/mohammed-nihan-nihu-founder-omniide.jpg</image:loc>
+      <image:title>Mohammed Nihan (Nihan Nihu) — Founder and CEO</image:title>
+      <image:caption>Mohammed Nihan (Nihan Nihu) Founder and CEO of Omni IDE and Arogya Omni</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://omniide.com/assets/images/mohammed-nihan-founder-ceo-omniide.jpeg</image:loc>
+      <image:title>Mohammed Nihan — Chief Architect and Founder and CEO</image:title>
+      <image:caption>Mohammed Nihan Founder and Chief Architect at Omni IDE</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://omniide.com/omni/</loc>
