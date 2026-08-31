@@ -1,0 +1,26 @@
+﻿name: IndexNow Auto-Broadcast to Search Engines
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  indexnow:
+    name: Submit URLs to Bing & IndexNow
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Wait for GitHub Pages Deployment
+        run: sleep 20
+
+      - name: Broadcast URLs & Images
+        run: python submit_indexnow.py
