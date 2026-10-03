@@ -3105,6 +3105,87 @@
             max-width: 800px;
             margin-bottom: 12px
         }
+
+        /* ── CLIENTS TICKER ── */
+        .clients-ticker {
+            background: #fff;
+            border-top: 1px solid #E5E7EB;
+            border-bottom: 1px solid #E5E7EB;
+            padding: 22px 0;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
+
+        .clients-ticker-inner {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            max-width: 100%;
+        }
+
+        .clients-label {
+            white-space: nowrap;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: #9CA3AF;
+            padding: 0 0 0 40px;
+            flex-shrink: 0;
+            margin: 0;
+        }
+
+        .clients-track-wrap {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+        }
+
+        .clients-track {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            width: max-content;
+            animation: ticker-scroll 32s linear infinite;
+        }
+
+        .clients-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes ticker-scroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .client-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: .04em;
+            color: #374151;
+            white-space: nowrap;
+            padding: 0 28px;
+            transition: color 0.2s;
+        }
+
+        .client-name:hover {
+            color: #1A56DB;
+        }
+
+        .client-sep {
+            color: #D1D5DB;
+            font-size: 10px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 640px) {
+            .clients-label { display: none; }
+            .client-name { font-size: 12px; padding: 0 18px; }
+        }
     </style>
 </head>
 
@@ -3275,6 +3356,38 @@
         </div>
     </section>
 
+    <!-- ── Trusted-By Clients Ticker ── -->
+    <section class="clients-ticker" aria-label="Trusted by leading organisations">
+        <div class="clients-ticker-inner">
+            <p class="clients-label">Trusted by</p>
+            <div class="clients-track-wrap">
+                <div class="clients-track" aria-hidden="false">
+                    <span class="client-name">SCAN AI PVT. LTD.</span>
+                    <span class="client-sep">✦</span>
+                    <span class="client-name">ZIVATRONIX HEALTHCARE PVT. LTD.</span>
+                    <span class="client-sep">✦</span>
+                    <span class="client-name">LAMBDA MANUFACTURING SYSTEMS</span>
+                    <span class="client-sep">✦</span>
+                    <span class="client-name">SPINE CARE HOSPITAL</span>
+                    <span class="client-sep">✦</span>
+                    <span class="client-name">VASANTH VIHAR</span>
+                    <span class="client-sep">✦</span>
+                    <!-- duplicate for seamless loop -->
+                    <span class="client-name" aria-hidden="true">SCAN AI PVT. LTD.</span>
+                    <span class="client-sep" aria-hidden="true">✦</span>
+                    <span class="client-name" aria-hidden="true">ZIVATRONIX HEALTHCARE PVT. LTD.</span>
+                    <span class="client-sep" aria-hidden="true">✦</span>
+                    <span class="client-name" aria-hidden="true">LAMBDA MANUFACTURING SYSTEMS</span>
+                    <span class="client-sep" aria-hidden="true">✦</span>
+                    <span class="client-name" aria-hidden="true">SPINE CARE HOSPITAL</span>
+                    <span class="client-sep" aria-hidden="true">✦</span>
+                    <span class="client-name" aria-hidden="true">VASANTH VIHAR</span>
+                    <span class="client-sep" aria-hidden="true">✦</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="mission" id="mission" aria-label="About OmniIDE">
         <div class="mission-separator"></div>
         <div class="mission-glow"></div>
@@ -3311,20 +3424,34 @@
         <div class="container">
             <div class="label">THE OMNI PRODUCT ECOSYSTEM</div>
             <h2 class="section-title">One Core. Infinite Possibilities.</h2>
-            <p class="section-sub">From our flagship autonomous workspace to specialized SaaS tiers, Omni powers the
-                next generation of intelligent software systems.</p>
+            <p class="section-sub">From our flagship autonomous workspace to specialized SaaS tiers, Omni powers the next generation of intelligent software and medical systems.</p>
             <div class="eco-grid">
-                <a href="https://omniide.com/omni/" class="eco-card-link" style="text-decoration: none; color: inherit; display: block;">
+                <a href="https://cero.omniide.com/" target="_blank" rel="noopener noreferrer" class="eco-card-link" style="text-decoration: none; color: inherit; display: block;">
                     <div class="eco-card" style="cursor: pointer;">
-                        <div class="eco-icon" style="background: transparent; overflow: hidden; border: 1px solid rgba(0,0,0,0.06);"><img src="assets/images/logo.jpg" alt="Omni Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;"></div>
+                        <div class="eco-icon" style="background: transparent; overflow: hidden; border: 1px solid rgba(0,0,0,0.06);"><img src="assets/images/cero-logo.png" alt="Omni Cero — C-Arm Imaging &amp; XVR Surgical Navigation Software" style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;"></div>
                         <div class="eco-status-container" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
                             <div class="eco-status live" style="margin-bottom: 0;">● FLAGSHIP PRODUCT</div>
+                            <span class="v4-badge" style="display:inline-flex;align-items:center;gap:4px;background:rgba(14,165,233,0.15);color:#0EA5E9;border:1px solid rgba(14,165,233,0.4);box-shadow:none;animation:none;text-shadow:none;">&lt; 0.8 mm MTRE · 30 FPS</span>
+                        </div>
+                        <h3>Omni Cero</h3>
+                        <div class="tagline">C-Arm Imaging &amp; 3D XVR Surgical Navigation Workstation</div>
+                        <p>One offline Windows workstation for the OR. Live C-arm fluoroscopy at 30 FPS with real-time DSA and vascular roadmapping, CT/MRI 3D review, DICOM PACS, and XVR sub-millimeter surgical navigation — fully air-gapped, no cloud.</p>
+                        <div class="card-action">
+                            <span class="action-text">Explore Omni Cero Platform</span>
+                            <span class="action-arrow">→</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://omniide.com/omni/" class="eco-card-link" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="eco-card" style="cursor: pointer;">
+                        <div class="eco-icon" style="background: transparent; overflow: hidden; border: 1px solid rgba(0,0,0,0.06);"><img src="assets/images/logo.jpg" alt="Omni IDE — Autonomous AI Coding Workspace" style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;"></div>
+                        <div class="eco-status-container" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+                            <div class="eco-status live" style="margin-bottom: 0;">● CORE PLATFORM</div>
                             <span class="v4-badge" style="display:inline-flex;align-items:center;gap:4px;">v4.0 Releasing Soon <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:#F59E0B;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
                         </div>
                         <h3>Omni IDE</h3>
-                        <div class="tagline">The World’s First Autonomous AI Workspace</div>
-                        <p>Omni IDE handles complex, multi-file refactoring and feature implementation. Built-in
-                            self-healing manages environments and dependencies so you can focus purely on architecture.</p>
+                        <div class="tagline">The World's First Autonomous AI Workspace</div>
+                        <p>Omni IDE handles complex, multi-file refactoring and feature implementation. Built-in self-healing manages environments and dependencies so you can focus purely on architecture.</p>
                         <div class="card-action">
                             <span class="action-text">Explore Omni IDE Workspace</span>
                             <span class="action-arrow">→</span>
